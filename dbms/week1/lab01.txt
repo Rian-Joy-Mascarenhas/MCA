@@ -1,0 +1,273 @@
+SQL> create table dept(
+  2  dno char(3) constraint c_dno_uq unique constraint c_d_uq check(dno like 'D%'),
+  3  dname varchar(15) not null constraint c_dname_uq unique,
+  4  location char(3) constraint c_loc check(location in('MUB','HYD','BNG','MNG','CHN')));
+create table dept(
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> drop table dept;
+drop table dept
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys 
+
+
+SQL> drop table emp;
+
+Table dropped.
+
+SQL> drop table dept;
+
+Table dropped.
+
+SQL> create table dept(
+  2  dno char(3) constraint c_dno_uq unique constraint c_d_uq check(dno like 'D%'),
+  3  dname varchar(15) not null constraint c_dname_uq unique,
+  4  location char(3) constraint c_loc check(location in('MUB','HYD','BNG','MNG','CHN')));
+
+Table created.
+
+SQL> drop table dept;
+
+Table dropped.
+
+SQL> create table dept(
+  2  dno char(3) constraint c_dno_uq unique(dno) constraint c_d_uq check(dno like 'D%'),
+  3  dname varchar(15) not null constraint c_dname_uq unique,
+  4  location char(3) constraint c_loc check(location in('MUB','HYD','BNG','MNG','CHN')));
+dno char(3) constraint c_dno_uq unique(dno) constraint c_d_uq check(dno like 'D%'),
+                                      *
+ERROR at line 2:
+ORA-00907: missing right parenthesis 
+
+
+SQL> create table dept(
+  2  dno char(3) constraint c_dno_uq unique(dno), constraint c_d_uq check(dno like 'D%'),
+  3  dname varchar(15) not null constraint c_dname_uq unique,
+  4  location char(3) constraint c_loc check(location in('MUB','HYD','BNG','MNG','CHN')));
+dno char(3) constraint c_dno_uq unique(dno), constraint c_d_uq check(dno like 'D%'),
+                                      *
+ERROR at line 2:
+ORA-00907: missing right parenthesis 
+
+
+SQL> create table dept(
+  2  dno char(3) constraint c_dno_uq unique constraint c_d_uq check(dno like 'D%'),
+  3  dname varchar(15) not null constraint c_dname_uq unique,
+  4  location char(3) constraint c_loc check(location in('MUB','HYD','BNG','MNG','CHN')));
+
+Table created.
+
+SQL> create table emp(
+  2  empno number(3) primary key,
+  3  ename varchar(15) not null,
+  4  job varchar(15) constraint c_jobchk check(job in('MGR','A.MGR','CLK','DEV','ENG','CEO','GM'),
+  5  mgrid constraint c_fk_mgrid references emp,
+  6  date_birth date,
+  7  sal number(10,2) constraint c_salchk check(sal>20000),
+  8  comm number(10,2) default '1000',
+  9  deptno char(3) references dept on delete cascade,
+ 10  date_join date check(date_join>date_birth),
+ 11  constraint c_db check(date_birth<date_join));
+job varchar(15) constraint c_jobchk check(job in('MGR','A.MGR','CLK','DEV','ENG','CEO','GM'),
+                                                                                            *
+ERROR at line 4:
+ORA-00907: missing right parenthesis 
+
+
+SQL> create table emp(
+  2  empno number(3) primary key,
+  3  ename varchar(15) not null,
+  4  job varchar(15) constraint c_jobchk check(job in('MGR','A.MGR','CLK','DEV','ENG','CEO','GM')),
+  5  mgrid constraint c_fk_mgrid references emp,
+  6  date_birth date,
+  7  sal number(10,2) constraint c_salchk check(sal>20000),
+  8  comm number(10,2) default '1000',
+  9  deptno char(3) references dept on delete cascade,
+ 10  date_join date check(date_join>date_birth),
+ 11  constraint c_db check(date_birth<date_join));
+date_join date check(date_join>date_birth),
+                                          *
+ERROR at line 10:
+ORA-02438: Column check constraint cannot reference other columns 
+
+
+SQL> create table emp(
+  2  empno number(3) primary key,
+  3  ename varchar(15) not null,
+  4  job varchar(15) constraint c_jobchk check(job in('MGR','A.MGR','CLK','DEV','ENG','CEO','GM')),
+  5  mgrid constraint c_fk_mgrid references emp,
+  6  date_birth date,
+  7  sal number(10,2) constraint c_salchk check(sal>20000),
+  8  comm number(10,2) default '1000',
+  9  deptno char(3) references dept on delete cascade,
+ 10  date_join date check(date_join>date_birth)
+ 11  constraint c_db check(date_birth<date_join));
+constraint c_db check(date_birth<date_join))
+*
+ERROR at line 11:
+ORA-02438: Column check constraint cannot reference other columns 
+
+
+SQL> create table emp(
+  2  empno number(3) primary key,
+  3  ename varchar(15) not null,
+  4  job varchar(15) constraint c_jobchk check(job in('MGR','A.MGR','CLK','DEV','ENG','CEO','GM')),
+  5  mgrid constraint c_fk_mgrid references emp,
+  6  date_birth date,
+  7  sal number(10,2) constraint c_salchk check(sal>20000),
+  8  comm number(10,2) default '1000',
+  9  deptno char(3) references dept(dno) on delete cascade,
+ 10  date_join date constraint c_db check(date_birth<date_join));
+date_join date constraint c_db check(date_birth<date_join))
+                                                          *
+ERROR at line 10:
+ORA-02438: Column check constraint cannot reference other columns 
+
+
+SQL> create table emp(
+  2  empno number(3) primary key,
+  3  ename varchar(15) not null,
+  4  job varchar(15) constraint c_jobchk check(job in('MGR','A.MGR','CLK','DEV','ENG','CEO','GM')),
+  5  mgrid constraint c_fk_mgrid references emp,
+  6  date_birth date,
+  7  sal number(10,2) constraint c_salchk check(sal>20000),
+  8  comm number(10,2) default '1000',
+  9  deptno char(3) references dept(dno) on delete cascade,
+ 10  date_join date constraint c_db check(date_join>date_birth));
+date_join date constraint c_db check(date_join>date_birth))
+                                                          *
+ERROR at line 10:
+ORA-02438: Column check constraint cannot reference other columns 
+
+
+SQL> create table emp(
+  2  empno number(3) primary key,
+  3  ename varchar(15) not null,
+  4  job varchar(15) constraint c_jobchk check(job in('MGR','A.MGR','CLK','DEV','ENG','CEO','GM')),
+  5  mgrid constraint c_fk_mgrid references emp,
+  6  date_birth date,
+  7  sal number(10,2) constraint c_salchk check(sal>20000),
+  8  comm number(10,2) default '1000',
+  9  deptno char(3) references dept(dno) on delete cascade,
+ 10  date_join date,constraint c_db check(date_join>date_birth));
+
+Table created.
+
+SQL> create table proj(
+  2  dno constraint c_fkdept references dept,
+  3  prj_no char(3) not null constraint c_prjno check(prj_no like 'P%'),
+  4  prj_name varchar(20) not null,
+  5  prj_credit number(2) constraint c_pcredit check(prj_credit between 0 and 11),
+  6  strt_date date not null,
+  7  end_date date constraint c_endate check(end_date>strt_date));
+end_date date constraint c_endate check(end_date>strt_date))
+                                                           *
+ERROR at line 7:
+ORA-02438: Column check constraint cannot reference other columns 
+
+
+SQL> create table proj(
+  2  dno constraint c_fkdept references dept,
+  3  prj_no char(3) not null constraint c_prjno check(prj_no like 'P%'),
+  4  prj_name varchar(20) not null,
+  5  prj_credit number(2) constraint c_pcredit check(prj_credit between 0 and 11),
+  6  strt_date date not null,
+  7  end_date date, constraint c_endate check(end_date>strt_date));
+dno constraint c_fkdept references dept,
+                                   *
+ERROR at line 2:
+ORA-02268: referenced table does not have a primary key 
+
+
+SQL> create table proj(
+  2  dno constraint c_fkdept references dept(dno),
+  3  prj_no char(3) not null constraint c_prjno check(prj_no like 'P%'),
+  4  prj_name varchar(20) not null,
+  5  prj_credit number(2) constraint c_pcredit check(prj_credit between 0 and 11),
+  6  strt_date date not null,
+  7  end_date date, constraint c_endate check(end_date>strt_date));
+
+Table created.
+
+SQL> create table task(
+  2  prj_id char(3),
+  3  dno char(3),
+  4  task_id number(3),
+  5  task_name varchar(30) not null,
+  6  s_date date not null,
+  7  e_date date,
+  8  status varchar(12),
+  9  constraint c_tedate check(e_date>s_date));
+
+Table created.
+
+SQL> create table dependent(
+  2  depid number(2) primary key,
+  3  empno references emp,
+  4  dependent_name varchar(20) not null,
+  5  gender char(1) check(gender in('M','F')),
+  6  dofbirth date not null,
+  7  relationship varchar2(15) constraint c_chkrel check(relationship in('SPOUSE','CHILD','PARENT')),
+  8  nom_pct number(5,2) constraint c_chknpct check(nom_pct between 0 and 100),
+  9  med_cover varchar2(15) default 'NO' check(med_cover in('YES','NO')));
+
+Table created.
+
+SQL> desc dept;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                                CHAR(3)
+ DNAME                                     NOT NULL VARCHAR2(15)
+ LOCATION                                           CHAR(3)
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(3)
+ ENAME                                     NOT NULL VARCHAR2(15)
+ JOB                                                VARCHAR2(15)
+ MGRID                                              NUMBER(3)
+ DATE_BIRTH                                         DATE
+ SAL                                                NUMBER(10,2)
+ COMM                                               NUMBER(10,2)
+ DEPTNO                                             CHAR(3)
+ DATE_JOIN                                          DATE
+
+SQL> desc proj;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                                CHAR(3)
+ PRJ_NO                                    NOT NULL CHAR(3)
+ PRJ_NAME                                  NOT NULL VARCHAR2(20)
+ PRJ_CREDIT                                         NUMBER(2)
+ STRT_DATE                                 NOT NULL DATE
+ END_DATE                                           DATE
+
+SQL> desc task;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PRJ_ID                                             CHAR(3)
+ DNO                                                CHAR(3)
+ TASK_ID                                            NUMBER(3)
+ TASK_NAME                                 NOT NULL VARCHAR2(30)
+ S_DATE                                    NOT NULL DATE
+ E_DATE                                             DATE
+ STATUS                                             VARCHAR2(12)
+
+SQL> desc dependent;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPID                                     NOT NULL NUMBER(2)
+ EMPNO                                              NUMBER(3)
+ DEPENDENT_NAME                            NOT NULL VARCHAR2(20)
+ GENDER                                             CHAR(1)
+ DOFBIRTH                                  NOT NULL DATE
+ RELATIONSHIP                                       VARCHAR2(15)
+ NOM_PCT                                            NUMBER(5,2)
+ MED_COVER                                          VARCHAR2(15)
+
+SQL> spool off;

@@ -1,0 +1,147 @@
+alter table proj ADD constraint c_projpk primary key(dno,prj_no);
+
+alter table emp add(proj_id char(3));
+
+alter table emp add constraint c_empfk foreign key(deptno,proj_id) references
+proj(dno,prj_no);
+
+alter table emp add constraint VALID_EMPNO_Cons check(empno>100);
+
+alter table dept add(Dept_Budget number(7));
+
+alter table proj add(Prj_Fund number(7));
+
+alter table task add constraint c_status check(status IN('PENDING','IN-PROGRESS','COMPLETED'));
+
+alter table task add constraint c_taskpk primary key(Task_Id,DNO,Prj_ID);
+
+alter table emp add(BONUS number(8,2)default 0);
+
+alter table emp modify(BONUS number(6,2));
+
+alter table emp rename column BONUS to BONUSES;
+
+alter table emp drop column BONUSES;
+
+
+
+SQL> spool D:\OraclePrg\261090700052\week2\lab02.txt;
+SQL> alter table proj ADD constraint c_projpk primary key(dno,prj_no);
+
+Table altered.
+
+SQL> alter tble emp add(proj_id char(3));
+alter tble emp add(proj_id char(3))
+      *
+ERROR at line 1:
+ORA-00940: invalid ALTER command
+
+
+SQL> alter table emp add(proj_id char(3));
+
+Table altered.
+
+SQL> alter table emp add constraint c_empfk foreign key(deptno,proj_id) references
+  2  proj(dno,prj_no);
+
+Table altered.
+
+SQL> alter table emp add constraint VALID_EMPNO_Cons check(empno>100);
+
+Table altered.
+
+SQL> alter table dept add(Dept_Budget number(7));
+
+Table altered.
+
+SQL> alter table proj add(Prj_Fund number(7));
+
+Table altered.
+
+SQL> alter table task add constraint c_status check(status IN('PENDING','IN-PROGRESS','COMPLETED'));
+
+Table altered.
+
+SQL> alter table task add constraint c_taskpk primary key(Task_Id,DNO,Prj_ID);
+
+Table altered.
+
+SQL> alter table emp add(BONUS number(8,2)default 0);
+
+Table altered.
+
+SQL> alter table emp modify(BONUS number(6,2));
+
+Table altered.
+
+SQL> alter table emp rename BONUS to BONUSES;
+alter table emp rename BONUS to BONUSES
+                       *
+ERROR at line 1:
+ORA-14155: missing PARTITION, PARTITIONS, SUBPARTITION, or SUBPARTITIONS
+keyword
+
+
+SQL> alter table emp rename column BONUS to BONUSES;
+
+Table altered.
+
+SQL> alter table emp drop column BONUSES;
+
+Table altered.
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(3)
+ ENAME                                     NOT NULL VARCHAR2(15)
+ JOB                                                VARCHAR2(15)
+ MGRID                                              NUMBER(3)
+ DATE_BIRTH                                         DATE
+ SAL                                                NUMBER(10,2)
+ COMM                                               NUMBER(10,2)
+ DEPTNO                                             CHAR(3)
+ DATE_JOIN                                          DATE
+ PROJ_ID                                            CHAR(3)
+
+SQL> commit;
+
+Commit complete.
+
+SQL> desc proj;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                       NOT NULL CHAR(3)
+ PRJ_NO                                    NOT NULL CHAR(3)
+ PRJ_NAME                                  NOT NULL VARCHAR2(20)
+ PRJ_CREDIT                                         NUMBER(2)
+ STRT_DATE                                 NOT NULL DATE
+ END_DATE                                           DATE
+ PRJ_FUND                                           NUMBER(7)
+
+SQL> desc task;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PRJ_ID                                    NOT NULL CHAR(3)
+ DNO                                       NOT NULL CHAR(3)
+ TASK_ID                                   NOT NULL NUMBER(3)
+ TASK_NAME                                 NOT NULL VARCHAR2(30)
+ S_DATE                                    NOT NULL DATE
+ E_DATE                                             DATE
+ STATUS                                             VARCHAR2(12)
+
+SQL> desc dept;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                                CHAR(3)
+ DNAME                                     NOT NULL VARCHAR2(15)
+ LOCATION                                           CHAR(3)
+ DEPT_BUDGET                                        NUMBER(7)
+
+SQL> spool off;
+
+
+
+
+
+

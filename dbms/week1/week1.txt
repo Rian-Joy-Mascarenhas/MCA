@@ -1,0 +1,45 @@
+create table dept(
+dno char(3) constraint c_dno_uq unique constraint c_d_uq check(dno like 'D%'),
+dname varchar(15) not null constraint c_dname_uq unique,
+location char(3) constraint c_loc check(location in('MUB','HYD','BNG','MNG','CHN')));
+
+
+create table emp(
+empno number(3) primary key,
+ename varchar(15) not null,
+job varchar(15) constraint c_jobchk check(job in('MGR','A.MGR','CLK','DEV','ENG','CEO','GM')),
+mgrid constraint c_fk_mgrid references emp,
+date_birth date,
+sal number(10,2) constraint c_salchk check(sal>20000),
+comm number(10,2) default 1000,
+deptno char(3) references dept(dno) on delete cascade,
+date_join date,constraint c_db check(date_join>date_birth));
+
+
+create table proj(
+dno constraint c_fkdept references dept(dno),
+prj_no char(3) not null constraint c_prjno check(prj_no like 'P%'),
+prj_name varchar(20) not null,
+prj_credit number(2) constraint c_pcredit check(prj_credit between 0 and 11),
+strt_date date not null,
+end_date date, constraint c_endate check(end_date>strt_date));
+
+create table task(
+prj_id char(3),
+dno char(3),
+task_id number(3),
+task_name varchar(30) not null,
+s_date date not null,
+e_date date,
+status varchar(12),
+constraint c_tedate check(e_date>s_date));
+
+create table dependent(
+depid number(2) primary key,
+empno references emp,
+dependent_name varchar(20) not null,
+gender char(1) check(gender in('M','F')),
+dofbirth date not null,
+relationship varchar2(15) constraint c_chkrel check(relationship in('SPOUSE','CHILD','PARENT')),
+nom_pct number(5,2) constraint c_chknpct check(nom_pct between 0 and 100),
+med_cover varchar2(15) default 'NO' check(med_cover in('YES','NO')));

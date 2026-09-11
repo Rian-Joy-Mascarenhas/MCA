@@ -1,0 +1,690 @@
+SQL> INSERT INTO DEPENDENT VALUES(1,101,'LATHA KUMAR','F',TO_DATE('10-05-1982','DD-MM-YYYY'),'SPOUSE',50,'YES');
+
+1 row created.
+
+SQL> INSERT INTO DEPENDENT VALUES(2,101,'ARUN KUMAR','M',TO_DATE('19-06-2000','DD-MM-YYYY'),'CHILD',25,'YES');
+
+1 row created.
+
+SQL> INSERT INTO DEPENDENT VALUES(3,102,'SEEMA RAVI','F',TO_DATE('01-01-1980','DD-MM-YYYY'),'SPOUSE',60,'YES');
+INSERT INTO DEPENDENT VALUES(3,102,'SEEMA RAVI','F',TO_DATE('01-01-1980','DD-MM-YYYY'),'SPOUSE',60,'YES')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (MCA016.SYS_C0034691) violated - parent key not
+found
+
+
+SQL> insert into dependent values(,02,'SEEMA RAVI','F','01-JAN-1980','SPOUSE',60,'YES'));
+insert into dependent values(,02,'SEEMA RAVI','F','01-JAN-1980','SPOUSE',60,'YES'))
+                             *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> insert into dependent values(3,102,'SEEMA RAVI','F','01-JAN-1980','SPOUSE',60,'YES'));
+insert into dependent values(3,102,'SEEMA RAVI','F','01-JAN-1980','SPOUSE',60,'YES'))
+                                                                                    *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> insert into dependent values(3,102,'SEEMA RAVI','F','01-JAN-1980','SPOUSE',60,'YES');
+insert into dependent values(3,102,'SEEMA RAVI','F','01-JAN-1980','SPOUSE',60,'YES')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (MCA016.SYS_C0034691) violated - parent key not
+found
+
+
+SQL> INSERT INTO DEPENDENT VALUES(4,103,'MOHAN RAO','M',TO_DATE('12-12-1950','DD-MM-YYYY'),'PARENT',30,'NO');
+
+1 row created.
+
+SQL> INSERT INTO DEPENDENT VALUES(5,106,'NEHA RAHUL','F',TO_DATE('22-07-1990','DD-MM-YYYY'),'SPOUSE',70,'YES');
+
+1 row created.
+
+SQL> INSERT INTO DEPENDENT VALUES(6,108,'ROHAN MEERA','M',TO_DATE('03-03-2015','DD-MM-YYYY'),'CHILD',100,'YES');
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL>  insert into dependent values(3,108,'SEEMA RAVI','F','01-JAN-1980','SPOUSE',60,'YES'));
+ insert into dependent values(3,108,'SEEMA RAVI','F','01-JAN-1980','SPOUSE',60,'YES'))
+                                                                                     *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL>  insert into dependent values(3,108,'SEEMA RAVI','F','01-JAN-1980','SPOUSE',60,'YES');
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool D:\OraclePrg\261090700052\week4\lab4.txt;
+SQL> DELETE FROM EMP WHERE PROJ_ID = 'P3';
+DELETE FROM EMP WHERE PROJ_ID = 'P3'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (MCA016.SYS_C0034691) violated - child record
+found
+
+
+SQL> DELETE FROM EMP WHERE PROJ_ID = 'P3';
+DELETE FROM EMP WHERE PROJ_ID = 'P3'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (MCA016.SYS_C0034691) violated - child record
+found
+
+
+SQL> delete from emp where empno = 125 OR proj_id = 'p2';
+delete from emp where empno = 125 OR proj_id = 'p2'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (MCA016.C_FK_MGRID) violated - child record
+found
+
+
+SQL> DELETE FROM TASK WHERE PRJ_ID = 'P2';
+
+2 rows deleted.
+
+SQL> rollbck;
+SP2-0042: unknown command "rollbck" - rest of line ignored.
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * from task where status = 'PENDING';
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE
+--- --- ---------- ------------------------------ --------- ---------
+STATUS
+------------
+P4  D5           1 REQUIREMENT GATHERING          10-APR-22
+PENDING
+
+
+SQL> delete from task where status = 'PENDING';
+
+1 row deleted.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> update emp set job= 'MGR', sal = 35000, mgrid = 111 where empno = 123;
+
+1 row updated.
+
+SQL> SELECT EMPNO, ENAME, JOB, SAL, MGRID FROM EMP WHERE EMPNO = 123;
+
+     EMPNO ENAME           JOB                    SAL      MGRID
+---------- --------------- --------------- ---------- ----------
+       123 Ashok           MGR                  35000        111
+
+SQL> update emp set comm = 10000 where job = 'MGR';
+
+2 rows updated.
+
+SQL> update emp set sal = sal * 1.10 where job = 'ENG';
+
+1 row updated.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from task;
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE
+--- --- ---------- ------------------------------ --------- ---------
+STATUS
+------------
+P1  D1           1 REQUIREMENT ANALYSIS           01-JAN-22 15-JAN-22
+COMPLETED
+
+P1  D2           2 MODULE DESIGN                  16-JAN-22 10-FEB-22
+COMPLETED
+
+P2  D3           3 CODING 40                      11-FEB-22
+IN-PROGRESS
+
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE
+--- --- ---------- ------------------------------ --------- ---------
+STATUS
+------------
+P3  D4           1 DATASET COLLECTION             15-FEB-22 28-FEB-22
+COMPLETED
+
+P3  D1           2 MODEL TRAINING                 01-MAR-22
+IN-PROGRESS
+
+P3  D1           1 SCHEMA MAPPING                 01-MAR-22 20-MAR-22
+COMPLETED
+
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE
+--- --- ---------- ------------------------------ --------- ---------
+STATUS
+------------
+P4  D5           1 REQUIREMENT GATHERING          10-APR-22
+PENDING
+
+P4  D5           2 SITE SURVEY                    05-MAY-22 20-MAY-22
+COMPLETED
+
+P4  D5           3 REQUIREMENT ANALYSIS           05-APR-22 20-APR-22
+COMPLETED
+
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE
+--- --- ---------- ------------------------------ --------- ---------
+STATUS
+------------
+P2  D3           1 SCHEMA MAPPING                 05-JUN-22 22-JUN-22
+COMPLETED
+
+
+10 rows selected.
+
+SQL> select * from emp where sal>25000 or deptno='D1';
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       108 Suraj           DEV                    106 10-NOV-80      70000
+     25000 D4  02-OCT-05 P3
+
+       150 CEO             CEO                        10-DEC-84      60000
+     30000 D1  03-DEC-08 P1
+
+       111 Raghu           ENG                    150 10-DEC-84      49500
+    150000 D1  03-FEB-05 P1
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       103 Suresh          DEV                    111 10-DEC-80      55000
+    140000 D1  22-SEP-01 P1
+
+       125 Manu            DEV                    150 10-DEC-80      50000
+    115000 D2  02-OCT-02 P1
+
+       104 Rakesh          CLK                    125 02-OCT-80      40000
+     10000 D2  26-NOV-05 P1
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       109 Ramesh          CLK                    111 02-AUG-80      54000
+    110000 D3  12-OCT-02 P2
+
+       110 Saroj           DEV                    111 10-JUL-80      62000
+     20000 D3  21-JUN-01 P2
+
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000
+     21000 D4  24-NOV-89 P3
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       101 Ravi            MGR                    111 10-OCT-95      32000
+     10000 D1  02-OCT-06 P1
+
+       123 Ashok           MGR                    111 10-DEC-84      35000
+     10000 D1  23-DEC-08 P1
+
+       113 Aman            DEV                    111 10-JUL-80      95000
+     30000 D3  21-JUN-01 P2
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       112 Arnav           CLK                    106 10-JAN-85      50000
+     11000 D4  10-DEC-07 P3
+
+       140 Bhuvan          CLK                    111 10-APR-84      35000
+     13000     10-NOV-02
+
+       139 Ronald          DEV                    150 10-FEB-90      45000
+     12000     10-JUN-01
+
+
+15 rows selected.
+
+SQL> select ename as "Employee Name",sal as "SALARY" from emp
+  2  where sal between 25200 and 35200;
+
+Employee Name       SALARY
+--------------- ----------
+Ravi                 32000
+Ashok                35000
+Bhuvan               35000
+
+SQL> select e.ename from emp e,dept d where e.deptno=d.dno and (d.location='BNG'
+  2  or d.location='MUB' or d.location='HYD');
+
+ENAME
+---------------
+Suraj
+Ramesh
+Saroj
+Sartaj
+Aman
+Arnav
+
+6 rows selected.
+
+SQL> select e.ename from emp e,dept d where e.deptno=d.dno and d.location in('BNG','MUB','HYD');
+
+ENAME
+---------------
+Suraj
+Ramesh
+Saroj
+Sartaj
+Aman
+Arnav
+
+6 rows selected.
+
+SQL> select * from emp order by deptno asc,sal desc;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       150 CEO             CEO                        10-DEC-84      60000
+     30000 D1  03-DEC-08 P1
+
+       103 Suresh          DEV                    111 10-DEC-80      55000
+    140000 D1  22-SEP-01 P1
+
+       111 Raghu           ENG                    150 10-DEC-84      49500
+    150000 D1  03-FEB-05 P1
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       123 Ashok           MGR                    111 10-DEC-84      35000
+     10000 D1  23-DEC-08 P1
+
+       101 Ravi            MGR                    111 10-OCT-95      32000
+     10000 D1  02-OCT-06 P1
+
+       125 Manu            DEV                    150 10-DEC-80      50000
+    115000 D2  02-OCT-02 P1
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       104 Rakesh          CLK                    125 02-OCT-80      40000
+     10000 D2  26-NOV-05 P1
+
+       113 Aman            DEV                    111 10-JUL-80      95000
+     30000 D3  21-JUN-01 P2
+
+       110 Saroj           DEV                    111 10-JUL-80      62000
+     20000 D3  21-JUN-01 P2
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       109 Ramesh          CLK                    111 02-AUG-80      54000
+    110000 D3  12-OCT-02 P2
+
+       108 Suraj           DEV                    106 10-NOV-80      70000
+     25000 D4  02-OCT-05 P3
+
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000
+     21000 D4  24-NOV-89 P3
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       112 Arnav           CLK                    106 10-JAN-85      50000
+     11000 D4  10-DEC-07 P3
+
+       139 Ronald          DEV                    150 10-FEB-90      45000
+     12000     10-JUN-01
+
+       140 Bhuvan          CLK                    111 10-APR-84      35000
+     13000     10-NOV-02
+
+
+15 rows selected.
+
+SQL> select * from task where prj_id='P3';
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE
+--- --- ---------- ------------------------------ --------- ---------
+STATUS
+------------
+P3  D1           1 SCHEMA MAPPING                 01-MAR-22 20-MAR-22
+COMPLETED
+
+P3  D4           1 DATASET COLLECTION             15-FEB-22 28-FEB-22
+COMPLETED
+
+P3  D1           2 MODEL TRAINING                 01-MAR-22
+IN-PROGRESS
+
+
+SQL> select * from emp where comm IS NULL;
+
+no rows selected
+
+SQL> create table manager as select empno,ename,job,deptno,sal from emp;
+
+Table created.
+
+SQL> select prj_no,prj_name from proj where dno='D2' and prj_credit>5;
+
+PRJ PRJ_NAME
+--- --------------------
+P1  AI RESEARCH PLATFORM
+
+SQL> select * from emp where mgrid =111;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       103 Suresh          DEV                    111 10-DEC-80      55000
+    140000 D1  22-SEP-01 P1
+
+       109 Ramesh          CLK                    111 02-AUG-80      54000
+    110000 D3  12-OCT-02 P2
+
+       110 Saroj           DEV                    111 10-JUL-80      62000
+     20000 D3  21-JUN-01 P2
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000
+     21000 D4  24-NOV-89 P3
+
+       101 Ravi            MGR                    111 10-OCT-95      32000
+     10000 D1  02-OCT-06 P1
+
+       123 Ashok           MGR                    111 10-DEC-84      35000
+     10000 D1  23-DEC-08 P1
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       113 Aman            DEV                    111 10-JUL-80      95000
+     30000 D3  21-JUN-01 P2
+
+       140 Bhuvan          CLK                    111 10-APR-84      35000
+     13000     10-NOV-02
+
+
+8 rows selected.
+
+SQL> select ename from emp where ename like '_av%j' and length(ename)=6;
+
+no rows selected
+
+SQL> select * from task where e_date - s_date < 7;
+
+no rows selected
+
+SQL> select prj_name from proj where strt_date > to_date('01-03-2022','DD-MM-YYYY')AND PRJ_CREDIT > 5;
+
+PRJ_NAME
+--------------------
+WAREHOUSE AUTOMATION
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select distinct p.prj_no,p.prj_name from proj p, task t where p.dno=t.dno and
+  2  p.prj_no=t.prj_id and t.s_date > to_date('01-02-2022','DD-MM-YYYY');
+
+PRJ PRJ_NAME
+--- --------------------
+P3  ERP REVAMP
+P3  CRM REVAMP
+P2  DATA WAREHOUSE MIGR.
+P4  WAREHOUSE AUTOMATION
+
+SQL> select * from emp order by sal desc;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       113 Aman            DEV                    111 10-JUL-80      95000
+     30000 D3  21-JUN-01 P2
+
+       108 Suraj           DEV                    106 10-NOV-80      70000
+     25000 D4  02-OCT-05 P3
+
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000
+     21000 D4  24-NOV-89 P3
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       110 Saroj           DEV                    111 10-JUL-80      62000
+     20000 D3  21-JUN-01 P2
+
+       150 CEO             CEO                        10-DEC-84      60000
+     30000 D1  03-DEC-08 P1
+
+       103 Suresh          DEV                    111 10-DEC-80      55000
+    140000 D1  22-SEP-01 P1
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       109 Ramesh          CLK                    111 02-AUG-80      54000
+    110000 D3  12-OCT-02 P2
+
+       125 Manu            DEV                    150 10-DEC-80      50000
+    115000 D2  02-OCT-02 P1
+
+       112 Arnav           CLK                    106 10-JAN-85      50000
+     11000 D4  10-DEC-07 P3
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       111 Raghu           ENG                    150 10-DEC-84      49500
+    150000 D1  03-FEB-05 P1
+
+       139 Ronald          DEV                    150 10-FEB-90      45000
+     12000     10-JUN-01
+
+       104 Rakesh          CLK                    125 02-OCT-80      40000
+     10000 D2  26-NOV-05 P1
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       140 Bhuvan          CLK                    111 10-APR-84      35000
+     13000     10-NOV-02
+
+       123 Ashok           MGR                    111 10-DEC-84      35000
+     10000 D1  23-DEC-08 P1
+
+       101 Ravi            MGR                    111 10-OCT-95      32000
+     10000 D1  02-OCT-06 P1
+
+
+15 rows selected.
+
+SQL> select * from task where status IN('PENDING','IN-PROGRESS');
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE
+--- --- ---------- ------------------------------ --------- ---------
+STATUS
+------------
+P2  D3           3 CODING 40                      11-FEB-22
+IN-PROGRESS
+
+P3  D1           2 MODEL TRAINING                 01-MAR-22
+IN-PROGRESS
+
+P4  D5           1 REQUIREMENT GATHERING          10-APR-22
+PENDING
+
+
+SQL> select dependent_name from dependent where gender='F' and med_cover='YES';
+
+DEPENDENT_NAME
+--------------------
+LATHA KUMAR
+NEHA RAHUL
+SEEMA RAVI
+
+SQL> SET LINESIZE 200;
+SQL> SET PAGESIZE 100;
+SQL> SET WRAP OFF;
+SQL> select * from emp;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN PRO
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- ---
+       108 Suraj           DEV                    106 10-NOV-80      70000      25000 D4  02-OCT-05 P3
+       150 CEO             CEO                        10-DEC-84      60000      30000 D1  03-DEC-08 P1
+       111 Raghu           ENG                    150 10-DEC-84      49500     150000 D1  03-FEB-05 P1
+       103 Suresh          DEV                    111 10-DEC-80      55000     140000 D1  22-SEP-01 P1
+       125 Manu            DEV                    150 10-DEC-80      50000     115000 D2  02-OCT-02 P1
+       104 Rakesh          CLK                    125 02-OCT-80      40000      10000 D2  26-NOV-05 P1
+       109 Ramesh          CLK                    111 02-AUG-80      54000     110000 D3  12-OCT-02 P2
+       110 Saroj           DEV                    111 10-JUL-80      62000      20000 D3  21-JUN-01 P2
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000      21000 D4  24-NOV-89 P3
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06 P1
+       123 Ashok           MGR                    111 10-DEC-84      35000      10000 D1  23-DEC-08 P1
+       113 Aman            DEV                    111 10-JUL-80      95000      30000 D3  21-JUN-01 P2
+       112 Arnav           CLK                    106 10-JAN-85      50000      11000 D4  10-DEC-07 P3
+       140 Bhuvan          CLK                    111 10-APR-84      35000      13000     10-NOV-02
+       139 Ronald          DEV                    150 10-FEB-90      45000      12000     10-JUN-01
+
+15 rows selected.
+
+SQL> spool off;
+
+SQL> select * from dept;
+
+DNO DNAME           LOC DEPT_BUDGET
+--- --------------- --- -----------
+D1  Marketing       CHN      500000
+D2  Research        MNG      300000
+D3  IT              BNG      400000
+D4  HR              HYD      200000
+D5  Accounts        BNG      500000
+D6  Corporate       HYD      700000
+D7  Sales           CHN      400000
+D8  CS              MNG      450000
+
+8 rows selected.
+
+SQL> select * from emp;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN PRO
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- ---
+       108 Suraj           DEV                    106 10-NOV-80      70000      25000 D4  02-OCT-05 P3
+       150 CEO             CEO                        10-DEC-84      60000      30000 D1  03-DEC-08 P1
+       111 Raghu           ENG                    150 10-DEC-84      49500     150000 D1  03-FEB-05 P1
+       103 Suresh          DEV                    111 10-DEC-80      55000     140000 D1  22-SEP-01 P1
+       125 Manu            DEV                    150 10-DEC-80      50000     115000 D2  02-OCT-02 P1
+       104 Rakesh          CLK                    125 02-OCT-80      40000      10000 D2  26-NOV-05 P1
+       109 Ramesh          CLK                    111 02-AUG-80      54000     110000 D3  12-OCT-02 P2
+       110 Saroj           DEV                    111 10-JUL-80      62000      20000 D3  21-JUN-01 P2
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000      21000 D4  24-NOV-89 P3
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06 P1
+       123 Ashok           MGR                    111 10-DEC-84      35000      10000 D1  23-DEC-08 P1
+       113 Aman            DEV                    111 10-JUL-80      95000      30000 D3  21-JUN-01 P2
+       112 Arnav           CLK                    106 10-JAN-85      50000      11000 D4  10-DEC-07 P3
+       140 Bhuvan          CLK                    111 10-APR-84      35000      13000     10-NOV-02
+       139 Ronald          DEV                    150 10-FEB-90      45000      12000     10-JUN-01
+       102 Raviraj         ENG                    106 10-JAN-85      24000       5000 D1  12-NOV-10 P3
+
+16 rows selected.
+
+SQL> select * from proj;
+
+DNO PRJ PRJ_NAME             PRJ_CREDIT STRT_DATE END_DATE    PRJ_FUND
+--- --- -------------------- ---------- --------- --------- ----------
+D1  P1  PAYROLL AUTOMATION            4 01-JAN-22 30-JUN-22     500000
+D2  P1  AI RESEARCH PLATFORM          7 15-FEB-22 14-FEB-23     900000
+D3  P2  DATA WAREHOUSE MIGR.          8 01-MAR-22 31-AUG-22     650000
+D4  P3  CRM REVAMP                    5 10-APR-22 09-OCT-22     400000
+D1  P3  ERP REVAMP                    9 11-JAN-20 12-DEC-21     500000
+D5  P4  WAREHOUSE AUTOMATION         10 05-MAY-22 04-NOV-22     700000
+D6  P4  ERP REVAMP                    6 05-MAY-21 09-AUG-21     350000
+D7  P2  CRM REVAMP                    6 07-JUN-20 16-NOV-20     750000
+
+8 rows selected.
+
+SQL> select * from task;
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE    STATUS
+--- --- ---------- ------------------------------ --------- --------- ------------
+P1  D1           1 REQUIREMENT ANALYSIS           01-JAN-22 15-JAN-22 COMPLETED
+P1  D2           2 MODULE DESIGN                  16-JAN-22 10-FEB-22 COMPLETED
+P2  D3           3 CODING 40                      11-FEB-22           IN-PROGRESS
+P3  D4           1 DATASET COLLECTION             15-FEB-22 28-FEB-22 COMPLETED
+P3  D1           2 MODEL TRAINING                 01-MAR-22           IN-PROGRESS
+P3  D1           1 SCHEMA MAPPING                 01-MAR-22 20-MAR-22 COMPLETED
+P4  D5           1 REQUIREMENT GATHERING          10-APR-22           PENDING
+P4  D5           2 SITE SURVEY                    05-MAY-22 20-MAY-22 COMPLETED
+P4  D5           3 REQUIREMENT ANALYSIS           05-APR-22 20-APR-22 COMPLETED
+P2  D3           1 SCHEMA MAPPING                 05-JUN-22 22-JUN-22 COMPLETED
+
+10 rows selected.
+
+SQL> select * from dependent;
+
+     DEPID      EMPNO DEPENDENT_NAME       G DOFBIRTH  RELATIONSHIP       NOM_PCT MED_COVER
+---------- ---------- -------------------- - --------- --------------- ---------- ---------------
+         1        101 LATHA KUMAR          F 10-MAY-82 SPOUSE                  50 YES
+         2        101 ARUN KUMAR           M 19-JUN-00 CHILD                   25 YES
+         4        103 MOHAN RAO            M 12-DEC-50 PARENT                  30 NO
+         5        106 NEHA RAHUL           F 22-JUL-90 SPOUSE                  70 YES
+         6        108 ROHAN MEERA          M 03-MAR-15 CHILD                  100 YES
+         3        108 SEEMA RAVI           F 01-JAN-80 SPOUSE                  60 YES
+
+6 rows selected.

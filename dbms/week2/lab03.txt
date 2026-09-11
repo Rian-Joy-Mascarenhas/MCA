@@ -1,0 +1,608 @@
+SQL> desc dept;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                                CHAR(3)
+ DNAME                                     NOT NULL VARCHAR2(15)
+ LOCATION                                           CHAR(3)
+ DEPT_BUDGET                                        NUMBER(7)
+
+SQL> insert into dept values('&dno','&dname','&location',&dept_budget);
+Enter value for dno: D1
+Enter value for dname: Marketing
+Enter value for location: CHN
+Enter value for dept_budget: 500000
+old   1: insert into dept values('&dno','&dname','&location',&dept_budget)
+new   1: insert into dept values('D1','Marketing','CHN',500000)
+
+1 row created.
+
+SQL> /
+Enter value for dno: D2
+Enter value for dname: Research
+Enter value for location: MNG
+Enter value for dept_budget: 300000
+old   1: insert into dept values('&dno','&dname','&location',&dept_budget)
+new   1: insert into dept values('D2','Research','MNG',300000)
+
+1 row created.
+
+SQL> /
+Enter value for dno: D3
+Enter value for dname: IT
+Enter value for location: BNG
+Enter value for dept_budget: 400000
+old   1: insert into dept values('&dno','&dname','&location',&dept_budget)
+new   1: insert into dept values('D3','IT','BNG',400000)
+
+1 row created.
+
+SQL> /
+Enter value for dno: D4
+Enter value for dname: HR
+Enter value for location: BGG
+Enter value for dept_budget: 200000
+old   1: insert into dept values('&dno','&dname','&location',&dept_budget)
+new   1: insert into dept values('D4','HR','BGG',200000)
+insert into dept values('D4','HR','BGG',200000)
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA016.C_LOC) violated 
+
+
+SQL> /
+Enter value for dno: D4
+Enter value for dname: HR
+Enter value for location: HYD
+Enter value for dept_budget: 200000
+old   1: insert into dept values('&dno','&dname','&location',&dept_budget)
+new   1: insert into dept values('D4','HR','HYD',200000)
+
+1 row created.
+
+SQL> /
+Enter value for dno: D5
+Enter value for dname: Accounts
+Enter value for location: BNG
+Enter value for dept_budget: 500000
+old   1: insert into dept values('&dno','&dname','&location',&dept_budget)
+new   1: insert into dept values('D5','Accounts','BNG',500000)
+
+1 row created.
+
+SQL> /
+Enter value for dno: Null
+Enter value for dname: Corporate
+Enter value for location: HYD
+Enter value for dept_budget: 700000
+old   1: insert into dept values('&dno','&dname','&location',&dept_budget)
+new   1: insert into dept values('Null','Corporate','HYD',700000)
+insert into dept values('Null','Corporate','HYD',700000)
+                        *
+ERROR at line 1:
+ORA-12899: value too large for column "MCA016"."DEPT"."DNO" (actual: 4, 
+maximum: 3) 
+
+
+SQL> /
+Enter value for dno: D6
+Enter value for dname: Corporate
+Enter value for location: HYD
+Enter value for dept_budget: 700000
+old   1: insert into dept values('&dno','&dname','&location',&dept_budget)
+new   1: insert into dept values('D6','Corporate','HYD',700000)
+
+1 row created.
+
+SQL> /
+Enter value for dno: D6
+Enter value for dname: Research
+Enter value for location: MNG
+Enter value for dept_budget: 400000
+old   1: insert into dept values('&dno','&dname','&location',&dept_budget)
+new   1: insert into dept values('D6','Research','MNG',400000)
+insert into dept values('D6','Research','MNG',400000)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (MCA016.C_DNO_UQ) violated 
+
+
+SQL> /
+Enter value for dno: D7
+Enter value for dname: Research
+Enter value for location: MNG
+Enter value for dept_budget: 400000
+old   1: insert into dept values('&dno','&dname','&location',&dept_budget)
+new   1: insert into dept values('D7','Research','MNG',400000)
+insert into dept values('D7','Research','MNG',400000)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (MCA016.C_DNAME_UQ) violated 
+
+
+SQL> /
+Enter value for dno: D7
+Enter value for dname: Sales
+Enter value for location: 400000
+Enter value for dept_budget: 
+old   1: insert into dept values('&dno','&dname','&location',&dept_budget)
+new   1: insert into dept values('D7','Sales','400000',)
+insert into dept values('D7','Sales','400000',)
+                                              *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> /
+Enter value for dno: D7
+Enter value for dname: Sales
+Enter value for location: 400000
+Enter value for dept_budget: 
+old   1: insert into dept values('&dno','&dname','&location',&dept_budget)
+new   1: insert into dept values('D7','Sales','400000',)
+insert into dept values('D7','Sales','400000',)
+                                              *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> /
+Enter value for dno: D7
+Enter value for dname: Sales
+Enter value for location: CHN
+Enter value for dept_budget: 400000
+old   1: insert into dept values('&dno','&dname','&location',&dept_budget)
+new   1: insert into dept values('D7','Sales','CHN',400000)
+
+1 row created.
+
+SQL> /
+Enter value for dno: D8
+Enter value for dname: CS
+Enter value for location: MNG
+Enter value for dept_budget: 450000
+old   1: insert into dept values('&dno','&dname','&location',&dept_budget)
+new   1: insert into dept values('D8','CS','MNG',450000)
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from dept;
+
+DNO DNAME           LOC DEPT_BUDGET                                             
+--- --------------- --- -----------                                             
+D1  Marketing       CHN      500000                                             
+D2  Research        MNG      300000                                             
+D3  IT              BNG      400000                                             
+D4  HR              HYD      200000                                             
+D5  Accounts        BNG      500000                                             
+D6  Corporate       HYD      700000                                             
+D7  Sales           CHN      400000                                             
+D8  CS              MNG      450000                                             
+
+8 rows selected.
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(3)
+ ENAME                                     NOT NULL VARCHAR2(15)
+ JOB                                                VARCHAR2(15)
+ MGRID                                              NUMBER(3)
+ DATE_BIRTH                                         DATE
+ SAL                                                NUMBER(10,2)
+ COMM                                               NUMBER(10,2)
+ DEPTNO                                             CHAR(3)
+ DATE_JOIN                                          DATE
+ PROJ_ID                                            CHAR(3)
+
+SQL> insert into dept values(&empno,'&ename','&job',&mgrid,'&date_birth',&sal,&comm,'&deptno','&date_join','&proj_id');
+Enter value for empno: 100
+Enter value for ename: Ravi
+Enter value for job: MGR
+Enter value for mgrid: 111
+Enter value for date_birth: 10-10-1995
+Enter value for sal: 32000
+Enter value for comm: 
+Enter value for deptno: D1
+Enter value for date_join: P1
+Enter value for proj_id: 2-10-2006
+old   1: insert into dept values(&empno,'&ename','&job',&mgrid,'&date_birth',&sal,&comm,'&deptno','&date_join','&proj_id')
+new   1: insert into dept values(100,'Ravi','MGR',111,'10-10-1995',32000,,'D1','P1','2-10-2006')
+insert into dept values(100,'Ravi','MGR',111,'10-10-1995',32000,,'D1','P1','2-10-2006')
+                                                                *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> /
+Enter value for empno: 100
+Enter value for ename: Ravi
+Enter value for job: MGR
+Enter value for mgrid: 111
+Enter value for date_birth: 10-10-1995
+Enter value for sal: 32000
+Enter value for comm: 1000
+Enter value for deptno: D1
+Enter value for date_join: P
+Enter value for proj_id: 
+old   1: insert into dept values(&empno,'&ename','&job',&mgrid,'&date_birth',&sal,&comm,'&deptno','&date_join','&proj_id')
+new   1: insert into dept values(100,'Ravi','MGR',111,'10-10-1995',32000,1000,'D1','P','')
+insert into dept values(100,'Ravi','MGR',111,'10-10-1995',32000,1000,'D1','P','')
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> /
+Enter value for empno: 100
+Enter value for ename: Ravi
+Enter value for job: MGR
+Enter value for mgrid: 111
+Enter value for date_birth: 10-10-1995
+Enter value for sal: 32000
+Enter value for comm: 1000
+Enter value for deptno: D1
+Enter value for date_join: 02-10-2006
+Enter value for proj_id: P1
+old   1: insert into dept values(&empno,'&ename','&job',&mgrid,'&date_birth',&sal,&comm,'&deptno','&date_join','&proj_id')
+new   1: insert into dept values(100,'Ravi','MGR',111,'10-10-1995',32000,1000,'D1','02-10-2006','P1')
+insert into dept values(100,'Ravi','MGR',111,'10-10-1995',32000,1000,'D1','02-10-2006','P1')
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> insert into emp values(&empno,'&ename','&job',&mgrid,'&date_birth',&sal,&comm,'&deptno','&date_join','&proj_id');
+Enter value for empno: 100
+Enter value for ename: Ravi
+Enter value for job: MGR
+Enter value for mgrid: 111
+Enter value for date_birth: 10-10-1995
+Enter value for sal: 32000
+Enter value for comm: 1000
+Enter value for deptno: D1
+Enter value for date_join: 02-10-2006
+Enter value for proj_id: P1
+old   1: insert into emp values(&empno,'&ename','&job',&mgrid,'&date_birth',&sal,&comm,'&deptno','&date_join','&proj_id')
+new   1: insert into emp values(100,'Ravi','MGR',111,'10-10-1995',32000,1000,'D1','02-10-2006','P1')
+insert into emp values(100,'Ravi','MGR',111,'10-10-1995',32000,1000,'D1','02-10-2006','P1')
+                                            *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> desc proj;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                       NOT NULL CHAR(3)
+ PRJ_NO                                    NOT NULL CHAR(3)
+ PRJ_NAME                                  NOT NULL VARCHAR2(20)
+ PRJ_CREDIT                                         NUMBER(2)
+ STRT_DATE                                 NOT NULL DATE
+ END_DATE                                           DATE
+ PRJ_FUND                                           NUMBER(7)
+
+SQL> alter table proj rename column strt_date to start_date;
+
+Table altered.
+
+SQL> desc proj;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                       NOT NULL CHAR(3)
+ PRJ_NO                                    NOT NULL CHAR(3)
+ PRJ_NAME                                  NOT NULL VARCHAR2(20)
+ PRJ_CREDIT                                         NUMBER(2)
+ START_DATE                                NOT NULL DATE
+ END_DATE                                           DATE
+ PRJ_FUND                                           NUMBER(7)
+
+SQL> insert into proj values('&dno','&prj_no','&prj_name',&prj_credit,'&start_date','&end_date',&prj_fund);
+Enter value for dno: //
+Enter value for prj_no: 
+Enter value for prj_name: 
+Enter value for prj_credit: 
+Enter value for start_date: 
+Enter value for end_date: 
+Enter value for prj_fund: 
+old   1: insert into proj values('&dno','&prj_no','&prj_name',&prj_credit,'&start_date','&end_date',&prj_fund)
+new   1: insert into proj values('//','','',,'','',)
+insert into proj values('//','','',,'','',)
+                                   *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> alter table proj rename column start_date to strt_date;
+
+Table altered.
+
+SQL> desc proj;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                       NOT NULL CHAR(3)
+ PRJ_NO                                    NOT NULL CHAR(3)
+ PRJ_NAME                                  NOT NULL VARCHAR2(20)
+ PRJ_CREDIT                                         NUMBER(2)
+ STRT_DATE                                 NOT NULL DATE
+ END_DATE                                           DATE
+ PRJ_FUND                                           NUMBER(7)
+
+SQL> insert into proj values('&dno','&prj_no','&prj_name',&prj_credit,'&strt_date','&end_date',&prj_fund);
+Enter value for dno: D1
+Enter value for prj_no: P1
+Enter value for prj_name: PAYROLL AUTOMATION
+Enter value for prj_credit: 4
+Enter value for strt_date: 500000
+Enter value for end_date: 01-JAN-2022
+Enter value for prj_fund: 30-JUN-2022
+old   1: insert into proj values('&dno','&prj_no','&prj_name',&prj_credit,'&strt_date','&end_date',&prj_fund)
+new   1: insert into proj values('D1','P1','PAYROLL AUTOMATION',4,'500000','01-JAN-2022',30-JUN-2022)
+insert into proj values('D1','P1','PAYROLL AUTOMATION',4,'500000','01-JAN-2022',30-JUN-2022)
+                                                                                   *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> /
+Enter value for dno: D1
+Enter value for prj_no: P1
+Enter value for prj_name: PAYROLL AUTOMATION
+Enter value for prj_credit: 4
+Enter value for strt_date: 01-JAN-2022
+Enter value for end_date: 30-JUN-2022
+Enter value for prj_fund: 500000
+old   1: insert into proj values('&dno','&prj_no','&prj_name',&prj_credit,'&strt_date','&end_date',&prj_fund)
+new   1: insert into proj values('D1','P1','PAYROLL AUTOMATION',4,'01-JAN-2022','30-JUN-2022',500000)
+
+1 row created.
+
+SQL> /
+Enter value for dno: D2
+Enter value for prj_no: P1
+Enter value for prj_name: AI RESEARCH PLATFORM
+Enter value for prj_credit: 7
+Enter value for strt_date: 15-FEB-2022
+Enter value for end_date: 14-FEB-2023
+Enter value for prj_fund: 900000
+old   1: insert into proj values('&dno','&prj_no','&prj_name',&prj_credit,'&strt_date','&end_date',&prj_fund)
+new   1: insert into proj values('D2','P1','AI RESEARCH PLATFORM',7,'15-FEB-2022','14-FEB-2023',900000)
+
+1 row created.
+
+SQL> /
+Enter value for dno: D3
+Enter value for prj_no: P2
+Enter value for prj_name: DATA WAREHOUSE MIGR.
+Enter value for prj_credit: 8
+Enter value for strt_date: 01-Mar-2022
+Enter value for end_date: 31-AUG-2022
+Enter value for prj_fund: 650000
+old   1: insert into proj values('&dno','&prj_no','&prj_name',&prj_credit,'&strt_date','&end_date',&prj_fund)
+new   1: insert into proj values('D3','P2','DATA WAREHOUSE MIGR.',8,'01-Mar-2022','31-AUG-2022',650000)
+
+1 row created.
+
+SQL> /
+Enter value for dno: D4
+Enter value for prj_no: P3
+Enter value for prj_name: CRM REVAMP
+Enter value for prj_credit: 5
+Enter value for strt_date: 10-APR-2022
+Enter value for end_date: 09-OCT-2022
+Enter value for prj_fund: 400000
+old   1: insert into proj values('&dno','&prj_no','&prj_name',&prj_credit,'&strt_date','&end_date',&prj_fund)
+new   1: insert into proj values('D4','P3','CRM REVAMP',5,'10-APR-2022','09-OCT-2022',400000)
+
+1 row created.
+
+SQL> /
+Enter value for dno: D1
+Enter value for prj_no: P3
+Enter value for prj_name: ERP REVAMP
+Enter value for prj_credit: 9
+Enter value for strt_date: 11-JAN-2020
+Enter value for end_date: 12-DEC-2021
+Enter value for prj_fund: 500000
+old   1: insert into proj values('&dno','&prj_no','&prj_name',&prj_credit,'&strt_date','&end_date',&prj_fund)
+new   1: insert into proj values('D1','P3','ERP REVAMP',9,'11-JAN-2020','12-DEC-2021',500000)
+
+1 row created.
+
+SQL> /
+Enter value for dno: D5
+Enter value for prj_no: P4
+Enter value for prj_name: WAREHOUSE AUTOMATION
+Enter value for prj_credit: 10
+Enter value for strt_date: 05-MAY-2022
+Enter value for end_date: 04-NOV-2022
+Enter value for prj_fund: 700000
+old   1: insert into proj values('&dno','&prj_no','&prj_name',&prj_credit,'&strt_date','&end_date',&prj_fund)
+new   1: insert into proj values('D5','P4','WAREHOUSE AUTOMATION',10,'05-MAY-2022','04-NOV-2022',700000)
+
+1 row created.
+
+SQL> /
+Enter value for dno: D6
+Enter value for prj_no: P4
+Enter value for prj_name: ERP REVAMP
+Enter value for prj_credit: 6
+Enter value for strt_date: 05-MAY-2021
+Enter value for end_date: 09-AUG-2021
+Enter value for prj_fund: 350000
+old   1: insert into proj values('&dno','&prj_no','&prj_name',&prj_credit,'&strt_date','&end_date',&prj_fund)
+new   1: insert into proj values('D6','P4','ERP REVAMP',6,'05-MAY-2021','09-AUG-2021',350000)
+
+1 row created.
+
+SQL> /
+Enter value for dno: D7
+Enter value for prj_no: P2
+Enter value for prj_name: CRM REVAMP
+Enter value for prj_credit: 6
+Enter value for strt_date: 07-JUN-2020
+Enter value for end_date: 16-NOV-2020
+Enter value for prj_fund: 7
+old   1: insert into proj values('&dno','&prj_no','&prj_name',&prj_credit,'&strt_date','&end_date',&prj_fund)
+new   1: insert into proj values('D7','P2','CRM REVAMP',6,'07-JUN-2020','16-NOV-2020',7)
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from proj;
+
+DNO PRJ PRJ_NAME             PRJ_CREDIT STRT_DATE END_DATE    PRJ_FUND          
+--- --- -------------------- ---------- --------- --------- ----------          
+D1  P1  PAYROLL AUTOMATION            4 01-JAN-22 30-JUN-22     500000          
+D2  P1  AI RESEARCH PLATFORM          7 15-FEB-22 14-FEB-23     900000          
+D3  P2  DATA WAREHOUSE MIGR.          8 01-MAR-22 31-AUG-22     650000          
+D4  P3  CRM REVAMP                    5 10-APR-22 09-OCT-22     400000          
+D1  P3  ERP REVAMP                    9 11-JAN-20 12-DEC-21     500000          
+D5  P4  WAREHOUSE AUTOMATION         10 05-MAY-22 04-NOV-22     700000          
+D6  P4  ERP REVAMP                    6 05-MAY-21 09-AUG-21     350000          
+D7  P2  CRM REVAMP                    6 07-JUN-20 16-NOV-20          7          
+
+8 rows selected.
+
+SQL> update proj set prj_fund=750000 where dno='D7';
+
+1 row updated.
+
+SQL> select * from proj;
+
+DNO PRJ PRJ_NAME             PRJ_CREDIT STRT_DATE END_DATE    PRJ_FUND          
+--- --- -------------------- ---------- --------- --------- ----------          
+D1  P1  PAYROLL AUTOMATION            4 01-JAN-22 30-JUN-22     500000          
+D2  P1  AI RESEARCH PLATFORM          7 15-FEB-22 14-FEB-23     900000          
+D3  P2  DATA WAREHOUSE MIGR.          8 01-MAR-22 31-AUG-22     650000          
+D4  P3  CRM REVAMP                    5 10-APR-22 09-OCT-22     400000          
+D1  P3  ERP REVAMP                    9 11-JAN-20 12-DEC-21     500000          
+D5  P4  WAREHOUSE AUTOMATION         10 05-MAY-22 04-NOV-22     700000          
+D6  P4  ERP REVAMP                    6 05-MAY-21 09-AUG-21     350000          
+D7  P2  CRM REVAMP                    6 07-JUN-20 16-NOV-20     750000          
+
+8 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> insert into emp values(&empno,'&ename','&job',&mgrid,'&date_birth' to_date('DD-MM-YYYY'),&sal,&comm,'&deptno','&date_join' to_date('DD-MM-YYYY'),'&proj_id');
+Enter value for empno: 100
+Enter value for ename: Ravi
+Enter value for job: MGR
+Enter value for mgrid: 111
+Enter value for date_birth: 10-10-1995
+Enter value for sal: 32000
+Enter value for comm: 1000
+Enter value for deptno: D1
+Enter value for date_join: 02-10-2006
+Enter value for proj_id: P1
+old   1: insert into emp values(&empno,'&ename','&job',&mgrid,'&date_birth' to_date('DD-MM-YYYY'),&sal,&comm,'&deptno','&date_join' to_date('DD-MM-YYYY'),'&proj_id')
+new   1: insert into emp values(100,'Ravi','MGR',111,'10-10-1995' to_date('DD-MM-YYYY'),32000,1000,'D1','02-10-2006' to_date('DD-MM-YYYY'),'P1')
+insert into emp values(100,'Ravi','MGR',111,'10-10-1995' to_date('DD-MM-YYYY'),32000,1000,'D1','02-10-2006' to_date('DD-MM-YYYY'),'P1')
+                                                         *
+ERROR at line 1:
+ORA-00917: missing comma 
+
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(3)
+ ENAME                                     NOT NULL VARCHAR2(15)
+ JOB                                                VARCHAR2(15)
+ MGRID                                              NUMBER(3)
+ DATE_BIRTH                                         DATE
+ SAL                                                NUMBER(10,2)
+ COMM                                               NUMBER(10,2)
+ DEPTNO                                             CHAR(3)
+ DATE_JOIN                                          DATE
+ PROJ_ID                                            CHAR(3)
+
+SQL> insert into emp values(100,'Ravi','MGR','10-10-1995',32000,1000,'D1','02-10-2006','P1');
+insert into emp values(100,'Ravi','MGR','10-10-1995',32000,1000,'D1','02-10-2006','P1')
+            *
+ERROR at line 1:
+ORA-00947: not enough values 
+
+
+SQL> insert into emp values(100,'Ravi','MGR',111,'10-10-1995',32000,1000,'D1','02-10-2006','P1');
+insert into emp values(100,'Ravi','MGR',111,'10-10-1995',32000,1000,'D1','02-10-2006','P1')
+                                            *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> insert into emp values(100,'Ravi','MGR',111,to_date('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',to_date('02-10-2006','DD-MM-YYYY'),'P1');
+insert into emp values(100,'Ravi','MGR',111,to_date('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',to_date('02-10-2006','DD-MM-YYYY'),'P1')
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA016.VALID_EMPNO_CONS) violated 
+
+
+SQL> insert into emp(&empno,'&ename','&job',&mgrid,'&date_birth',&sal,&comm,'&deptno','&date_join','&proj_id') values(100,'Ravi','MGR',111,to_date('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',to_date('02-10-2006','DD-MM-YYYY'),'P1');
+Enter value for empno: 
+Enter value for ename: 
+Enter value for job: 
+Enter value for mgrid: 
+Enter value for date_birth: 
+Enter value for sal: 
+Enter value for comm: 
+Enter value for deptno: 
+Enter value for date_join: 
+Enter value for proj_id: 
+old   1: insert into emp(&empno,'&ename','&job',&mgrid,'&date_birth',&sal,&comm,'&deptno','&date_join','&proj_id') values(100,'Ravi','MGR',111,to_date('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',to_date('02-10-2006','DD-MM-YYYY'),'P1')
+new   1: insert into emp(,'','',,'',,,'','','') values(100,'Ravi','MGR',111,to_date('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',to_date('02-10-2006','DD-MM-YYYY'),'P1')
+insert into emp(,'','',,'',,,'','','') values(100,'Ravi','MGR',111,to_date('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',to_date('02-10-2006','DD-MM-YYYY'),'P1')
+                *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> insert into emp(empno,ename,job,mgrid,date_birth,sal,comm,deptno,&date_join,proj_id) values(100,'Ravi','MGR',111,to_date('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',to_date('02-10-2006','DD-MM-YYYY'),'P1');
+Enter value for date_join: 
+old   1: insert into emp(empno,ename,job,mgrid,date_birth,sal,comm,deptno,&date_join,proj_id) values(100,'Ravi','MGR',111,to_date('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',to_date('02-10-2006','DD-MM-YYYY'),'P1')
+new   1: insert into emp(empno,ename,job,mgrid,date_birth,sal,comm,deptno,,proj_id) values(100,'Ravi','MGR',111,to_date('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',to_date('02-10-2006','DD-MM-YYYY'),'P1')
+insert into emp(empno,ename,job,mgrid,date_birth,sal,comm,deptno,,proj_id) values(100,'Ravi','MGR',111,to_date('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',to_date('02-10-2006','DD-MM-YYYY'),'P1')
+                                                                 *
+ERROR at line 1:
+ORA-01747: invalid user.table.column, table.column, or column specification 
+
+
+SQL> insert into emp(empno,ename,job,mgrid,date_birth,sal,comm,deptno,&date_join,proj_id) values(100,'Ravi','MGR',111,to_date('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',to_date('02-10-2006','DD-MM-YYYY'),'P1');
+Enter value for date_join: 02-10-2006
+old   1: insert into emp(empno,ename,job,mgrid,date_birth,sal,comm,deptno,&date_join,proj_id) values(100,'Ravi','MGR',111,to_date('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',to_date('02-10-2006','DD-MM-YYYY'),'P1')
+new   1: insert into emp(empno,ename,job,mgrid,date_birth,sal,comm,deptno,02-10-2006,proj_id) values(100,'Ravi','MGR',111,to_date('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',to_date('02-10-2006','DD-MM-YYYY'),'P1')
+insert into emp(empno,ename,job,mgrid,date_birth,sal,comm,deptno,02-10-2006,proj_id) values(100,'Ravi','MGR',111,to_date('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',to_date('02-10-2006','DD-MM-YYYY'),'P1')
+                                                                 *
+ERROR at line 1:
+ORA-01747: invalid user.table.column, table.column, or column specification 
+
+
+SQL> insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',TO_DATE('02-10-2006','DD-MM-YYYY'),'P1');
+insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',TO_DATE('02-10-2006','DD-MM-YYYY'),'P1')
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA016.VALID_EMPNO_CONS) violated 
+
+
+SQL> insert into emp values(101,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',TO_DATE('02-10-2006','DD-MM-YYYY'),'P1');
+insert into emp values(101,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',TO_DATE('02-10-2006','DD-MM-YYYY'),'P1')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (MCA016.C_FK_MGRID) violated - parent key not 
+found 
+
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;

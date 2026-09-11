@@ -1,0 +1,26 @@
+alter table proj ADD constraint c_projpk primary key(dno,prj_no);
+
+alter table emp add(proj_id char(3));
+
+alter table emp add constraint c_empfk foreign key(deptno,proj_id) references
+proj(dno,prj_no);
+
+alter table emp add constraint VALID_EMPNO_Cons check(empno>100);
+
+alter table dept add(Dept_Budget number(7));
+
+alter table proj add(Prj_Fund number(7));
+
+alter table task add constraint c_status check(status IN('PENDING','IN-PROGRESS','COMPLETED'));
+
+alter table task add constraint c_taskpk primary key(Task_Id,DNO,Prj_ID);
+
+alter table emp add(BONUS number(8,2)default 0);
+
+alter table emp modify(BONUS number(6,2));
+
+alter table emp rename column BONUS to BONUSES;
+
+alter table emp drop column BONUSES;
+
+alter table task add constraint fkey foreign key(prj_id, dno) references proj(prj_no,dno);

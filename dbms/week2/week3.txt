@@ -1,0 +1,9 @@
+insert into dept values('&dno','&dname','&location',&dept_budget);
+
+insert into emp values(&empno,'&ename','&job',&mgrid,'&date_birth',&sal,&comm,'&deptno','&date_join','&proj_id');
+
+insert into proj values('&dno','&prj_no','&prj_name',&prj_credit,'&strt_date','&end_date',&prj_fund);
+
+insert into emp(empno,ename,job,mgrid,date_birth,sal,comm,deptno,&date_join,proj_id) values(100,'Ravi','MGR',111,to_date('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',to_date('02-10-2006','DD-MM-YYYY'),'P1');
+
+insert into emp values(101,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,1000,'D1',TO_DATE('02-10-2006','DD-MM-YYYY'),'P1');

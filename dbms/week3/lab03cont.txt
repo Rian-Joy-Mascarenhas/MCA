@@ -1,0 +1,545 @@
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(3)
+ ENAME                                     NOT NULL VARCHAR2(15)
+ JOB                                                VARCHAR2(15)
+ MGRID                                              NUMBER(3)
+ DATE_BIRTH                                         DATE
+ SAL                                                NUMBER(10,2)
+ COMM                                               NUMBER(10,2)
+ DEPTNO                                             CHAR(3)
+ DATE_JOIN                                          DATE
+ PROJ_ID                                            CHAR(3)
+
+SQL> insert into emp values(150,'CEO','CEO',null,TO_DATE('10-12-1984','DD-MM-YYYY'),60000,30000,'null',TO_DATE('03-12-2008','DD-MM-YYYY'),'null');
+insert into emp values(150,'CEO','CEO',null,TO_DATE('10-12-1984','DD-MM-YYYY'),60000,30000,'null',TO_DATE('03-12-2008','DD-MM-YYYY'),'null')
+                                                                                           *
+ERROR at line 1:
+ORA-12899: value too large for column "MCA016"."EMP"."DEPTNO" (actual: 4, 
+maximum: 3) 
+
+
+SQL> insert into emp values(150,'CEO','CEO',null,TO_DATE('10-12-1984','DD-MM-YYYY'),60000,30000,null,TO_DATE('03-12-2008','DD-MM-YYYY'),null);
+
+1 row created.
+
+SQL> insert into emp values(111,'Raghu','ENG',150,TO_DATE('10-12-1984','DD-MM-YYYY'),45000,150000,null,TO_DATE('03-02-2005','DD-MM-YYYY'),null);
+
+1 row created.
+
+SQL> insert into emp values(103,'Suresh','DEV',111,TO_DATE('10-12-1980','DD-MM-YYYY'),55000,140000,D1,TO_DATE('22-09-2001','DD-MM-YYYY'),P1);
+insert into emp values(103,'Suresh','DEV',111,TO_DATE('10-12-1980','DD-MM-YYYY'),55000,140000,D1,TO_DATE('22-09-2001','DD-MM-YYYY'),P1)
+                                                                                                                                    *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,100000,D1,TO_DATE('02-10-2006','DD-MM-YYYY'),P1);
+insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,100000,D1,TO_DATE('02-10-2006','DD-MM-YYYY'),P1)
+                                                                                                                                  *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,100000,D1,TO_DATE('02-10-2006','DD-MM-YYYY'),null);
+insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,100000,D1,TO_DATE('02-10-2006','DD-MM-YYYY'),null)
+                                                                                            *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,100000,null,TO_DATE('02-10-2006','DD-MM-YYYY'),null);
+insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,100000,null,TO_DATE('02-10-2006','DD-MM-YYYY'),null)
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA016.VALID_EMPNO_CONS) violated 
+
+
+SQL> insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,10000,null,TO_DATE('02-10-2006','DD-MM-YYYY'),null);
+insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,10000,null,TO_DATE('02-10-2006','DD-MM-YYYY'),null)
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA016.VALID_EMPNO_CONS) violated 
+
+
+SQL> insert into emp values(103,'Suresh','DEV',111,TO_DATE('10-12-1980','DD-MM-YYYY'),55000,140000,null,TO_DATE('22-09-2001','DD-MM-YYYY'),null);
+
+1 row created.
+
+SQL> insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,10000,null,TO_DATE('02-10-2006','DD-MM-YYYY'),null);
+insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,10000,null,TO_DATE('02-10-2006','DD-MM-YYYY'),null)
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA016.VALID_EMPNO_CONS) violated 
+
+
+SQL> insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,10000,null,TO_DATE('02-10-2006','DD-MM-YYYY'),P1);
+insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,10000,null,TO_DATE('02-10-2006','DD-MM-YYYY'),P1)
+                                                                                                                                   *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,10000,null,TO_DATE('02-10-2006','DD-MM-YYYY'),null);
+insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,10000,null,TO_DATE('02-10-2006','DD-MM-YYYY'),null)
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA016.VALID_EMPNO_CONS) violated 
+
+
+SQL> insert into emp values(103,'Ramesh','CLRK',111,TO_DATE('02-08-1980','DD-MM-YYYY'),54000,110000,null,TO_DATE('12-10-2002','DD-MM-YYYY'),null);
+insert into emp values(103,'Ramesh','CLRK',111,TO_DATE('02-08-1980','DD-MM-YYYY'),54000,110000,null,TO_DATE('12-10-2002','DD-MM-YYYY'),null)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (MCA016.SYS_C0034657) violated 
+
+
+SQL> insert into emp values(125,'Manu','DEV',150,TO_DATE('10-12-1980','DD-MM-YYYY'),50000,115000,null,TO_DATE('02-10-2002','DD-MM-YYYY'),null);
+
+1 row created.
+
+SQL> insert into emp values(104,'Rakesh','CLERK',125,TO_DATE('02-10-1980','DD-MM-YYYY'),40000,10000,null,TO_DATE('26-11-2005','DD-MM-YYYY'),null);
+insert into emp values(104,'Rakesh','CLERK',125,TO_DATE('02-10-1980','DD-MM-YYYY'),40000,10000,null,TO_DATE('26-11-2005','DD-MM-YYYY'),null)
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA016.C_JOBCHK) violated 
+
+
+SQL> insert into emp values(104,'Rakesh','CLK',125,TO_DATE('02-10-1980','DD-MM-YYYY'),40000,10000,null,TO_DATE('26-11-2005','DD-MM-YYYY'),null);
+
+1 row created.
+
+SQL> insert into emp values(103,'Ramesh','CLK',111,TO_DATE('02-08-1980','DD-MM-YYYY'),54000,110000,null,TO_DATE('12-10-2002','DD-MM-YYYY'),null);
+insert into emp values(103,'Ramesh','CLK',111,TO_DATE('02-08-1980','DD-MM-YYYY'),54000,110000,null,TO_DATE('12-10-2002','DD-MM-YYYY'),null)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (MCA016.SYS_C0034657) violated 
+
+
+SQL> insert into emp values(109,'Ramesh','CLK',111,TO_DATE('02-08-1980','DD-MM-YYYY'),54000,110000,null,TO_DATE('12-10-2002','DD-MM-YYYY'),null);
+
+1 row created.
+
+SQL> insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,10000,null,TO_DATE('02-10-2006','DD-MM-YYYY'),null);
+insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,10000,null,TO_DATE('02-10-2006','DD-MM-YYYY'),null)
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA016.VALID_EMPNO_CONS) violated 
+
+
+SQL> insert into emp values(110,'Saroj','DEV',111,TO_DATE('10-07-1980','DD-MM-YYYY'),62000,20000,null,TO_DATE('21-06-2001','DD-MM-YYYY'),null);
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> insert into emp values(106,'Sartaj','A.MGR',111,TO_DATE('02-10-1986','DD-MM-YYYY'),68000,21000,null,TO_DATE('24-11-1985','DD-MM-YYYY'),null);
+insert into emp values(106,'Sartaj','A.MGR',111,TO_DATE('02-10-1986','DD-MM-YYYY'),68000,21000,null,TO_DATE('24-11-1985','DD-MM-YYYY'),null)
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA016.C_DB) violated 
+
+
+SQL> insert into emp values(106,'Sartaj','A.MGR',111,TO_DATE('02-10-1986','DD-MM-YYYY'),68000,21000,null,TO_DATE('24-11-1989','DD-MM-YYYY'),null);
+
+1 row created.
+
+SQL> insert into emp values(108,'Suraj','DEV',106,TO_DATE('10-11-1980','DD-MM-YYYY'),70000,25000,null,TO_DATE('02-10-2005','DD-MM-YYYY'),null);
+
+1 row created.
+
+SQL> insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,10000,null,TO_DATE('02-10-2006','DD-MM-YYYY'),null);
+insert into emp values(100,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,10000,null,TO_DATE('02-10-2006','DD-MM-YYYY'),null)
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA016.VALID_EMPNO_CONS) violated 
+
+
+SQL> insert into emp values(101,'Ravi','MGR',111,TO_DATE('10-10-1995','DD-MM-YYYY'),32000,10000,null,TO_DATE('02-10-2006','DD-MM-YYYY'),null);
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from emp;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL      
+---------- --------------- --------------- ---------- --------- ----------      
+      COMM DEP DATE_JOIN PRO                                                    
+---------- --- --------- ---                                                    
+       108 Suraj           DEV                    106 10-NOV-80      70000      
+     25000     02-OCT-05                                                        
+                                                                                
+       150 CEO             CEO                        10-DEC-84      60000      
+     30000     03-DEC-08                                                        
+                                                                                
+       111 Raghu           ENG                    150 10-DEC-84      45000      
+    150000     03-FEB-05                                                        
+                                                                                
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL      
+---------- --------------- --------------- ---------- --------- ----------      
+      COMM DEP DATE_JOIN PRO                                                    
+---------- --- --------- ---                                                    
+       103 Suresh          DEV                    111 10-DEC-80      55000      
+    140000     22-SEP-01                                                        
+                                                                                
+       125 Manu            DEV                    150 10-DEC-80      50000      
+    115000     02-OCT-02                                                        
+                                                                                
+       104 Rakesh          CLK                    125 02-OCT-80      40000      
+     10000     26-NOV-05                                                        
+                                                                                
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL      
+---------- --------------- --------------- ---------- --------- ----------      
+      COMM DEP DATE_JOIN PRO                                                    
+---------- --- --------- ---                                                    
+       109 Ramesh          CLK                    111 02-AUG-80      54000      
+    110000     12-OCT-02                                                        
+                                                                                
+       110 Saroj           DEV                    111 10-JUL-80      62000      
+     20000     21-JUN-01                                                        
+                                                                                
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000      
+     21000     24-NOV-89                                                        
+                                                                                
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL      
+---------- --------------- --------------- ---------- --------- ----------      
+      COMM DEP DATE_JOIN PRO                                                    
+---------- --- --------- ---                                                    
+       101 Ravi            MGR                    111 10-OCT-95      32000      
+     10000     02-OCT-06                                                        
+                                                                                
+
+10 rows selected.
+
+SQL> insert into emp values(123,'Ashok','CLK',150,TO_DATE('10-12-1984','DD-MM-YYYY'),25000,10500,null,TO_DATE('23-12-2008','DD-MM-YYYY'),null);
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> insert into emp values(103,'Aman','DEV',111,TO_DATE('10-07-1980','DD-MM-YYYY'),95000,30000,null,TO_DATE('21-06-2001','DD-MM-YYYY'),null);
+insert into emp values(103,'Aman','DEV',111,TO_DATE('10-07-1980','DD-MM-YYYY'),95000,30000,null,TO_DATE('21-06-2001','DD-MM-YYYY'),null)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (MCA016.SYS_C0034657) violated 
+
+
+SQL> insert into emp values(113,'Aman','DEV',111,TO_DATE('10-07-1980','DD-MM-YYYY'),95000,30000,null,TO_DATE('21-06-2001','DD-MM-YYYY'),null);
+
+1 row created.
+
+SQL> insert into emp values(null,'Arnav','CLK',106,TO_DATE('10-01-1985','DD-MM-YYYY'),18000,3000,null,TO_DATE('10-12-2007','DD-MM-YYYY'),null);
+insert into emp values(null,'Arnav','CLK',106,TO_DATE('10-01-1985','DD-MM-YYYY'),18000,3000,null,TO_DATE('10-12-2007','DD-MM-YYYY'),null)
+                       *
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("MCA016"."EMP"."EMPNO") 
+
+
+SQL> insert into emp values(112,'Arnav','CLK',106,TO_DATE('10-01-1985','DD-MM-YYYY'),18000,3000,null,TO_DATE('10-12-2007','DD-MM-YYYY'),null);
+insert into emp values(112,'Arnav','CLK',106,TO_DATE('10-01-1985','DD-MM-YYYY'),18000,3000,null,TO_DATE('10-12-2007','DD-MM-YYYY'),null)
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA016.C_SALCHK) violated 
+
+
+SQL> insert into emp values(112,'Arnav','CLK',106,TO_DATE('10-01-1985','DD-MM-YYYY'),50000,11000,null,TO_DATE('10-12-2007','DD-MM-YYYY'),null);
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from emp;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL      
+---------- --------------- --------------- ---------- --------- ----------      
+      COMM DEP DATE_JOIN PRO                                                    
+---------- --- --------- ---                                                    
+       108 Suraj           DEV                    106 10-NOV-80      70000      
+     25000     02-OCT-05                                                        
+                                                                                
+       150 CEO             CEO                        10-DEC-84      60000      
+     30000     03-DEC-08                                                        
+                                                                                
+       111 Raghu           ENG                    150 10-DEC-84      45000      
+    150000     03-FEB-05                                                        
+                                                                                
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL      
+---------- --------------- --------------- ---------- --------- ----------      
+      COMM DEP DATE_JOIN PRO                                                    
+---------- --- --------- ---                                                    
+       103 Suresh          DEV                    111 10-DEC-80      55000      
+    140000     22-SEP-01                                                        
+                                                                                
+       125 Manu            DEV                    150 10-DEC-80      50000      
+    115000     02-OCT-02                                                        
+                                                                                
+       104 Rakesh          CLK                    125 02-OCT-80      40000      
+     10000     26-NOV-05                                                        
+                                                                                
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL      
+---------- --------------- --------------- ---------- --------- ----------      
+      COMM DEP DATE_JOIN PRO                                                    
+---------- --- --------- ---                                                    
+       109 Ramesh          CLK                    111 02-AUG-80      54000      
+    110000     12-OCT-02                                                        
+                                                                                
+       110 Saroj           DEV                    111 10-JUL-80      62000      
+     20000     21-JUN-01                                                        
+                                                                                
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000      
+     21000     24-NOV-89                                                        
+                                                                                
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL      
+---------- --------------- --------------- ---------- --------- ----------      
+      COMM DEP DATE_JOIN PRO                                                    
+---------- --- --------- ---                                                    
+       101 Ravi            MGR                    111 10-OCT-95      32000      
+     10000     02-OCT-06                                                        
+                                                                                
+       123 Ashok           CLK                    150 10-DEC-84      25000      
+     10500     23-DEC-08                                                        
+                                                                                
+       113 Aman            DEV                    111 10-JUL-80      95000      
+     30000     21-JUN-01                                                        
+                                                                                
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL      
+---------- --------------- --------------- ---------- --------- ----------      
+      COMM DEP DATE_JOIN PRO                                                    
+---------- --- --------- ---                                                    
+       112 Arnav           CLK                    106 10-JAN-85      50000      
+     11000     10-DEC-07                                                        
+                                                                                
+
+13 rows selected.
+
+SQL> alter table task add constraint fkey foreign key(prj_id, dno) references proj(prj_no,dno);
+
+Table altered.
+
+SQL> desc task;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PRJ_ID                                    NOT NULL CHAR(3)
+ DNO                                       NOT NULL CHAR(3)
+ TASK_ID                                   NOT NULL NUMBER(3)
+ TASK_NAME                                 NOT NULL VARCHAR2(30)
+ S_DATE                                    NOT NULL DATE
+ E_DATE                                             DATE
+ STATUS                                             VARCHAR2(12)
+
+SQL> insert into emp values(140,'Bhuvan','CLK',111,TO_DATE('10-04-1984','DD-MM-YYYY'),35000,13000,null,TO_DATE('10-11-2002','DD-MM-YYYY'),null);
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> insert into emp values(140,'Ronald','DEV',150,TO_DATE('10-02-1990','DD-MM-YYYY'),45000,12000,null,TO_DATE('10-06-2001','DD-MM-YYYY'),null);
+insert into emp values(140,'Ronald','DEV',150,TO_DATE('10-02-1990','DD-MM-YYYY'),45000,12000,null,TO_DATE('10-06-2001','DD-MM-YYYY'),null)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (MCA016.SYS_C0034657) violated 
+
+
+SQL> insert into emp values(139,'Ronald','DEV',150,TO_DATE('10-02-1990','DD-MM-YYYY'),45000,12000,null,TO_DATE('10-06-2001','DD-MM-YYYY'),null);
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> desc task;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PRJ_ID                                    NOT NULL CHAR(3)
+ DNO                                       NOT NULL CHAR(3)
+ TASK_ID                                   NOT NULL NUMBER(3)
+ TASK_NAME                                 NOT NULL VARCHAR2(30)
+ S_DATE                                    NOT NULL DATE
+ E_DATE                                             DATE
+ STATUS                                             VARCHAR2(12)
+
+SQL> insert into task values('P1','D1',1,'REQUIREMENT ANALYSIS',TO_DATE('01-01-2022','DD-MM-YYYY'),TO_DATE('15-01-2022','DD-MM-YYYY'),'COMPLETED');
+
+1 row created.
+
+SQL> insert into task values('P1','D2',2,'MODULE DESIGN',TO_DATE('16-01-2022','DD-MM-YYYY'),TO_DATE('10-02-2022','DD-MM-YYYY'),'COMPLETED');
+
+1 row created.
+
+SQL> insert into task values('P2','D3',3,'CODING & TESTING',TO_DATE('11-02-2022','DD-MM-YYYY'),TO_DATE(NULL,'DD-MM-YYYY'),'IN-PROGRESS');
+Enter value for testing: 40
+old   1: insert into task values('P2','D3',3,'CODING & TESTING',TO_DATE('11-02-2022','DD-MM-YYYY'),TO_DATE(NULL,'DD-MM-YYYY'),'IN-PROGRESS')
+new   1: insert into task values('P2','D3',3,'CODING 40',TO_DATE('11-02-2022','DD-MM-YYYY'),TO_DATE(NULL,'DD-MM-YYYY'),'IN-PROGRESS')
+
+1 row created.
+
+SQL> insert into task values('P3','D4',1,'DATASET COLLECTION',TO_DATE('15-02-2022','DD-MM-YYYY'),TO_DATE('28-02-2022','DD-MM-YYYY'),'COMPLETED');
+
+1 row created.
+
+SQL> insert into task values('P3','D1',2,'MODEL TRAINING',TO_DATE('01-03-2022','DD-MM-YYYY'),TO_DATE(NULL,'DD-MM-YYYY'),'IN-PROGRESS');
+
+1 row created.
+
+SQL> insert into task values('P3','D1',1,'SCHEMA MAPPING',TO_DATE('01-03-2022','DD-MM-YYYY'),TO_DATE('20-03-2022','DD-MM-YYYY'),'COMPLETED');
+
+1 row created.
+
+SQL> insert into task values('P4','D5',1,'REQUIREMENT GATHERING',TO_DATE('10-04-2022','DD-MM-YYYY'),TO_DATE(NULL,'DD-MM-YYYY'),'PENDING');
+
+1 row created.
+
+SQL> insert into task values('P4','D5',2,'SITE SURVEY',TO_DATE('05-05-2022','DD-MM-YYYY'),TO_DATE('20-05-2022','DD-MM-YYYY'),'COMPLETED');
+
+1 row created.
+
+SQL> SELECT * FROM TASK;
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE              
+--- --- ---------- ------------------------------ --------- ---------           
+STATUS                                                                          
+------------                                                                    
+P1  D1           1 REQUIREMENT ANALYSIS           01-JAN-22 15-JAN-22           
+COMPLETED                                                                       
+                                                                                
+P1  D2           2 MODULE DESIGN                  16-JAN-22 10-FEB-22           
+COMPLETED                                                                       
+                                                                                
+P2  D3           3 CODING 40                      11-FEB-22                     
+IN-PROGRESS                                                                     
+                                                                                
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE              
+--- --- ---------- ------------------------------ --------- ---------           
+STATUS                                                                          
+------------                                                                    
+P3  D4           1 DATASET COLLECTION             15-FEB-22 28-FEB-22           
+COMPLETED                                                                       
+                                                                                
+P3  D1           2 MODEL TRAINING                 01-MAR-22                     
+IN-PROGRESS                                                                     
+                                                                                
+P3  D1           1 SCHEMA MAPPING                 01-MAR-22 20-MAR-22           
+COMPLETED                                                                       
+                                                                                
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE              
+--- --- ---------- ------------------------------ --------- ---------           
+STATUS                                                                          
+------------                                                                    
+P4  D5           1 REQUIREMENT GATHERING          10-APR-22                     
+PENDING                                                                         
+                                                                                
+P4  D5           2 SITE SURVEY                    05-MAY-22 20-MAY-22           
+COMPLETED                                                                       
+                                                                                
+
+8 rows selected.
+
+SQL> insert into task values('P4','D5',3,'REQUIREMENT ANALYSIS',TO_DATE('05-04-2022','DD-MM-YYYY'),TO_DATE('20-04-2022','DD-MM-YYYY'),'COMPLETED');
+
+1 row created.
+
+SQL> insert into task values('P2','D3',1,'SCHEMA MAPPING',TO_DATE('05-06-2022','DD-MM-YYYY'),TO_DATE('22-06-2022','DD-MM-YYYY'),'COMPLETED');
+
+1 row created.
+
+SQL> SELECT * FROM TASK;
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE              
+--- --- ---------- ------------------------------ --------- ---------           
+STATUS                                                                          
+------------                                                                    
+P1  D1           1 REQUIREMENT ANALYSIS           01-JAN-22 15-JAN-22           
+COMPLETED                                                                       
+                                                                                
+P1  D2           2 MODULE DESIGN                  16-JAN-22 10-FEB-22           
+COMPLETED                                                                       
+                                                                                
+P2  D3           3 CODING 40                      11-FEB-22                     
+IN-PROGRESS                                                                     
+                                                                                
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE              
+--- --- ---------- ------------------------------ --------- ---------           
+STATUS                                                                          
+------------                                                                    
+P3  D4           1 DATASET COLLECTION             15-FEB-22 28-FEB-22           
+COMPLETED                                                                       
+                                                                                
+P3  D1           2 MODEL TRAINING                 01-MAR-22                     
+IN-PROGRESS                                                                     
+                                                                                
+P3  D1           1 SCHEMA MAPPING                 01-MAR-22 20-MAR-22           
+COMPLETED                                                                       
+                                                                                
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE              
+--- --- ---------- ------------------------------ --------- ---------           
+STATUS                                                                          
+------------                                                                    
+P4  D5           1 REQUIREMENT GATHERING          10-APR-22                     
+PENDING                                                                         
+                                                                                
+P4  D5           2 SITE SURVEY                    05-MAY-22 20-MAY-22           
+COMPLETED                                                                       
+                                                                                
+P4  D5           3 REQUIREMENT ANALYSIS           05-APR-22 20-APR-22           
+COMPLETED                                                                       
+                                                                                
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE              
+--- --- ---------- ------------------------------ --------- ---------           
+STATUS                                                                          
+------------                                                                    
+P2  D3           1 SCHEMA MAPPING                 05-JUN-22 22-JUN-22           
+COMPLETED                                                                       
+                                                                                
+
+10 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> DESC DEPENDENT;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPID                                     NOT NULL NUMBER(2)
+ EMPNO                                              NUMBER(3)
+ DEPENDENT_NAME                            NOT NULL VARCHAR2(20)
+ GENDER                                             CHAR(1)
+ DOFBIRTH                                  NOT NULL DATE
+ RELATIONSHIP                                       VARCHAR2(15)
+ NOM_PCT                                            NUMBER(5,2)
+ MED_COVER                                          VARCHAR2(15)
+
+SQL> insert into dependent values(1,100,'LATHA KUMAR','F',TO_DATE('10-05-1982','DD-MM-YYYY'),'SPOUSE',50,'YES');
+insert into dependent values(1,100,'LATHA KUMAR','F',TO_DATE('10-05-1982','DD-MM-YYYY'),'SPOUSE',50,'YES')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (MCA016.SYS_C0034691) violated - parent key not 
+found 
+
+
+SQL> spool off;

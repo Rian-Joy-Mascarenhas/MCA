@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MCA Timetable</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        padding: 6px;
+      }
+      .grey {
+        background-color: lightgrey;
+      }
+      .redd {
+        color: red;
+      }
+      .lblue {
+        background-color: #e0f7fa;
+      }
+      .bluee {
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th class="redd" colspan="10">Semester & Section: I MCA-A</th>
+          <th colspan="2" style="background-color: yellow">PC 202</th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>8.00-9.00</th>
+          <th>9.00-10.00</th>
+          <th>10.00-10.30</th>
+          <th>10.30-11.30</th>
+          <th>11.30-12.30</th>
+          <th>12.30-13.00</th>
+          <th>13.00-14.00</th>
+          <th>14.00-15.00</th>
+          <th>15.00-15.30</th>
+          <th>15.30-16.30</th>
+          <th>16.30-17.30</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th class="grey">MON</th>
+          <td class="redd">Maths</td>
+          <td>OOP-I</td>
+          <td class="grey"></td>
+          <td>DBMS</td>
+          <td>WT</td>
+          <td class="grey"></td>
+          <td colspan="3" class="bluee">OOP I Lab-A2 (CL 21)</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th class="grey">TUE</th>
+          <td colspan="3" class="bluee">RMTC Lab-A2 (CL 22)</td>
+          <td></td>
+          <td></td>
+          <td class="grey"></td>
+          <td>RMTC</td>
+          <td></td>
+          <td class="grey"></td>
+          <td class="redd">Maths</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th class="grey">WED</th>
+          <td></td>
+          <td>WT</td>
+          <td class="grey"></td>
+          <td>OOP-I</td>
+          <td>DBMS</td>
+          <td class="grey"></td>
+          <td colspan="3" class="bluee">DBMS Lab-A1 (CL 22)</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th class="grey">THU</th>
+          <td colspan="3" class="bluee">OOP-I Lab-A1 (CL 21)</td>
+          <td></td>
+          <td></td>
+          <td class="grey"></td>
+          <td class="redd">Maths</td>
+          <td>OOP-I</td>
+          <td class="grey"></td>
+          <td>DBMS</td>
+          <td>WT</td>
+        </tr>
+        <tr>
+          <th class="grey">FRI</th>
+          <td></td>
+          <td>DBMS</td>
+          <td class="grey"></td>
+          <td class="redd">Maths</td>
+          <td></td>
+          <td class="grey"></td>
+          <td colspan="3" class="bluee">RMTC Lab-A1(CL 27)</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th class="grey">SAT</th>
+          <td></td>
+          <td></td>
+          <td class="grey"></td>
+          <td colspan="3" class="bluee">WT Lab-A1 (CL 27)</td>
+          <td class="grey"></td>
+          <td>WT</td>
+          <td class="grey"></td>
+          <td>OOP-I</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <br />
+    <br />
+    <table>
+      <thead>
+        <tr>
+          <th>COURSE</th>
+          <th>CODE</th>
+          <th>NAME</th>
+          <th>Faculty</th>
+          <th>CO-Faculty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CM</td>
+          <td>MAT4111</td>
+          <td>Computational Mathematics</td>
+          <td>Dr.Harinakshi Karkera(HK)</td>
+          <td></td>
+        </tr>
+
+        <tr class="lblue">
+          <td>OOP1</td>
+          <td>MCA4121</td>
+          <td>Object Oriented Programming-I</td>
+          <td>Ms.Linda Varghese</td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td>DBMS</td>
+          <td>MCA4122</td>
+          <td>Database Management System</td>
+          <td>Ms.Archana H</td>
+          <td></td>
+        </tr>
+
+        <tr class="lblue">
+          <td>WT</td>
+          <td>MCA4123</td>
+          <td>Web Technologies</td>
+          <td>Mr.Akshay Bhat</td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td>RMTC</td>
+          <td>HUM5051</td>
+          <td>Research Methodology and Technical Communication Theory</td>
+          <td>Dr.Giridhar Kamath</td>
+          <td></td>
+        </tr>
+
+        <tr class="lblue">
+          <td>RMTC</td>
+          <td>HUM5051</td>
+          <td>Research Methodology and Technical Communication Lab</td>
+          <td>Dr Raghuram Holla K</td>
+          <td>Dr Raviraj Holla( A1)</td>
+        </tr>
+
+        <tr>
+          <td>DBMSL</td>
+          <td>MCA4141</td>
+          <td>Database Management System Lab</td>
+          <td>Ms.Archana H</td>
+          <td>Dr. Dasharathraj K Shetty(A1)</td>
+        </tr>
+
+        <tr class="lblue">
+          <td>OOPL</td>
+          <td>MCA4142</td>
+          <td>Object Oriented Programming-I Lab</td>
+          <td>Ms.Linda Varghese</td>
+          <td>Mr. Abhishek A K (A1)</td>
+        </tr>
+
+        <tr>
+          <td>WTL</td>
+          <td>MCA4143</td>
+          <td>Web Technologies</td>
+          <td>Mr.Akshay Bhat</td>
+          <td>Dr Rohini R Rao (A1)( A2)</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

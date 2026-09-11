@@ -1,0 +1,38 @@
+select * from emp where sal>25000 or deptno='D1';
+
+select ename as "Employee Name",sal as "SALARY" from emp
+where sal between 25200 and 35200;
+
+select e.ename from emp e,dept d where e.deptno=d.dno and (d.location='BNG'
+or d.location='MUB' or d.location='HYD');
+
+select e.ename from emp e,dept d where e.deptno=d.dno and d.location in('BNG','MUB','HYD');
+
+
+select * from emp order by deptno asc,sal desc; 
+
+select * from task where prj_id='P3';
+
+select * from emp where comm IS NULL;
+
+create table manager as select empno,ename,job,deptno,sal from emp;
+
+select prj_no,prj_name from proj where dno='D2' and prj_credit>5;
+
+select * from emp where mgrid =111;
+
+select ename from emp where ename like '_av%j' and length(ename)=6;
+
+select * from task where e_date - s_date < 7;
+
+select prj_name from proj where strt_date > to_date('01-03-2022','DD-MM-YYYY')AND PRJ_CREDIT > 5;
+
+select distinct p.prj_no,p.prj_name from proj p, task t where p.dno=t.dno and 
+p.prj_no=t.prj_id and t.s_date > to_date('01-02-2022','DD-MM-YYYY');
+
+select * from emp order by sal desc;
+
+select * from task where status IN('PENDING','IN-PROGRESS');
+
+select dependent_name from dependent where gender='F' and med_cover='YES';
+
