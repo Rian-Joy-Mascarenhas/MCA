@@ -1,0 +1,62 @@
+SQL> select count(empno) as "Total Employees" from emp;
+
+Total Employees
+---------------
+             16
+
+SQL> select min(sal) as "min_sal",max(sal) as "max_sal",avg(sal) as "avg_sal",sum(sal) as "total_sal" from emp;
+
+   min_sal    max_sal    avg_sal  total_sal
+---------- ---------- ---------- ----------
+     24000      95000   51531.25     824500
+
+SQL> select prj_name from proj p join dept d on p.dno=d.dno where dname='Marketing';
+
+PRJ_NAME
+--------------------
+PAYROLL AUTOMATION
+ERP REVAMP
+
+SQL> select UPPER(ename),
+  2  LOWER(ename),INITCAP(ename),LENGTH(ename),substr(ename,2,3) from emp;
+
+UPPER(ENAME)    LOWER(ENAME)    INITCAP(ENAME)  LENGTH(ENAME) SUBSTR(ENAME
+--------------- --------------- --------------- ------------- ------------
+SURAJ           suraj           Suraj                       5 ura
+CEO             ceo             Ceo                         3 EO
+RAGHU           raghu           Raghu                       5 agh
+SURESH          suresh          Suresh                      6 ure
+MANU            manu            Manu                        4 anu
+RAKESH          rakesh          Rakesh                      6 ake
+RAMESH          ramesh          Ramesh                      6 ame
+SAROJ           saroj           Saroj                       5 aro
+SARTAJ          sartaj          Sartaj                      6 art
+RAVI            ravi            Ravi                        4 avi
+ASHOK           ashok           Ashok                       5 sho
+
+UPPER(ENAME)    LOWER(ENAME)    INITCAP(ENAME)  LENGTH(ENAME) SUBSTR(ENAME
+--------------- --------------- --------------- ------------- ------------
+AMAN            aman            Aman                        4 man
+ARNAV           arnav           Arnav                       5 rna
+BHUVAN          bhuvan          Bhuvan                      6 huv
+RONALD          ronald          Ronald                      6 ona
+RAVIRAJ         raviraj         Raviraj                     7 avi
+
+16 rows selected.
+
+SQL> select ename from emp where mgrid in(select mgrid from emp where ename='Raghu');
+
+ENAME
+---------------
+Raghu
+Manu
+Ronald
+
+SQL> select dname,max(sal),min(sal) from dept d join emp e on d.dno=e.deptno group by d.dname;
+
+DNAME             MAX(SAL)   MIN(SAL)
+--------------- ---------- ----------
+HR                   70000      50000
+Marketing            60000      24000
+Research             50000      40000
+IT                   95000      45000

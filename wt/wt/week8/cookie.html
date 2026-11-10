@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cookies Example</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+      }
+      h2 {
+        color: blue;
+      }
+    </style>
+    <script>
+      function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+        document.cookie =
+          cname +
+          "=" +
+          encodeURIComponent(cvalue) +
+          "; expires=" +
+          d.toUTCString() +
+          "; path=/";
+      }
+      function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(";");
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i].trim();
+          if (c.indexOf(name) == 0) {
+            return decodeURIComponent(c.substring(name.length));
+          }
+        }
+        return "";
+      }
+      function checkCookie() {
+        var user = getCookie("username");
+        var lastAccess = getCookie("lastAccess");
+        var currentDate = new Date().toLocaleString();
+        if (user != "") {
+          document.getElementById("welcome").innerHTML =
+            "Welcome back, " + user + "!";
+          if (lastAccess != "") {
+            document.getElementById("last").innerHTML =
+              "Date of Last Access: " + lastAccess;
+          }
+        } else {
+          user = prompt("Please enter your name:");
+          if (user != null && user.trim() != "") {
+            setCookie("username", user, 30);
+
+            document.getElementById("welcome").innerHTML =
+              "Welcome, " + user + "!";
+          }
+        }
+        setCookie("lastAccess", currentDate, 30);
+      }
+    </script>
+  </head>
+  <body onload="checkCookie()">
+    <h2>Cookie Demonstration</h2>
+    <p id="welcome"></p>
+    <p id="last"></p>
+  </body>
+</html>
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Cookies Example</title>
+</head>
+<body>
+
+<h2>Welcome Page</h2>
+
+<input type="text" id="name" placeholder="Enter your name">
+<button onclick="saveCookie()">Submit</button>
+
+<h3 id="message"></h3>
+
+<script>
+
+// Get cookie value
+function getCookie(name) {
+    let cookies = document.cookie.split("; ");
+
+    for (let c of cookies) {
+        let parts = c.split("=");
+        if (parts[0] === name) {
+            return decodeURIComponent(parts[1]);
+        }
+    }
+    return "";
+}
+
+// Display welcome message when page loads
+window.onload = function() {
+
+    let username = getCookie("username");
+    let lastAccess = getCookie("lastAccess");
+
+    if (username !== "") {
+        document.getElementById("message").innerHTML =
+        "Welcome back " + username +
+        "! Your last visit was: " + lastAccess;
+    }
+};
+
+// Store cookies
+function saveCookie() {
+
+    let name = document.getElementById("name").value;
+
+    if (name === "") {
+        alert("Please enter your name");
+        return;
+    }
+
+    let oldDate = new Date();
+
+    document.cookie = "username=" +
+        encodeURIComponent(name) + "; max-age=31536000; path=/";
+
+    document.cookie = "lastAccess=" +
+        encodeURIComponent(oldDate.toLocaleString()) +
+        "; max-age=31536000; path=/";
+
+    document.getElementById("message").innerHTML =
+        "Welcome " + name + "! Your details are saved.";
+
+}
+
+</script>
+
+</body>
+</html> -->

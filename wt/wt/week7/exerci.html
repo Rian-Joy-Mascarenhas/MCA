@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>Username Validation</title>
+</head>
+<body>
+<script>
+function checkuser(){
+	var users=["Arun","Bob","Clara","Derick","Ohil","Srihari","Nihal","Amogh",
+	"Varun","Ebinezer","Slayer"];
+	var entered=prompt("Enter the Username");
+	if(entered==null){
+		return;
+	}
+	if(users.includes(entered)){
+		alert("Match Found "+entered+" is in the array");
+	}else{
+		alert("Match Not Found "+entered+" is not in the array");
+	}
+}
+</script>
+<button onclick="checkuser()">Check Username</button>
+</body>
+</html>

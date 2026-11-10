@@ -1,0 +1,289 @@
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week8\lab8a1.sql;
+Enter value for employee_no: 101
+old   2:     v_empno emp.empno%TYPE := &employee_no;
+new   2:     v_empno emp.empno%TYPE := 101;
+Enter value for department_no: D1
+old   3:     v_deptno emp.deptno%TYPE := '&department_no';
+new   3:     v_deptno emp.deptno%TYPE := 'D1';
+Enter value for ename: Ravi
+old   8:         v_num := TO_NUMBER('&ename');
+new   8:         v_num := TO_NUMBER('Ravi');
+INVALID_NUMBER: ENAME cannot be converted into a number.
+Employee Name: Ravi
+TOO_MANY_ROWS: More than one employee exists in this department.
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from emp;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       150 CEO             CEO                        10-DEC-90      60000
+     30000     03-DEC-08
+
+       111 Raghu           ENG                    150 10-DEC-84      45000
+     15000     03-FEB-05
+
+       103 Suresh          DEV                    111 10-DEC-80      55000
+    140000 D1  22-SEP-01 P1
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       125 Manu            DEV                    150 10-DEC-80      50000
+    115000 D4  02-OCT-02 P3
+
+       104 Rakesh          CLK                    125 02-OCT-80      40000
+     10000 D2  26-NOV-05 P1
+
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000
+     21000 D2  24-NOV-89 P1
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       108 Suraj           DEV                    106 10-NOV-80      70000
+     25000 D1  02-OCT-05 P3
+
+       109 Ramesh          CLK                    111 02-AUG-80      54000
+    110000 D1  12-OCT-02 P3
+
+       101 Ravi            MGR                    111 10-OCT-95      32000
+     10000 D1  02-OCT-06 P1
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       110 Saroj           DEV                    111 10-JUL-80      62000
+     20000 D1  21-JUN-01 P3
+
+       102 Raviraj         ENG                    106 10-JAN-85      24000
+     10000 D1  12-NOV-10 P3
+
+       123 Ashok           CLK                    150 10-DEC-84      25000
+     10500 D3  23-DEC-08 P2
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       113 Aman            DEV                    111 10-JUL-80      95000
+     30000 D1  21-JUN-01 P3
+
+       112 Arnav           CLK                    106 10-JAN-85      50000
+     11000 D5  10-DEC-07 P4
+
+       140 Bhuvan          CLK                    111 10-APR-84      35000
+     13000 D1  10-NOV-02 P1
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       139 Ronald          DEV                    150 10-FEB-90      45000
+     12000 D4  10-JUN-01 P3
+
+
+16 rows selected.
+
+SQL> set pagesize 150
+SQL> set linesize 150
+SQL> select * from emp;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL  COMM DEP DATE_JOIN PRO
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- ---
+       150 CEO             CEO                        10-DEC-90      60000 30000      03-DEC-08
+       111 Raghu           ENG                    150 10-DEC-84      45000 15000      03-FEB-05
+       103 Suresh          DEV                    111 10-DEC-80      55000     140000 D1  22-SEP-01 P1
+       125 Manu            DEV                    150 10-DEC-80      50000     115000 D4  02-OCT-02 P3
+       104 Rakesh          CLK                    125 02-OCT-80      40000 10000 D2  26-NOV-05 P1
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000 21000 D2  24-NOV-89 P1
+       108 Suraj           DEV                    106 10-NOV-80      70000 25000 D1  02-OCT-05 P3
+       109 Ramesh          CLK                    111 02-AUG-80      54000     110000 D1  12-OCT-02 P3
+       101 Ravi            MGR                    111 10-OCT-95      32000 10000 D1  02-OCT-06 P1
+       110 Saroj           DEV                    111 10-JUL-80      62000 20000 D1  21-JUN-01 P3
+       102 Raviraj         ENG                    106 10-JAN-85      24000 10000 D1  12-NOV-10 P3
+       123 Ashok           CLK                    150 10-DEC-84      25000 10500 D3  23-DEC-08 P2
+       113 Aman            DEV                    111 10-JUL-80      95000 30000 D1  21-JUN-01 P3
+       112 Arnav           CLK                    106 10-JAN-85      50000 11000 D5  10-DEC-07 P4
+       140 Bhuvan          CLK                    111 10-APR-84      35000 13000 D1  10-NOV-02 P1
+       139 Ronald          DEV                    150 10-FEB-90      45000 12000 D4  10-JUN-01 P3
+
+16 rows selected.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week8\lab8a1.sql;
+Enter value for employee_no: 111
+old   2:     v_empno emp.empno%TYPE := &employee_no;
+new   2:     v_empno emp.empno%TYPE := 111;
+Enter value for department_no: D1
+old   3:     v_deptno emp.deptno%TYPE := '&department_no';
+new   3:     v_deptno emp.deptno%TYPE := 'D1';
+Enter value for ename: Raghu
+old   8:         v_num := TO_NUMBER('&ename');
+new   8:         v_num := TO_NUMBER('Raghu');
+INVALID_NUMBER: ENAME cannot be converted into a number.
+Employee Name: Raghu
+TOO_MANY_ROWS: More than one employee exists in this department.
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week8\lab8a1.sql;
+Enter value for employee_no: 139
+old   2:     v_empno emp.empno%TYPE := &employee_no;
+new   2:     v_empno emp.empno%TYPE := 139;
+Enter value for department_no: D4
+old   3:     v_deptno emp.deptno%TYPE := '&department_no';
+new   3:     v_deptno emp.deptno%TYPE := 'D4';
+Enter value for ename: Ronald
+old   8:         v_num := TO_NUMBER('&ename');
+new   8:         v_num := TO_NUMBER('Ronald');
+INVALID_NUMBER: ENAME cannot be converted into a number.
+Employee Name: Ronald
+TOO_MANY_ROWS: More than one employee exists in this department.
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week8\lab8a1.sql;
+Enter value for employee_no: 112
+old   2:     v_empno emp.empno%TYPE := &employee_no;
+new   2:     v_empno emp.empno%TYPE := 112;
+Enter value for department_no: D5
+old   3:     v_deptno emp.deptno%TYPE := '&department_no';
+new   3:     v_deptno emp.deptno%TYPE := 'D5';
+Enter value for ename: Arnav
+old   8:         v_num := TO_NUMBER('&ename');
+new   8:         v_num := TO_NUMBER('Arnav');
+INVALID_NUMBER: ENAME cannot be converted into a number.
+Employee Name: Arnav
+Employee Name: Arnav
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week8\lab8a2.sql;
+Enter value for principal: 1000
+old   2:     v_principal  NUMBER := &principal;
+new   2:     v_principal  NUMBER := 1000;
+Enter value for interest_rate: 5
+old   3:     v_rate       NUMBER := &interest_rate;
+new   3:     v_rate       NUMBER := 5;
+Enter value for duration: 3
+old   4:     v_years      NUMBER := &duration;
+new   4:     v_years      NUMBER := 3;
+Error: Principal must be greater than 1000.
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week8\lab8a2.sql;
+Enter value for principal: 10000
+old   2:     v_principal  NUMBER := &principal;
+new   2:     v_principal  NUMBER := 10000;
+Enter value for interest_rate: 2
+old   3:     v_rate       NUMBER := &interest_rate;
+new   3:     v_rate       NUMBER := 2;
+Enter value for duration: 2
+old   4:     v_years      NUMBER := &duration;
+new   4:     v_years      NUMBER := 2;
+Error: Interest rate must be 5% or greater.
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week8\lab8a2.sql;
+Enter value for principal: 100000
+old   2:     v_principal  NUMBER := &principal;
+new   2:     v_principal  NUMBER := 100000;
+Enter value for interest_rate: 10
+old   3:     v_rate       NUMBER := &interest_rate;
+new   3:     v_rate       NUMBER := 10;
+Enter value for duration: 10
+old   4:     v_years      NUMBER := &duration;
+new   4:     v_years      NUMBER := 10;
+Principal     : 100000
+Interest Rate : 10%
+Duration      : 10 years
+Interest      : 100000
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week8\lab8a3.sql;
+Enter value for employee_no: 113
+old   2:     v_empno   emp.empno%TYPE := &employee_no;
+new   2:     v_empno   emp.empno%TYPE := 113;
+Error: Employee salary is already greater than 25000.
+
+PL/SQL procedure successfully completed.
+
+SQL> update emp set sal=20000 where empno=113;
+update emp set sal=20000 where empno=113
+*
+ERROR at line 1:
+ORA-02290: check constraint (SYSTEM.C_SALCHK) violated
+
+
+SQL> update emp set sal=21000 where empno=113;
+
+1 row updated.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week8\lab8a3.sql;
+Enter value for employee_no: 113
+old   2:     v_empno   emp.empno%TYPE := &employee_no;
+new   2:     v_empno   emp.empno%TYPE := 113;
+Salary updated successfully.
+Employee No   : 113
+Employee Name : Aman
+Salary        : 25000
+
+PL/SQL procedure successfully completed.
+
+SQL> CREATE TABLE sal_mod (
+  2      empno     NUMBER,
+  3      dname     VARCHAR2(20),
+  4      old_sal   NUMBER,
+  5      mod_date  DATE,
+  6      modifier  VARCHAR2(30)
+  7  );
+
+Table created.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week8\lab8a4.sql;
+
+Trigger created.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week8\lab8a5.sql;
+Enter value for current_date: 21-FEB-2005
+old   5:     v_current_date DATE := TO_DATE('&current_date', 'DD-MM-YYYY');
+new   5:     v_current_date DATE := TO_DATE('21-FEB-2005', 'DD-MM-YYYY');
+
+Trigger created.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week8\lab8a6.sql;
+
+Trigger created.
+
+SQL> CREATE TABLE DEPENDENT_LOG (
+  2      DEPID NUMBER,
+  3      EMPNO NUMBER,
+  4      DEPENDENT_NAME VARCHAR2(30),
+  5      DELETED_DATE DATE
+  6  );
+
+Table created.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week8\lab8a7.sql;
+
+Trigger created.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week8\lab8a8.sql;
+
+Trigger created.
+
+SQL>

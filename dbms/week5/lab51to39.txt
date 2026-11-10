@@ -1,0 +1,161 @@
+1. select count(empno) as "Total Employees" from emp;
+
+2. select min(sal) as "min_sal",max(sal) as "max_sal",avg(sal) as "avg_sal",sum(sal) as "total_sal" from emp;
+
+3. select prj_name from proj p join dept d on p.dno=d.dno where dname='Marketing';
+
+4. select UPPER(ename),LOWER(ename),INITCAP(ename),LENGTH(ename),substr(ename,2,3) from emp;
+
+5. select ename from emp where mgrid in(select mgrid from emp where ename='Raghu');
+
+6. select dname,max(sal),min(sal) from dept d join emp e on d.dno=e.deptno group by d.dname;
+
+7. SELECT D.DNAME,COUNT(E.EMPNO) AS employee_count FROM DEPT D LEFT JOIN EMP E ON D.DNO = E.DEPTNO GROUP BY D.DNAME;
+
+8. SELECT * FROM EMP WHERE MONTHS_BETWEEN(SYSDATE, DATE_JOIN) > 60; 
+
+9. SELECT * FROM EMP WHERE TO_CHAR(DATE_BIRTH, 'MM') = '12' AND TO_CHAR(DATE_BIRTH, 'YYYY') = '1984';
+
+10. SELECT JOB,COUNT(*) AS employee_count FROM EMP GROUP BY JOB;
+
+11.  List the Departments with More Than Three Employees. 
+SELECT D.DNAME,COUNT(E.EMPNO) AS employee_count FROM DEPT D JOIN EMP E ON D.DNO = E.DEPTNO
+GROUP BY D.DNAME
+HAVING COUNT(E.EMPNO) > 3;
+
+
+
+12. List the employees working under the project ‘Payroll Automation’. 
+SELECT E.ENAME FROM EMP E JOIN PROJ P ON E.DEPTNO=P.DNO WHERE PRJ_NAME='PAYROLL AUTOMATION';
+
+13.  Write SQL query to illustrate ceiling, floor, truncate, and round functions on the value 2.83. 
+SELECT CEIL(2.83) AS "CEIL",FLOOR(2.83) AS "FLOOR",TRUNC(2.83) AS "TRUNC",ROUND(2.83) AS "ROUND" FROM DUAL;
+
+
+14.  List the projects which have duration of more than 1 year.
+SELECT PRJ_NAME FROM PROJ WHERE MONTHS_BETWEEN(END_DATE,STRT_DATE)>=12;
+
+
+15. List all employees along with the tasks they are associated with through their department's projects. 
+
+
+
+16.  List the total project budget sanctioned per department.
+SELECT D.DNAME,SUM(P.PRJ_CREDIT) AS "TOTAL BUDGET"
+FROM DEPT D JOIN PROJ P ON D.DNO=P.DNO GROUP BY D.DNAME;
+
+
+17. List the count of tasks based on its status.
+SELECT STATUS,COUNT(*) AS "TASKCOUNT" FROM TASK GROUP BY STATUS;
+ 
+
+18.  List Employee names in uppercase with joining year
+SELECT UPPER(ENAME) AS "EMPNAME",TO_CHAR(DATE_JOIN,'YYYY') AS "JOIN_YEAR" FROM EMP; 
+
+
+19.  List the Number of months each employee has served. 
+SELECT EMPNO,ENAME, TRUNC(MONTHS_BETWEEN(SYSDATE,DATE_JOIN)) AS MONTHS SERVED FROM EMP;
+
+20.  Display the name of Highest paid employee along with department name for every department. 
+
+
+21.  List Job category and total salary paid for the each jobs category by the company. 
+SELECT JOB,SUM(JOB) AS TOTALSAL FROM EMP GROUP BY JOB; 
+
+
+
+22. Display name of the department from which maximum number of employees are 
+working on project P1.(using subquery)
+
+
+
+23. Select name and job of employees working either in ‘Marketing’ or ‘Research’ department. 
+SELECT E.ENAME,E.JOB FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO WHERE D.DNAME IN('Marketing','Research');
+
+
+24. Display name and salary of employees whose salary is greater than minimum salary 
+of the company.(using subquery)
+select ename,sal from emp where sal>(select min(sal) from emp);
+
+
+25. Display Employees Working on the Most Projects
+
+
+
+26. Display the Deptno of the department that has highest average salary of the company.(Subquery) 
+
+
+
+27. List the name of departments which are working on more than 1 project.(subquery)
+SELECT DNAME FROM DEPT WHERE DNO IN(
+SELECT DNO FROM PROJ GROUP BY DNO HAVING COUNT(*)>1);
+
+
+
+28. Display how many employees joined after 15th of all months. 
+SELECT COUNT(*) AS EMPAFTER15 FROM EMP WHERE TO_CHAR(DATE_JOIN,'DD'))>15;
+
+
+
+29. Write a query to list Employee number, name and Job of the employees who work in the same job as ‘Mahesh’. 
+SELECT EMPNO,ENAME,JOB FROM EMP WHERE JOB =(
+SELECT JOB FROM EMP WHERE ENAME='Mahesh');
+
+30. Create a View EMP_PRJ_VW to display records of employees of ‘marketing’         
+department and project in which they are working. 
+
+
+31. Display employee names and projects in which they are working using View         
+EMP_PRJ_VW . 
+
+
+32. Calculate Total and Average Task Duration for Each Project 
+SELECT PRJ_ID,SUM(E_DATE - S_DATE) AS totaltskdur,
+AVG(E_DATE - S_DATE) AS avgtskdur FROM TASK GROUP BY PRJ_ID;
+
+33. List out the number of employees joined in every month in ascending order. 
+SELECT TO_CHAR(DATE_JOIN, 'MM') AS join_month,COUNT(*) AS employee_count
+FROM EMP
+GROUP BY TO_CHAR(DATE_JOIN, 'MM') ORDER BY join_month ASC;
+
+
+34. Create an index on the columns (name and job) on EMP table.
+ CREATE INDEX IDX_NAME_JOB
+ON EMP (ENAME, JOB);
+
+
+35. Display the employees working in the same department as Ravi
+SELECT * FROM EMP WHERE DEPTNO =(
+SELECT  DEPTNO FROM EMP WHERE ENAME='Ravi');
+
+36. Display the name of the departments that have at least one project with budget above 400000 (correlated).
+SELECT D.DNAME
+FROM DEPT D
+WHERE EXISTS (SELECT 1 FROM PROJ P
+WHERE P.DNO = D.DNO AND P.PRJ_CREDIT > 400000);
+
+
+37. Display the names of employee who earn more than the average salary of their own  department (correlated). 
+SELECT E.EMPNO, E.ENAME, E.SAL, E.DEPTNO
+FROM EMP E
+WHERE E.SAL > (SELECT AVG(E2.SAL)FROM EMP E2
+WHERE E2.DEPTNO = E.DEPTNO);
+
+
+38. Display the name of Employees who have no dependents (NOT EXISTS) 
+SELECT E.ENAME FROM EMP E
+WHERE NOT EXISTS (
+SELECT * FROM DEPENDENT D
+WHERE D.EMPNO = E.EMPNO);
+
+
+
+39. List the name of developers  or engineers.(SET OPERATION) 
+SELECT ENAME FROM EMP
+WHERE JOB='DEV'
+UNION
+SELECT ENAME
+FROM EMP
+WHERE JOB = 'ENG';
+
+

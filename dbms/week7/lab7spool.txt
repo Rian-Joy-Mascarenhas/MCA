@@ -1,0 +1,648 @@
+SQL> select * from emp;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       108 Suraj           DEV                    106 10-NOV-80      70000
+     25000 D4  02-OCT-05 P3
+
+       150 Mahesh          CEO                        10-DEC-84      60000
+     30000 D1  03-DEC-08 P1
+
+       111 Raghu           ENG                    150 10-DEC-84      49500
+    150000 D1  03-FEB-05 P1
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       103 Suresh          DEV                    111 10-DEC-80      55000
+    140000 D1  22-SEP-01 P1
+
+       125 Manu            DEV                    150 10-DEC-80      50000
+    115000 D2  02-OCT-02 P1
+
+       104 Rakesh          CLK                    125 02-OCT-80      40000
+     10000 D2  26-NOV-05 P1
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       109 Ramesh          CLK                    111 02-AUG-80      54000
+    110000 D3  12-OCT-02 P2
+
+       110 Saroj           DEV                    111 10-JUL-80      62000
+     20000 D3  21-JUN-01 P2
+
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000
+     21000 D4  24-NOV-89 P3
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       101 Ravi            MGR                    111 10-OCT-95      32000
+     10000 D1  02-OCT-06 P1
+
+       123 Ashok           MGR                    111 10-DEC-84      35000
+     10000 D1  23-DEC-08 P1
+
+       113 Aman            DEV                    111 10-JUL-80      95000
+     30000 D3  21-JUN-01 P2
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       112 Arnav           CLK                    106 10-JAN-85      50000
+     11000 D4  10-DEC-07 P3
+
+       140 Bhuvan          CLK                    111 10-APR-84      35000
+     13000 D1  10-NOV-02 P1
+
+       139 Ronald          DEV                    150 10-FEB-90      45000
+     12000 D3  10-JUN-01 P2
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       102 Raviraj         ENG                    106 10-JAN-85      24000
+      5000 D1  12-NOV-10 P3
+
+
+16 rows selected.
+
+SQL> set pagesize 200
+SQL> set linesize 100
+SQL> select * from emp;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- ---------
+PRO
+---
+       108 Suraj           DEV                    106 10-NOV-80      70000      25000 D4  02-OCT-05
+P3
+
+       150 Mahesh          CEO                        10-DEC-84      60000      30000 D1  03-DEC-08
+P1
+
+       111 Raghu           ENG                    150 10-DEC-84      49500     150000 D1  03-FEB-05
+P1
+
+       103 Suresh          DEV                    111 10-DEC-80      55000     140000 D1  22-SEP-01
+P1
+
+       125 Manu            DEV                    150 10-DEC-80      50000     115000 D2  02-OCT-02
+P1
+
+       104 Rakesh          CLK                    125 02-OCT-80      40000      10000 D2  26-NOV-05
+P1
+
+       109 Ramesh          CLK                    111 02-AUG-80      54000     110000 D3  12-OCT-02
+P2
+
+       110 Saroj           DEV                    111 10-JUL-80      62000      20000 D3  21-JUN-01
+P2
+
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000      21000 D4  24-NOV-89
+P3
+
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06
+P1
+
+       123 Ashok           MGR                    111 10-DEC-84      35000      10000 D1  23-DEC-08
+P1
+
+       113 Aman            DEV                    111 10-JUL-80      95000      30000 D3  21-JUN-01
+P2
+
+       112 Arnav           CLK                    106 10-JAN-85      50000      11000 D4  10-DEC-07
+P3
+
+       140 Bhuvan          CLK                    111 10-APR-84      35000      13000 D1  10-NOV-02
+P1
+
+       139 Ronald          DEV                    150 10-FEB-90      45000      12000 D3  10-JUN-01
+P2
+
+       102 Raviraj         ENG                    106 10-JAN-85      24000       5000 D1  12-NOV-10
+P3
+
+
+16 rows selected.
+
+SQL> @ D:\261090700052\dbms\week8\lab7a2.sql;
+SP2-0734: unknown command beginning "v_empno em..." - rest of line ignored.
+SP2-0734: unknown command beginning "cursor c_e..." - rest of line ignored.
+SP2-0734: unknown command beginning "ON E.DEPTN..." - rest of line ignored.
+SP2-0734: unknown command beginning "WHERE E.EM..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> @ D:\261090700052\dbms\week8\lab7a2.sql;
+SP2-0734: unknown command beginning "v_empno:=&..." - rest of line ignored.
+SP2-0734: unknown command beginning "cursor c_e..." - rest of line ignored.
+SP2-0734: unknown command beginning "ON E.DEPTN..." - rest of line ignored.
+SP2-0734: unknown command beginning "WHERE E.EM..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> @ D:\261090700052\dbms\week8\lab7a2.sql;
+SP2-0734: unknown command beginning "v_empno:='..." - rest of line ignored.
+SP2-0734: unknown command beginning "cursor c_e..." - rest of line ignored.
+SP2-0734: unknown command beginning "ON E.DEPTN..." - rest of line ignored.
+SP2-0734: unknown command beginning "WHERE E.EM..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+for i in c_emp
+         *
+ERROR at line 2:
+ORA-06550: line 2, column 10:
+PLS-00201: identifier 'C_EMP' must be declared
+ORA-06550: line 2, column 1:
+PL/SQL: Statement ignored
+
+
+SQL> @ D:\261090700052\dbms\week8\lab7a2.sql;
+Enter value for v_empno: 123
+old   2:     v_empno EMP.EMPNO%TYPE := &v_empno;
+new   2:     v_empno EMP.EMPNO%TYPE := 123;
+    FROM emp e JOIN dept d ON e.deptno = d.deptno
+                                         *
+ERROR at line 4:
+ORA-06550: line 4, column 42:
+PL/SQL: ORA-00904: "D"."DEPTNO": invalid identifier
+ORA-06550: line 3, column 22:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 8, column 30:
+PLS-00364: loop index variable 'I' use is invalid
+ORA-06550: line 8, column 9:
+PL/SQL: Statement ignored
+
+
+SQL> @ D:\261090700052\dbms\week8\lab7a2.sql;
+Enter value for v_empno: 123
+old   2:     v_empno EMP.EMPNO%TYPE := &v_empno;
+new   2:     v_empno EMP.EMPNO%TYPE := 123;
+Ashok works in Marketing department and draws 35000 as salary
+
+PL/SQL procedure successfully completed.
+
+SQL> @ D:\261090700052\dbms\week8\lab7a2.sql;
+Enter value for v_empno: 101
+old   2:     v_empno EMP.EMPNO%TYPE := &v_empno;
+new   2:     v_empno EMP.EMPNO%TYPE := 101;
+Ravi works in Marketing department and draws 32000 as salary
+
+PL/SQL procedure successfully completed.
+
+SQL> @ D:\261090700052\dbms\week8\lab7a2.sql;
+Enter value for v_empno: 106
+old   2:     v_empno EMP.EMPNO%TYPE := &v_empno;
+new   2:     v_empno EMP.EMPNO%TYPE := 106;
+Sartaj works in HR department and draws 68000 as salary
+
+PL/SQL procedure successfully completed.
+
+SQL> create table empsal(
+  2  empno number(10),
+  3  empname varchar2(20),
+  4  sal number(10,2),
+  5  hra number(10,2),
+  6  da number(10,2),
+  7  gross number(10,2),
+  8  pf number(10,2),
+  9  netsal number(10,2));
+
+Table created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> @ D:\261090700052\dbms\week8\lab7a3.sql;
+Enter value for v_empno: 108
+old   2:     v_empno EMP.EMPNO%TYPE := &v_empno;
+new   2:     v_empno EMP.EMPNO%TYPE := 108;
+Salary details inserted for Suraj
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from empsal;
+
+     EMPNO EMPNAME                     SAL        HRA         DA      GROSS         PF     NETSAL
+---------- -------------------- ---------- ---------- ---------- ---------- ---------- ----------
+       108 Suraj                     70000      35000      14000     119000       8400     110600
+
+SQL> @ D:\261090700052\dbms\week8\lab7a3.sql;
+Enter value for v_empno: 125
+old   2:     v_empno EMP.EMPNO%TYPE := &v_empno;
+new   2:     v_empno EMP.EMPNO%TYPE := 125;
+Salary details inserted for Manu
+
+PL/SQL procedure successfully completed.
+
+SQL> @ D:\261090700052\dbms\week8\lab7a3.sql;
+Enter value for v_empno: 101
+old   2:     v_empno EMP.EMPNO%TYPE := &v_empno;
+new   2:     v_empno EMP.EMPNO%TYPE := 101;
+Salary details inserted for Ravi
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from empsal;
+
+     EMPNO EMPNAME                     SAL        HRA         DA      GROSS         PF     NETSAL
+---------- -------------------- ---------- ---------- ---------- ---------- ---------- ----------
+       108 Suraj                     70000      35000      14000     119000       8400     110600
+       125 Manu                      50000      25000      10000      85000       6000      79000
+       101 Ravi                      32000      16000       6400      54400       3840      50560
+
+SQL> commit;
+
+Commit complete.
+
+SQL> @ D:\261090700052\dbms\week8\lab7a4.sql;
+HR---->106   Sartaj  A.MGR
+HR---->108   Suraj  DEV
+HR---->112   Arnav  CLK
+IT---->109   Ramesh  CLK
+IT---->110   Saroj  DEV
+IT---->113   Aman  DEV
+IT---->139   Ronald  DEV
+Marketing---->101   Ravi  MGR
+Marketing---->102   Raviraj  ENG
+Marketing---->103   Suresh  DEV
+Marketing---->111   Raghu  ENG
+Marketing---->123   Ashok  MGR
+Marketing---->140   Bhuvan  CLK
+Marketing---->150   Mahesh  CEO
+Research---->104   Rakesh  CLK
+Research---->125   Manu  DEV
+
+PL/SQL procedure successfully completed.
+
+SQL>  @ D:\261090700052\dbms\week8\lab7a3.sql;
+Enter value for v_empno: 104
+old   2:     v_empno EMP.EMPNO%TYPE := &v_empno;
+new   2:     v_empno EMP.EMPNO%TYPE := 104;
+Salary details inserted for Rakesh
+
+PL/SQL procedure successfully completed.
+
+SQL>  @ D:\261090700052\dbms\week8\lab7a3.sql;
+Enter value for v_empno: 113
+old   2:     v_empno EMP.EMPNO%TYPE := &v_empno;
+new   2:     v_empno EMP.EMPNO%TYPE := 113;
+Salary details inserted for Aman
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from empsal;
+
+     EMPNO EMPNAME                     SAL        HRA         DA      GROSS         PF     NETSAL
+---------- -------------------- ---------- ---------- ---------- ---------- ---------- ----------
+       108 Suraj                     70000      35000      14000     119000       8400     110600
+       125 Manu                      50000      25000      10000      85000       6000      79000
+       101 Ravi                      32000      16000       6400      54400       3840      50560
+       104 Rakesh                    40000      20000       8000      68000       4800      63200
+       113 Aman                      95000      47500      19000     161500      11400     150100
+
+SQL> @ D:\261090700052\dbms\week8\lab7a6.sql;
+Project: PAYROLL AUTOMATION | Task ID: 1 | Task: REQUIREMENT ANALYSIS | Status: COMPLETED
+Project: ERP REVAMP | Task ID: 1 | Task: SCHEMA MAPPING | Status: COMPLETED
+Project: ERP REVAMP | Task ID: 2 | Task: MODEL TRAINING | Status: IN-PROGRESS
+Project: AI RESEARCH PLATFORM | Task ID: 2 | Task: MODULE DESIGN | Status: COMPLETED
+Project: DATA WAREHOUSE MIGR. | Task ID: 1 | Task: SCHEMA MAPPING | Status: COMPLETED
+Project: DATA WAREHOUSE MIGR. | Task ID: 3 | Task: CODING 40 | Status: IN-PROGRESS
+Project: CRM REVAMP | Task ID: 1 | Task: DATASET COLLECTION | Status: COMPLETED
+Project: WAREHOUSE AUTOMATION | Task ID: 1 | Task: REQUIREMENT GATHERING | Status: PENDING
+Project: WAREHOUSE AUTOMATION | Task ID: 2 | Task: SITE SURVEY | Status: COMPLETED
+Project: WAREHOUSE AUTOMATION | Task ID: 3 | Task: REQUIREMENT ANALYSIS | Status: COMPLETED
+Project: CRM REVAMP | Task ID: No Task | Task: No Task | Status: N/A
+Project: ERP REVAMP | Task ID: No Task | Task: No Task | Status: N/A
+
+PL/SQL procedure successfully completed.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> @ D:\261090700052\dbms\week8\lab7a7.sql;
+Enter value for v_job: DEV
+old   2: v_job emp.job%type:='&v_job';
+new   2: v_job emp.job%type:='DEV';
+Enter value for v_deptno: D4
+old   3: v_deptno emp.deptno%type:=&v_deptno;
+new   3: v_deptno emp.deptno%type:=D4;
+v_deptno emp.deptno%type:=D4;
+                          *
+ERROR at line 3:
+ORA-06550: line 3, column 27:
+PLS-00201: identifier 'D4' must be declared
+ORA-06550: line 3, column 10:
+PL/SQL: Item ignored
+ORA-06550: line 8, column 22:
+PLS-00320: the declaration of the type of this expression is incomplete or malformed
+ORA-06550: line 8, column 1:
+PL/SQL: Statement ignored
+
+
+SQL> @ D:\261090700052\dbms\week8\lab7a7.sql;
+Enter value for v_job: DEV
+old   2: v_job emp.job%type:='&v_job';
+new   2: v_job emp.job%type:='DEV';
+Enter value for v_deptno: D4
+old   3: v_deptno emp.deptno%type:='&v_deptno';
+new   3: v_deptno emp.deptno%type:='D4';
+108 Suraj DEV Salary:70000
+
+PL/SQL procedure successfully completed.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> @ D:\261090700052\dbms\week8\lab7a8.sql;
+Enter value for prj_id: P1
+old   2: v_prjid emp.prj_id%type:='&prj_id';
+new   2: v_prjid emp.prj_id%type:='P1';
+CURSOR C_EMP(p_prjid)IS SELECT ename,sal,dname
+                    *
+ERROR at line 3:
+ORA-06550: line 3, column 21:
+PLS-00103: Encountered the symbol ")" when expecting one of the following:
+in out <an identifier> <a double-quoted delimited-identifier>
+table ... columns long double ref char time timestamp
+interval date binary national character nchar
+The symbol "<an identifier>" was substituted for ")" to continue.
+ORA-06550: line 5, column 53:
+PLS-00103: Encountered the symbol "(" when expecting one of the following:
+, from
+
+
+SQL> @ D:\261090700052\dbms\week8\lab7a8.sql;
+Enter value for prj_id: P1
+old   2: v_prjid emp.prj_id%type:='&prj_id';
+new   2: v_prjid emp.prj_id%type:='P1';
+v_prjid emp.prj_id%type:='P1';
+            *
+ERROR at line 2:
+ORA-06550: line 2, column 13:
+PLS-00302: component 'PRJ_ID' must be declared
+ORA-06550: line 2, column 9:
+PL/SQL: Item ignored
+ORA-06550: line 3, column 26:
+PLS-00302: component 'PRJ_ID' must be declared
+ORA-06550: line 3, column 1:
+PL/SQL: Item ignored
+ORA-06550: line 9, column 12:
+PLS-00320: the declaration of the type of this expression is incomplete or malformed
+ORA-06550: line 9, column 3:
+PL/SQL: Statement ignored
+
+
+SQL> @ D:\261090700052\dbms\week8\lab7a8.sql;
+Enter value for prj_id: P1
+old   2:     v_prjid emp.prj_id%TYPE := '&prj_id';
+new   2:     v_prjid emp.prj_id%TYPE := 'P1';
+    v_prjid emp.prj_id%TYPE := 'P1';
+                *
+ERROR at line 2:
+ORA-06550: line 2, column 17:
+PLS-00302: component 'PRJ_ID' must be declared
+ORA-06550: line 2, column 13:
+PL/SQL: Item ignored
+ORA-06550: line 3, column 30:
+PLS-00302: component 'PRJ_ID' must be declared
+ORA-06550: line 3, column 5:
+PL/SQL: Item ignored
+ORA-06550: line 11, column 14:
+PLS-00320: the declaration of the type of this expression is incomplete or malformed
+ORA-06550: line 11, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @ D:\261090700052\dbms\week8\lab7a8.sql;
+Enter value for prj_id: P1
+old   2:     v_prjid proj.prj_no%TYPE := '&prj_id';
+new   2:     v_prjid proj.prj_no%TYPE := 'P1';
+        WHERE e.prj_id = p_prjid
+              *
+ERROR at line 7:
+ORA-06550: line 7, column 15:
+PL/SQL: ORA-00904: "E"."PRJ_ID": invalid identifier
+ORA-06550: line 4, column 9:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 12, column 30:
+PLS-00364: loop index variable 'I' use is invalid
+ORA-06550: line 12, column 9:
+PL/SQL: Statement ignored
+
+
+SQL> @ D:\261090700052\dbms\week8\lab7a8.sql;
+Enter value for prj_id: P1
+old   2:     v_prjid emp.prj_id%TYPE := '&prj_id';
+new   2:     v_prjid emp.prj_id%TYPE := 'P1';
+    v_prjid emp.prj_id%TYPE := 'P1';
+                *
+ERROR at line 2:
+ORA-06550: line 2, column 17:
+PLS-00302: component 'PRJ_ID' must be declared
+ORA-06550: line 2, column 13:
+PL/SQL: Item ignored
+ORA-06550: line 3, column 30:
+PLS-00302: component 'PRJ_ID' must be declared
+ORA-06550: line 3, column 5:
+PL/SQL: Item ignored
+ORA-06550: line 11, column 14:
+PLS-00320: the declaration of the type of this expression is incomplete or malformed
+ORA-06550: line 11, column 5:
+PL/SQL: Statement ignored
+
+
+SQL> @ D:\261090700052\dbms\week8\lab7a8.sql;
+Enter value for prj_id: P1
+old   2:     v_prjid proj.prj_no%TYPE := '&prj_id';
+new   2:     v_prjid proj.prj_no%TYPE := 'P1';
+--- Top 2 Highest-Paid Employees for Project: P1  ---
+Mahesh | Salary: 60000 | Department: Marketing
+Suresh | Salary: 55000 | Department: Marketing
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from proj;
+
+DNO PRJ PRJ_NAME             PRJ_CREDIT STRT_DATE END_DATE    PRJ_FUND
+--- --- -------------------- ---------- --------- --------- ----------
+D1  P1  PAYROLL AUTOMATION            4 01-JAN-22 30-JUN-22     500000
+D2  P1  AI RESEARCH PLATFORM          7 15-FEB-22 14-FEB-23     900000
+D3  P2  DATA WAREHOUSE MIGR.          8 01-MAR-22 31-AUG-22     650000
+D4  P3  CRM REVAMP                    5 10-APR-22 09-OCT-22     400000
+D1  P3  ERP REVAMP                    9 11-JAN-20 12-DEC-21     500000
+D5  P4  WAREHOUSE AUTOMATION         10 05-MAY-22 04-NOV-22     700000
+D8  P4  ERP REVAMP                    6 05-MAY-21 09-AUG-21     350000
+D7  P2  CRM REVAMP                    6 07-JUN-20 16-NOV-20     750000
+
+8 rows selected.
+
+SQL> select * from emp;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- ---------
+PRO
+---
+       108 Suraj           DEV                    106 10-NOV-80      70000      25000 D4  02-OCT-05
+P3
+
+       150 Mahesh          CEO                        10-DEC-84      60000      30000 D1  03-DEC-08
+P1
+
+       111 Raghu           ENG                    150 10-DEC-84      49500     150000 D1  03-FEB-05
+P1
+
+       103 Suresh          DEV                    111 10-DEC-80      55000     140000 D1  22-SEP-01
+P1
+
+       125 Manu            DEV                    150 10-DEC-80      50000     115000 D2  02-OCT-02
+P1
+
+       104 Rakesh          CLK                    125 02-OCT-80      40000      10000 D2  26-NOV-05
+P1
+
+       109 Ramesh          CLK                    111 02-AUG-80      54000     110000 D3  12-OCT-02
+P2
+
+       110 Saroj           DEV                    111 10-JUL-80      62000      20000 D3  21-JUN-01
+P2
+
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000      21000 D4  24-NOV-89
+P3
+
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06
+P1
+
+       123 Ashok           MGR                    111 10-DEC-84      35000      10000 D1  23-DEC-08
+P1
+
+       113 Aman            DEV                    111 10-JUL-80      95000      30000 D3  21-JUN-01
+P2
+
+       112 Arnav           CLK                    106 10-JAN-85      50000      11000 D4  10-DEC-07
+P3
+
+       140 Bhuvan          CLK                    111 10-APR-84      35000      13000 D1  10-NOV-02
+P1
+
+       139 Ronald          DEV                    150 10-FEB-90      45000      12000 D3  10-JUN-01
+P2
+
+       102 Raviraj         ENG                    106 10-JAN-85      24000       5000 D1  12-NOV-10
+P3
+
+
+16 rows selected.
+
+SQL> @ D:\261090700052\dbms\week8\lab7a8.sql;
+Enter value for prj_id: P2
+old   2:     v_prjid proj.prj_no%TYPE := '&prj_id';
+new   2:     v_prjid proj.prj_no%TYPE := 'P2';
+--- Top 2 Highest-Paid Employees for Project: P2  ---
+Aman | Salary: 95000 | Department: IT
+Saroj | Salary: 62000 | Department: IT
+
+PL/SQL procedure successfully completed.
+
+SQL> @ D:\261090700052\dbms\week8\lab7a5.sql;
+    COMMIT;
+    *
+ERROR at line 33:
+ORA-06550: line 33, column 5:
+PLS-00103: Encountered the symbol "COMMIT"
+
+
+SQL> @ "D:\261090700052\dbms\week8\lab7a5.sql"
+SQL> @ D:\261090700052\dbms\week8\lab7a5.sql;
+    COMMIT;
+    *
+ERROR at line 33:
+ORA-06550: line 33, column 5:
+PLS-00103: Encountered the symbol "COMMIT"
+
+
+SQL> @ D:\261090700052\dbms\week8\lab7a5.sql;
+    DBMS_OUTPUT.PUT_LINE('Incentives and department budgets successfully allocated!');
+    *
+ERROR at line 33:
+ORA-06550: line 33, column 5:
+PLS-00103: Encountered the symbol "DBMS_OUTPUT"
+ORA-06550: line 33, column 86:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+. ( , * % & - + / at mod remainder rem <an identifier>
+<a double-quoted delimited-identifier> <an exponent (**)> as
+from into || multiset bulk
+
+
+SQL> @ D:\261090700052\dbms\week8\lab7a5.sql;
+        WHERE deptno = p.dno AND prj_id = p.prj_no;
+                                 *
+ERROR at line 15:
+ORA-06550: line 15, column 34:
+PL/SQL: ORA-00904: "PRJ_ID": invalid identifier
+ORA-06550: line 13, column 9:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 23, column 38:
+PL/SQL: ORA-00904: "PRJ_ID": invalid identifier
+ORA-06550: line 21, column 13:
+PL/SQL: SQL Statement ignored
+
+
+SQL> @ D:\261090700052\dbms\week8\lab7a5.sql;
+            SET bonus = NVL(bonus, 0) + v_emp_share
+                            *
+ERROR at line 23:
+ORA-06550: line 23, column 29:
+PL/SQL: ORA-00904: "BONUS": invalid identifier
+ORA-06550: line 22, column 13:
+PL/SQL: SQL Statement ignored
+
+
+SQL> @ D:\261090700052\dbms\week8\lab7a5.sql;
+Incentives and department budgets successfully allocated!
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from dept;
+
+DNO DNAME           LOC DEPT_BUDGET
+--- --------------- --- -----------
+D1  Marketing       CHN      695000
+D2  Research        MNG      489000
+D3  IT              BNG      556000
+D4  HR              HYD      260000
+D5  Accounts        BNG      710000
+    Corporate       HYD      700000
+D7  Sales           CHN      535000
+D8  CS              MNG      513000
+
+8 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL>

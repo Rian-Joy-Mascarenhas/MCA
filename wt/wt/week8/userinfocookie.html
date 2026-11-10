@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Information Using Cookies</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 40px;
+      }
+
+      input,
+      button {
+        padding: 8px;
+        margin: 5px;
+      }
+    </style>
+
+    <script>
+      function setCookie(name, value, days) {
+        var d = new Date();
+        d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+
+        document.cookie =
+          name +
+          "=" +
+          encodeURIComponent(value) +
+          "; expires=" +
+          d.toUTCString() +
+          "; path=/";
+      }
+
+      function getCookie(name) {
+        var cname = name + "=";
+        var cookies = document.cookie.split(";");
+
+        for (var i = 0; i < cookies.length; i++) {
+          var c = cookies[i].trim();
+
+          if (c.indexOf(cname) == 0) {
+            return decodeURIComponent(c.substring(cname.length));
+          }
+        }
+
+        return "";
+      }
+
+      function saveInfo() {
+        var name = document.getElementById("username").value.trim();
+        var email = document.getElementById("email").value.trim();
+
+        if (name == "" || email == "") {
+          alert("Please enter your name and email.");
+          return;
+        }
+
+        setCookie("username", name, 30);
+        setCookie("email", email, 30);
+
+        alert("User information saved successfully!");
+        displayInfo();
+      }
+
+      function displayInfo() {
+        var name = getCookie("username");
+        var email = getCookie("email");
+        var lastAccess = getCookie("lastAccess");
+
+        if (name != "") {
+          document.getElementById("result").innerHTML =
+            "Welcome, " +
+            name +
+            "!<br>" +
+            "Email: " +
+            email +
+            "<br>" +
+            "Last Access: " +
+            (lastAccess || "First visit");
+        }
+
+        setCookie("lastAccess", new Date().toLocaleString(), 30);
+      }
+
+      function loadInfo() {
+        document.getElementById("username").value = getCookie("username");
+        document.getElementById("email").value = getCookie("email");
+
+        displayInfo();
+      }
+    </script>
+  </head>
+
+  <body onload="loadInfo()">
+    <h2>User Information</h2>
+
+    <form
+      onsubmit="
+        saveInfo();
+        return false;
+      "
+    >
+      <input type="text" id="username" placeholder="Enter your name" required />
+      <br />
+
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <br />
+
+      <button type="submit">Save Information</button>
+    </form>
+
+    <h3>Stored Information</h3>
+    <p id="result"></p>
+  </body>
+</html>

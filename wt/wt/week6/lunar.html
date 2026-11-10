@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunar Eclipse Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at center, #0b0b1a 0%, #020205 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        .space {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .earth-shadow {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.95), inset 0 0 30px rgba(255, 100, 50, 0.15);
+            z-index: 2;
+        }
+        .moon {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #f4f4f4;
+            border-radius: 50%;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6), 
+                        inset -12px -12px 25px rgba(0, 0, 0, 0.6);
+            z-index: 1;
+            animation: eclipseCycle 12s infinite linear;
+        }
+        @keyframes eclipseCycle {
+            0% {
+                transform: translateX(-400px);
+                background: #f4f4f4;
+                box-shadow: 0 0 25px rgba(255, 255, 255, 0.6), inset -12px -12px 25px rgba(0, 0, 0, 0.6);
+            }
+            40% {
+                /* Entering partial shadow (Penumbra) */
+                background: #dcd6cd;
+                box-shadow: 0 0 15px rgba(255, 200, 150, 0.3), inset -12px -12px 25px rgba(0, 0, 0, 0.6);
+            }
+            50% {
+                /* Total Eclipse (Blood Moon phase) */
+                transform: translateX(0px);
+                background: #a33314;
+                box-shadow: 0 0 10px rgba(163, 51, 20, 0.4), inset -5px -5px 15px rgba(0, 0, 0, 0.8);
+            }
+            60% {
+                /* Exiting partial shadow */
+                background: #dcd6cd;
+                box-shadow: 0 0 15px rgba(255, 200, 150, 0.3), inset -12px -12px 25px rgba(0, 0, 0, 0.6);
+            }
+            100% {
+                transform: translateX(400px);
+                background: #f4f4f4;
+                box-shadow: 0 0 25px rgba(255, 255, 255, 0.6), inset -12px -12px 25px rgba(0, 0, 0, 0.6);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="space">
+        <div class="earth-shadow"></div>
+        <div class="moon"></div>
+    </div>
+</body>
+</html>

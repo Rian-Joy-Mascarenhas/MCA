@@ -1,0 +1,14 @@
+SET SERVEROUTPUT ON; 
+CREATE OR REPLACE PROCEDURE display_dept_total_salary 
+IS 
+CURSOR c_sal IS 
+SELECT d.dname, SUM(e.sal) AS total_sal 
+FROM DEPT d, EMP e WHERE d.dno = e.deptno 
+GROUP BY d.dname; 
+BEGIN 
+FOR rec IN c_sal LOOP 
+DBMS_OUTPUT.PUT_LINE(rec.dname || ' Department Total Salary: Rs. ' || 
+rec.total_sal); 
+END LOOP; 
+END; 
+/

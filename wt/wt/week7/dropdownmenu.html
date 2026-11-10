@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropdown Menu</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+      .menu {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+      }
+      select {
+        padding: 10px;
+        width: 220px;
+        border: 1px solid #007bff;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      @media (max-width: 500px) {
+        select {
+          width: 100%;
+          max-width: 300px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>JavaScript Dropdown Menu</h2>
+    <div class="menu">
+      <select id="navdropdown" onchange="navpagechange()">
+        <option value="" selected disabled>Select a Page</option>
+        <option value="file:///D:/261090700052/week4/pass.html">
+          Passport
+        </option>
+        <option value="file:///D:/261090700052/week6/lunar.html">
+          Lunar Eclipse
+        </option>
+        <option value="file:///D:/261090700052/week6/newtoncradle.html">
+          Newton's Cradle
+        </option>
+      </select>
+    </div>
+    <script>
+      function navpagechange() {
+        var dropdown = document.getElementById("navdropdown");
+        var selectedurl = dropdown.value;
+        if (selectedurl) {
+          window.location.href = selectedurl;
+        }
+      }
+    </script>
+  </body>
+</html>

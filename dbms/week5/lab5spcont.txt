@@ -1,0 +1,713 @@
+SQL> SELECT D.DNAME,COUNT(E.EMPNO) AS employee_count FROM DEPT D LEFT JOIN EMP E ON D.DNO = E.DEPTNO GROUP BY D.DNAME;
+
+DNAME           EMPLOYEE_COUNT
+--------------- --------------
+Sales                        0
+Accounts                     0
+HR                           3
+Marketing                    7
+Research                     2
+IT                           4
+CS                           0
+Corporate                    0
+
+8 rows selected.
+
+SQL> SELECT * FROM EMP WHERE MONTHS_BETWEEN(SYSDATE, DATE_JOIN) > 60;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       108 Suraj           DEV                    106 10-NOV-80      70000
+     25000 D4  02-OCT-05 P3
+
+       150 CEO             CEO                        10-DEC-84      60000
+     30000 D1  03-DEC-08 P1
+
+       111 Raghu           ENG                    150 10-DEC-84      49500
+    150000 D1  03-FEB-05 P1
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       103 Suresh          DEV                    111 10-DEC-80      55000
+    140000 D1  22-SEP-01 P1
+
+       125 Manu            DEV                    150 10-DEC-80      50000
+    115000 D2  02-OCT-02 P1
+
+       104 Rakesh          CLK                    125 02-OCT-80      40000
+     10000 D2  26-NOV-05 P1
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       109 Ramesh          CLK                    111 02-AUG-80      54000
+    110000 D3  12-OCT-02 P2
+
+       110 Saroj           DEV                    111 10-JUL-80      62000
+     20000 D3  21-JUN-01 P2
+
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000
+     21000 D4  24-NOV-89 P3
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       101 Ravi            MGR                    111 10-OCT-95      32000
+     10000 D1  02-OCT-06 P1
+
+       123 Ashok           MGR                    111 10-DEC-84      35000
+     10000 D1  23-DEC-08 P1
+
+       113 Aman            DEV                    111 10-JUL-80      95000
+     30000 D3  21-JUN-01 P2
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       112 Arnav           CLK                    106 10-JAN-85      50000
+     11000 D4  10-DEC-07 P3
+
+       140 Bhuvan          CLK                    111 10-APR-84      35000
+     13000 D1  10-NOV-02 P1
+
+       139 Ronald          DEV                    150 10-FEB-90      45000
+     12000 D3  10-JUN-01 P2
+
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL
+---------- --------------- --------------- ---------- --------- ----------
+      COMM DEP DATE_JOIN PRO
+---------- --- --------- ---
+       102 Raviraj         ENG                    106 10-JAN-85      24000
+      5000 D1  12-NOV-10 P3
+
+
+16 rows selected.
+
+SQL> set pagesize 200
+SQL> set linesize 150
+SQL> SELECT * FROM EMP WHERE MONTHS_BETWEEN(SYSDATE, DATE_JOIN) > 60;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN PRO
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- ---
+       108 Suraj           DEV                    106 10-NOV-80      70000      25000 D4  02-OCT-05 P3
+       150 CEO             CEO                        10-DEC-84      60000      30000 D1  03-DEC-08 P1
+       111 Raghu           ENG                    150 10-DEC-84      49500     150000 D1  03-FEB-05 P1
+       103 Suresh          DEV                    111 10-DEC-80      55000     140000 D1  22-SEP-01 P1
+       125 Manu            DEV                    150 10-DEC-80      50000     115000 D2  02-OCT-02 P1
+       104 Rakesh          CLK                    125 02-OCT-80      40000      10000 D2  26-NOV-05 P1
+       109 Ramesh          CLK                    111 02-AUG-80      54000     110000 D3  12-OCT-02 P2
+       110 Saroj           DEV                    111 10-JUL-80      62000      20000 D3  21-JUN-01 P2
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000      21000 D4  24-NOV-89 P3
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06 P1
+       123 Ashok           MGR                    111 10-DEC-84      35000      10000 D1  23-DEC-08 P1
+       113 Aman            DEV                    111 10-JUL-80      95000      30000 D3  21-JUN-01 P2
+       112 Arnav           CLK                    106 10-JAN-85      50000      11000 D4  10-DEC-07 P3
+       140 Bhuvan          CLK                    111 10-APR-84      35000      13000 D1  10-NOV-02 P1
+       139 Ronald          DEV                    150 10-FEB-90      45000      12000 D3  10-JUN-01 P2
+       102 Raviraj         ENG                    106 10-JAN-85      24000       5000 D1  12-NOV-10 P3
+
+16 rows selected.
+
+SQL> SELECT * FROM EMP WHERE TO_CHAR(DATE_BIRTH, 'MM') = '12' AND TO_CHAR(DATE_BIRTH, 'YYYY') = '1984';
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN PRO
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- ---
+       150 CEO             CEO                        10-DEC-84      60000      30000 D1  03-DEC-08 P1
+       111 Raghu           ENG                    150 10-DEC-84      49500     150000 D1  03-FEB-05 P1
+       123 Ashok           MGR                    111 10-DEC-84      35000      10000 D1  23-DEC-08 P1
+
+SQL> SELECT JOB,COUNT(*) AS employee_count FROM EMP GROUP BY JOB;
+
+JOB             EMPLOYEE_COUNT
+--------------- --------------
+CEO                          1
+A.MGR                        1
+CLK                          4
+DEV                          6
+ENG                          2
+MGR                          2
+
+6 rows selected.
+
+SQL> SELECT D.DNAME,COUNT(E.EMPNO) AS employee_count FROM DEPT D JOIN EMP E ON D.DNO = E.DEPTNO
+  2  GROUP BY D.DNAME
+  3  HAVING COUNT(E.EMPNO) > 3;
+
+DNAME           EMPLOYEE_COUNT
+--------------- --------------
+Marketing                    7
+IT                           4
+
+SQL> SELECT E.ENAME FROM EMP E JOIN PROJ P ON E.DEPTNO=P.DNO WHERE PRJ_NAME='PAYROLL AUTOMATION';
+
+ENAME
+---------------
+CEO
+Raghu
+Suresh
+Ravi
+Ashok
+Bhuvan
+Raviraj
+
+7 rows selected.
+
+SQL> SELECT CEIL(2.83) AS "CEIL",FLOOR(2.83) AS "FLOOR",TRUNC(2.83) AS "TRUNC",ROUND(2.83) AS "ROUND" FROM DUAL;
+
+      CEIL      FLOOR      TRUNC      ROUND
+---------- ---------- ---------- ----------
+         3          2          2          3
+
+SQL> SELECT PRJ_NAME FROM PROJ WHERE MONTHS_BETWEEN(END_DATE-STRT_DATE)>=12;
+SELECT PRJ_NAME FROM PROJ WHERE MONTHS_BETWEEN(END_DATE-STRT_DATE)>=12
+                                *
+ERROR at line 1:
+ORA-00909: invalid number of arguments
+
+
+SQL> SELECT PRJ_NAME FROM PROJ WHERE MONTHS_BETWEEN(END_DATE,STRT_DATE)>=12;
+
+PRJ_NAME
+--------------------
+ERP REVAMP
+
+SQL> SELECT E.ENAME,P.PRJ_NAME,T.TASK_NAME,T.STATUS
+  2  FROM EMP E JOIN PROJ P
+  3  ON E.DEPTNO = P.DNO AND E.PRJ_ID = P.PRJ_NO
+  4  JOIN TASK T ON P.DNO = T.DNO AND P.PRJ_NO = T.PRJ_ID;
+ON E.DEPTNO = P.DNO AND E.PRJ_ID = P.PRJ_NO
+                        *
+ERROR at line 3:
+ORA-00904: "E"."PRJ_ID": invalid identifier
+
+
+SQL> SELECT E.ENAME,P.PRJ_NAME,T.TASK_NAME,T.STATUS
+  2  FROM EMP E JOIN PROJ P
+  3  ON E.DEPTNO = P.DNO AND E.PRJ_ID = P.PRJ_NO
+  4  JOIN TASK T ON P.DNO = T.DNO AND P.PRJ_NO = T.PRJ_ID;
+ON E.DEPTNO = P.DNO AND E.PRJ_ID = P.PRJ_NO
+                        *
+ERROR at line 3:
+ORA-00904: "E"."PRJ_ID": invalid identifier
+
+
+SQL> SELECT E.ENAME,P.PRJ_NAME,T.TASK_NAME,T.STATUS
+  2  FROM EMP E JOIN PROJ P
+  3  ON E.DEPTNO = P.DNO AND T.PRJ_ID = P.PRJ_NO
+  4  JOIN TASK T ON P.DNO = T.DNO AND P.PRJ_NO = T.PRJ_ID;
+ON E.DEPTNO = P.DNO AND T.PRJ_ID = P.PRJ_NO
+                        *
+ERROR at line 3:
+ORA-00904: "T"."PRJ_ID": invalid identifier
+
+
+SQL>
+SQL> SELECT E.ENAME,P.PRJ_NAME,T.TASK_NAME,T.STATUS
+  2  FROM EMP E JOIN PROJ P
+  3  ON E.DEPTNO = P.DNO AND T.DNO = P.PRJ_NO
+  4  JOIN TASK T ON P.DNO = T.DNO AND P.PRJ_NO = T.PRJ_ID;
+ON E.DEPTNO = P.DNO AND T.DNO = P.PRJ_NO
+                        *
+ERROR at line 3:
+ORA-00904: "T"."DNO": invalid identifier
+
+
+SQL> SELECT D.DNAME,SUM(P.PRJ_CREDIT) AS "TOTAL BUDGET"
+  2  FROM DEPT D JOIN PROJ P ON D.DNO=P.DNO GROUP BY D.DNAME;
+
+DNAME           TOTAL BUDGET
+--------------- ------------
+Accounts                  10
+Sales                      6
+Marketing                 13
+HR                         5
+Research                   7
+IT                         8
+CS                         6
+
+7 rows selected.
+
+SQL> SELECT STATUS,COUNT(*) AS "TASKCOUNT" FROM TASK GROUP BY STATUS;
+
+STATUS        TASKCOUNT
+------------ ----------
+PENDING               1
+COMPLETED             7
+IN-PROGRESS           2
+
+SQL> SELECT UPPER(ENAME) AS "EMPNAME",DATE_JOIN FROM EMP;
+
+EMPNAME         DATE_JOIN
+--------------- ---------
+SURAJ           02-OCT-05
+CEO             03-DEC-08
+RAGHU           03-FEB-05
+SURESH          22-SEP-01
+MANU            02-OCT-02
+RAKESH          26-NOV-05
+RAMESH          12-OCT-02
+SAROJ           21-JUN-01
+SARTAJ          24-NOV-89
+RAVI            02-OCT-06
+ASHOK           23-DEC-08
+AMAN            21-JUN-01
+ARNAV           10-DEC-07
+BHUVAN          10-NOV-02
+RONALD          10-JUN-01
+RAVIRAJ         12-NOV-10
+
+16 rows selected.
+
+SQL> SELECT UPPER(ENAME) AS "EMPNAME",TO_CHAR(DATE_JOIN,'YYYY') AS "JOIN_YEAR" FROM EMP;
+
+EMPNAME         JOIN
+--------------- ----
+SURAJ           2005
+CEO             2008
+RAGHU           2005
+SURESH          2001
+MANU            2002
+RAKESH          2005
+RAMESH          2002
+SAROJ           2001
+SARTAJ          1989
+RAVI            2006
+ASHOK           2008
+AMAN            2001
+ARNAV           2007
+BHUVAN          2002
+RONALD          2001
+RAVIRAJ         2010
+
+16 rows selected.
+
+SQL> SELECT EMPNO,ENAME, TRUNC(MONTHS_BETWEEN(SYSDATE,DATE_JOIN)) AS MONTHS SERVED FROM EMP;
+SELECT EMPNO,ENAME, TRUNC(MONTHS_BETWEEN(SYSDATE,DATE_JOIN)) AS MONTHS SERVED FROM EMP
+                                                                       *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> SELECT EMPNO,ENAME, TRUNC(MONTHS_BETWEEN(SYSDATE,DATE_JOIN)) AS MONTHS_SERVED FROM EMP;
+
+     EMPNO ENAME           MONTHS_SERVED
+---------- --------------- -------------
+       108 Suraj                     251
+       150 CEO                       213
+       111 Raghu                     259
+       103 Suresh                    300
+       125 Manu                      287
+       104 Rakesh                    249
+       109 Ramesh                    287
+       110 Saroj                     303
+       106 Sartaj                    441
+       101 Ravi                      239
+       123 Ashok                     213
+       113 Aman                      303
+       112 Arnav                     225
+       140 Bhuvan                    286
+       139 Ronald                    303
+       102 Raviraj                   190
+
+16 rows selected.
+
+SQL> SELECT E.NAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO GROUP BY D.DNAME HAVING MAX(SAL);
+SELECT E.NAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO GROUP BY D.DNAME HAVING MAX(SAL)
+                                                                                      *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> SELECT E.NAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO GROUP BY D.DNAME HAVING MAX(E.SAL);
+SELECT E.NAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO GROUP BY D.DNAME HAVING MAX(E.SAL)
+                                                                                        *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> SELECT JOB,SUM(JOB) AS TOTALSAL FROM EMP GROUPBY JOB;
+SELECT JOB,SUM(JOB) AS TOTALSAL FROM EMP GROUPBY JOB
+                                                 *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> SELECT JOB,SUM(JOB) AS TOTALSAL FROM EMP GROUP BY JOB;
+SELECT JOB,SUM(JOB) AS TOTALSAL FROM EMP GROUP BY JOB
+               *
+ERROR at line 1:
+ORA-01722: invalid number
+
+
+SQL> SELECT JOB,SUM(SAL) AS TOTALSAL FROM EMP GROUP BY JOB;
+
+JOB               TOTALSAL
+--------------- ----------
+CEO                  60000
+A.MGR                68000
+CLK                 179000
+DEV                 377000
+ENG                  73500
+MGR                  67000
+
+6 rows selected.
+
+SQL> SELECT DNAME FROM DEPT WHERE(
+  2  SELECT * FROM PROJ WHERE PROJNO = 'P1');
+SELECT * FROM PROJ WHERE PROJNO = 'P1')
+                                      *
+ERROR at line 2:
+ORA-00936: missing expression
+
+
+SQL> SELECT E.ENAME,E.JOB FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO WHERE D.DNAME IN('Marketing','Research');
+
+ENAME           JOB
+--------------- ---------------
+CEO             CEO
+Raghu           ENG
+Suresh          DEV
+Manu            DEV
+Rakesh          CLK
+Ravi            MGR
+Ashok           MGR
+Bhuvan          CLK
+Raviraj         ENG
+
+9 rows selected.
+
+SQL> select ename,sal from emp where sal>min(sal);
+select ename,sal from emp where sal>min(sal)
+                                    *
+ERROR at line 1:
+ORA-00934: group function is not allowed here
+
+
+SQL> select ename,sal from emp where sal>(select min(sal) from emp);
+
+ENAME                  SAL
+--------------- ----------
+Suraj                70000
+CEO                  60000
+Raghu                49500
+Suresh               55000
+Manu                 50000
+Rakesh               40000
+Ramesh               54000
+Saroj                62000
+Sartaj               68000
+Ravi                 32000
+Ashok                35000
+Aman                 95000
+Arnav                50000
+Bhuvan               35000
+Ronald               45000
+
+15 rows selected.
+
+SQL> SELECT DNAME FROM DEPT WHERE DNO IN(
+  2  SELECT PRJ_NAME FROM PROJ GROUP BY DNO HAVING COUNT(*)>1);
+SELECT PRJ_NAME FROM PROJ GROUP BY DNO HAVING COUNT(*)>1)
+       *
+ERROR at line 2:
+ORA-00979: not a GROUP BY expression
+
+
+SQL> SELECT DNAME FROM DEPT WHERE DNO IN(
+  2  SELECT DNO FROM PROJ GROUP BY DNO HAVING COUNT(*)>1);
+
+DNAME
+---------------
+Marketing
+
+SQL> SELECT COUNT(*) AS EMPAFTER15 FROM EMP WHERE TO_CHAR(DATE_JOIN,'DD'))>15;
+SELECT COUNT(*) AS EMPAFTER15 FROM EMP WHERE TO_CHAR(DATE_JOIN,'DD'))>15
+                                                                    *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> SELECT COUNT(*) AS EMPAFTER15 FROM EMP WHERE TO_CHAR(DATE_JOIN,'DD')>15;
+
+EMPAFTER15
+----------
+         6
+
+SQL> SELECT ENO,ENAME,JOB FROM EMP WHERE JOB IN(
+  2  SELECT ENAME FROM EMP WHERE ENAME='Mahesh');
+SELECT ENO,ENAME,JOB FROM EMP WHERE JOB IN(
+       *
+ERROR at line 1:
+ORA-00904: "ENO": invalid identifier
+
+
+SQL> SELECT EMPNO,ENAME,JOB FROM EMP WHERE JOB IN(
+  2  SELECT ENAME FROM EMP WHERE ENAME='Mahesh');
+
+no rows selected
+
+SQL> UPDATE EMP SET ENAME='Mahesh' where ename='CEO';
+
+1 row updated.
+
+SQL> SELECT EMPNO,ENAME,JOB FROM EMP WHERE JOB IN(
+  2  SELECT ENAME FROM EMP WHERE ENAME='Mahesh');
+
+no rows selected
+
+SQL> select * from emp;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN PRO
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- ---
+       108 Suraj           DEV                    106 10-NOV-80      70000      25000 D4  02-OCT-05 P3
+       150 Mahesh          CEO                        10-DEC-84      60000      30000 D1  03-DEC-08 P1
+       111 Raghu           ENG                    150 10-DEC-84      49500     150000 D1  03-FEB-05 P1
+       103 Suresh          DEV                    111 10-DEC-80      55000     140000 D1  22-SEP-01 P1
+       125 Manu            DEV                    150 10-DEC-80      50000     115000 D2  02-OCT-02 P1
+       104 Rakesh          CLK                    125 02-OCT-80      40000      10000 D2  26-NOV-05 P1
+       109 Ramesh          CLK                    111 02-AUG-80      54000     110000 D3  12-OCT-02 P2
+       110 Saroj           DEV                    111 10-JUL-80      62000      20000 D3  21-JUN-01 P2
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000      21000 D4  24-NOV-89 P3
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06 P1
+       123 Ashok           MGR                    111 10-DEC-84      35000      10000 D1  23-DEC-08 P1
+       113 Aman            DEV                    111 10-JUL-80      95000      30000 D3  21-JUN-01 P2
+       112 Arnav           CLK                    106 10-JAN-85      50000      11000 D4  10-DEC-07 P3
+       140 Bhuvan          CLK                    111 10-APR-84      35000      13000 D1  10-NOV-02 P1
+       139 Ronald          DEV                    150 10-FEB-90      45000      12000 D3  10-JUN-01 P2
+       102 Raviraj         ENG                    106 10-JAN-85      24000       5000 D1  12-NOV-10 P3
+
+16 rows selected.
+
+SQL> SELECT EMPNO,ENAME,JOB FROM EMP WHERE JOB =(
+  2  SELECT ENAME FROM EMP WHERE ENAME='Mahesh');
+
+no rows selected
+
+SQL> SELECT EMPNO,ENAME,JOB FROM EMP WHERE JOB =(
+  2  SELECT JOB FROM EMP WHERE ENAME='Mahesh');
+
+     EMPNO ENAME           JOB
+---------- --------------- ---------------
+       150 Mahesh          CEO
+
+SQL> CREATE VIEW EMP_PRJ_VW AS
+  2  SELECT E.EMPNO,E.ENAME,E.JOB,D.DNAME, P.PRJ_NO,P.PRJ_NAME
+  3  FROM EMP EJOIN DEPT D ON E.DEPTNO = D.DNO
+  4  JOIN PROJ P ON E.DEPTNO = P.DNO
+  5   AND E.PRJ_ID = P.PRJ_NO
+  6  WHERE UPPER(D.DNAME) = 'MARKETING';
+FROM EMP EJOIN DEPT D ON E.DEPTNO = D.DNO
+               *
+ERROR at line 3:
+ORA-00933: SQL command not properly ended
+
+
+SQL> CREATE VIEW EMP_PRJ_VW AS
+  2  SELECT E.EMPNO,E.ENAME,E.JOB,D.DNAME, P.PRJ_NO,P.PRJ_NAME
+  3  FROM EMP E JOIN DEPT D ON E.DEPTNO = D.DNO
+  4  JOIN PROJ P ON E.DEPTNO = P.DNO
+  5   AND E.PRJ_ID = P.PRJ_NO
+  6  WHERE UPPER(D.DNAME) = 'MARKETING';
+ AND E.PRJ_ID = P.PRJ_NO
+     *
+ERROR at line 5:
+ORA-00904: "E"."PRJ_ID": invalid identifier
+
+
+SQL> CREATE VIEW EMP_PRJ_VW AS
+  2  SELECT E.EMPNO,E.ENAME,E.JOB,D.DNAME, P.PRJ_NO,P.PRJ_NAME
+  3  FROM EMP E JOIN DEPT D ON E.DEPTNO = D.DNO
+  4  JOIN PROJ P ON E.DEPTNO = P.DNO
+  5   AND T.PRJ_ID = P.PRJ_NO
+  6  WHERE UPPER(D.DNAME) = 'MARKETING';
+ AND T.PRJ_ID = P.PRJ_NO
+     *
+ERROR at line 5:
+ORA-00904: "T"."PRJ_ID": invalid identifier
+
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT PRJ_ID,SUM(E_DATE - S_DATE) AS totaltskdur,
+  2  AVG(E_DATE - S_DATE) AS avgtskdur FROM TASK GROUP BY PRJ_ID;
+
+PRJ TOTALTSKDUR  AVGTSKDUR
+--- ----------- ----------
+P2           17         17
+P1           39       19.5
+P3           32         16
+P4           30         15
+
+SQL> SELECT TO_CHAR(DATE_JOIN, 'MM') AS join_month,COUNT(*) AS employee_count
+  2  FROM EMP
+  3  GROUP BY TO_CHAR(DATE_JOIN, 'MM') ORDER BY join_month ASC;
+
+JO EMPLOYEE_COUNT
+-- --------------
+02              1
+06              3
+09              1
+10              4
+11              4
+12              3
+
+6 rows selected.
+
+SQL> CREATE INDEX IDX_NAME_JOB
+  2  ON EMP (ENAME, JOB);
+
+Index created.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN PRO
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- ---
+       108 Suraj           DEV                    106 10-NOV-80      70000      25000 D4  02-OCT-05 P3
+       150 Mahesh          CEO                        10-DEC-84      60000      30000 D1  03-DEC-08 P1
+       111 Raghu           ENG                    150 10-DEC-84      49500     150000 D1  03-FEB-05 P1
+       103 Suresh          DEV                    111 10-DEC-80      55000     140000 D1  22-SEP-01 P1
+       125 Manu            DEV                    150 10-DEC-80      50000     115000 D2  02-OCT-02 P1
+       104 Rakesh          CLK                    125 02-OCT-80      40000      10000 D2  26-NOV-05 P1
+       109 Ramesh          CLK                    111 02-AUG-80      54000     110000 D3  12-OCT-02 P2
+       110 Saroj           DEV                    111 10-JUL-80      62000      20000 D3  21-JUN-01 P2
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000      21000 D4  24-NOV-89 P3
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06 P1
+       123 Ashok           MGR                    111 10-DEC-84      35000      10000 D1  23-DEC-08 P1
+       113 Aman            DEV                    111 10-JUL-80      95000      30000 D3  21-JUN-01 P2
+       112 Arnav           CLK                    106 10-JAN-85      50000      11000 D4  10-DEC-07 P3
+       140 Bhuvan          CLK                    111 10-APR-84      35000      13000 D1  10-NOV-02 P1
+       139 Ronald          DEV                    150 10-FEB-90      45000      12000 D3  10-JUN-01 P2
+       102 Raviraj         ENG                    106 10-JAN-85      24000       5000 D1  12-NOV-10 P3
+
+16 rows selected.
+
+SQL> SELECT * FROM EMP WHERE DEPTNO =(
+  2  SELECT  DEPTNO FROM EMP WHERE ENAME='Ravi');
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN PRO
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- ---
+       150 Mahesh          CEO                        10-DEC-84      60000      30000 D1  03-DEC-08 P1
+       111 Raghu           ENG                    150 10-DEC-84      49500     150000 D1  03-FEB-05 P1
+       103 Suresh          DEV                    111 10-DEC-80      55000     140000 D1  22-SEP-01 P1
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06 P1
+       123 Ashok           MGR                    111 10-DEC-84      35000      10000 D1  23-DEC-08 P1
+       140 Bhuvan          CLK                    111 10-APR-84      35000      13000 D1  10-NOV-02 P1
+       102 Raviraj         ENG                    106 10-JAN-85      24000       5000 D1  12-NOV-10 P3
+
+7 rows selected.
+
+SQL>
+SQL> SELECT D.DNAME
+  2  FROM DEPT D
+  3  WHERE EXISTS (SELECT 1 FROM PROJ P
+  4  WHERE P.DNO = D.DNO AND P.PRJ_CREDIT > 400000);
+
+no rows selected
+
+SQL> SELECT E.ENAME FROM EMP E
+  2  WHERE NOT EXISTS (
+  3  SELECT * FROM DEPENDENT D
+  4  WHERE D.EMPNO = E.EMPNO);
+
+ENAME
+---------------
+Ramesh
+Ashok
+Raghu
+Manu
+Raviraj
+Rakesh
+Arnav
+Aman
+Mahesh
+Saroj
+Ronald
+Bhuvan
+
+12 rows selected.
+
+SQL> SELECT ENAME FROM EMP
+  2  WHERE JOB='DEV'
+  3  UNION
+  4  SELECT ENAME
+  5  FROM EMP
+  6  WHERE JOB = 'ENG';
+
+ENAME
+---------------
+Aman
+Manu
+Raghu
+Raviraj
+Ronald
+Saroj
+Suraj
+Suresh
+
+8 rows selected.
+
+SQL> SELECT EMPNO, ENAME, COUNT(DISTINCT PRJ_ID) AS project_count
+  2  FROM EMP GROUP BY EMPNO, ENAME
+  3  HAVING COUNT(DISTINCT PRJ_ID) = (
+  4      SELECT MAX(project_count) FROM (
+  5          SELECT EMPNO, COUNT(DISTINCT PRJ_ID) AS project_count
+  6          FROM EMP GROUP BY EMPNO));
+HAVING COUNT(DISTINCT PRJ_ID) = (
+                      *
+ERROR at line 3:
+ORA-00904: "PRJ_ID": invalid identifier
+
+
+SQL> SELECT EMPNO, ENAME, COUNT(DISTINCT PRJ_ID) AS project_count
+  2  FROM EMP GROUP BY EMPNO, ENAME
+  3  HAVING COUNT(PRJ_ID) = (
+  4      SELECT MAX(project_count) FROM (
+  5          SELECT EMPNO, COUNT(DISTINCT PRJ_ID) AS project_count
+  6          FROM EMP GROUP BY EMPNO));
+HAVING COUNT(PRJ_ID) = (
+             *
+ERROR at line 3:
+ORA-00904: "PRJ_ID": invalid identifier
+
+
+SQL> SELECT EMPNO, ENAME, COUNT(DISTINCT PRJ_ID) AS project_count
+  2  FROM EMP GROUP BY EMPNO, ENAME
+  3  HAVING COUNT(PRJ_ID) = (
+  4      SELECT MAX(project_count) FROM (
+  5          SELECT EMPNO, COUNT(PRJ_ID) AS project_count
+  6          FROM EMP GROUP BY EMPNO));
+HAVING COUNT(PRJ_ID) = (
+             *
+ERROR at line 3:
+ORA-00904: "PRJ_ID": invalid identifier
+
+
+SQL> SELECT E.ENAME,
+  2         P.PRJ_NAME,
+  3         T.TASK_NAME,
+  4         T.STATUS
+  5  FROM EMP E
+  6  JOIN PROJ P
+  7    ON E.DEPTNO = P.DNO
+  8   AND E.PRJ_ID = P.PRJ_NO
+  9  JOIN TASK T
+ 10    ON P.DNO = T.DNO
+ 11   AND P.PRJ_NO = T.PRJ_ID;
+ AND E.PRJ_ID = P.PRJ_NO
+     *
+ERROR at line 8:
+ORA-00904: "E"."PRJ_ID": invalid identifier

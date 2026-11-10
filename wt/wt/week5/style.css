@@ -1,0 +1,110 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+header {
+    background-color:black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+nav {
+    background-color: #444;
+    text-align: center;
+    padding: 12px;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 20px;
+}
+nav a:hover {
+    color: yellow;
+}
+.container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+.side-nav,
+.contact {
+    background-color: white;
+    padding: 20px;
+    width: 20%;
+}
+.side-nav a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    margin: 10px 0;
+}
+main {
+    background-color: white;
+    padding: 20px;
+    width: 60%;
+}
+.gallery-button {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+.gallery-title {
+    text-align: center;
+}
+.gallery {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+}
+.photo {
+    background-color:white;
+    padding: 10px;
+    text-align: center;
+}
+.photo img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+p{
+	font-weight:bold;
+}
+@media (min-width: 992px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 767px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+    nav a {
+        margin: 8px;
+    }
+    .container {
+        flex-direction: column;
+    }
+    .side-nav,
+    main,
+    .contact {
+        width: 100%;
+    }
+}

@@ -1,0 +1,7 @@
+SET SERVEROUTPUT ON;
+BEGIN
+    FOR v_dept IN (SELECT * FROM dept FETCH FIRST 5 ROWS ONLY) LOOP
+    DBMS_OUTPUT.PUT_LINE('Dept Number: ' || v_dept.dno);
+  END LOOP;
+END;
+/

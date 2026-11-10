@@ -1,0 +1,195 @@
+SQL> @ D:\OraclePrg\261090700052\week8\lab8a1.sql;
+Enter value for empno: 101
+old   2: v_empno emp.empno%type:=&empno;
+new   2: v_empno emp.empno%type:=101;
+Enter value for deptno: D1
+old   3: v_deptno emp.deptno%type:=&deptno;
+new   3: v_deptno emp.deptno%type:=D1;
+v_deptno emp.deptno%type:=D1;
+                          *
+ERROR at line 3:
+ORA-06550: line 3, column 27:
+PLS-00201: identifier 'D1' must be declared
+ORA-06550: line 3, column 10:
+PL/SQL: Item ignored
+ORA-06550: line 8, column 21:
+PLS-00201: identifier 'ENAME' must be declared
+ORA-06550: line 8, column 27:
+PL/SQL: ORA-00904: : invalid identifier
+ORA-06550: line 8, column 2:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 20, column 50:
+PLS-00320: the declaration of the type of this expression is incomplete or
+malformed
+ORA-06550: line 20, column 50:
+PL/SQL: ORA-00904: "V_DEPTNO": invalid identifier
+ORA-06550: line 20, column 3:
+PL/SQL: SQL Statement ignored
+
+
+SQL> set pagesize 200
+SQL> set linesize 200
+SQL> select * from emp;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN PRO
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- ---
+       108 Suraj           DEV                    106 10-NOV-80      70000   71666.67 D4  02-OCT-05 P3
+       150 Mahesh          CEO                        10-DEC-84      60000      95000 D1  03-DEC-08 P1
+       111 Raghu           ENG                    150 10-DEC-84      49500     215000 D1  03-FEB-05 P1
+       103 Suresh          DEV                    111 10-DEC-80      55000     205000 D1  22-SEP-01 P1
+       125 Manu            DEV                    150 10-DEC-80      50000     335500 D2  02-OCT-02 P1
+       104 Rakesh          CLK                    125 02-OCT-80      40000     230500 D2  26-NOV-05 P1
+       109 Ramesh          CLK                    111 02-AUG-80      54000     201000 D3  12-OCT-02 P2
+       110 Saroj           DEV                    111 10-JUL-80      62000     111000 D3  21-JUN-01 P2
+       106 Sartaj          A.MGR                  111 02-OCT-86      68000   67666.67 D4  24-NOV-89 P3
+       101 Ravi            MGR                    111 10-OCT-95      32000      75000 D1  02-OCT-06 P1
+       123 Ashok           MGR                    111 10-DEC-84      35000      75000 D1  23-DEC-08 P1
+       113 Aman            DEV                    111 10-JUL-80      95000     121000 D3  21-JUN-01 P2
+       112 Arnav           CLK                    106 10-JAN-85      50000   57666.67 D4  10-DEC-07 P3
+       140 Bhuvan          CLK                    111 10-APR-84      35000      78000 D1  10-NOV-02 P1
+       139 Ronald          DEV                    150 10-FEB-90      45000     103000 D3  10-JUN-01 P2
+       102 Raviraj         ENG                    106 10-JAN-85      24000      70000 D1  12-NOV-10 P3
+
+16 rows selected.
+
+SQL> @ D:\OraclePrg\261090700052\week8\lab8a1.sql;
+Enter value for empno: 108
+old   2: v_empno emp.empno%type:=&empno;
+new   2: v_empno emp.empno%type:=108;
+Enter value for deptno: D4
+old   3: v_deptno emp.deptno%type:=&deptno;
+new   3: v_deptno emp.deptno%type:=D4;
+v_deptno emp.deptno%type:=D4;
+                          *
+ERROR at line 3:
+ORA-06550: line 3, column 27:
+PLS-00201: identifier 'D4' must be declared
+ORA-06550: line 3, column 10:
+PL/SQL: Item ignored
+ORA-06550: line 8, column 21:
+PLS-00201: identifier 'ENAME' must be declared
+ORA-06550: line 8, column 27:
+PL/SQL: ORA-00904: : invalid identifier
+ORA-06550: line 8, column 2:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 20, column 50:
+PLS-00320: the declaration of the type of this expression is incomplete or malformed
+ORA-06550: line 20, column 50:
+PL/SQL: ORA-00904: "V_DEPTNO": invalid identifier
+ORA-06550: line 20, column 3:
+PL/SQL: SQL Statement ignored
+
+
+SQL> @ D:\OraclePrg\261090700052\week8\lab8a1.sql;
+Enter value for empno: 108
+old   2: v_empno emp.empno%type:=&empno;
+new   2: v_empno emp.empno%type:=108;
+Enter value for deptno: D4
+old   3: v_deptno emp.deptno%type:=&deptno;
+new   3: v_deptno emp.deptno%type:=D4;
+v_deptno emp.deptno%type:=D4;
+                          *
+ERROR at line 3:
+ORA-06550: line 3, column 27:
+PLS-00201: identifier 'D4' must be declared
+ORA-06550: line 3, column 10:
+PL/SQL: Item ignored
+ORA-06550: line 8, column 21:
+PLS-00201: identifier 'ENAME' must be declared
+ORA-06550: line 8, column 27:
+PL/SQL: ORA-00904: : invalid identifier
+ORA-06550: line 8, column 2:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 20, column 50:
+PLS-00320: the declaration of the type of this expression is incomplete or malformed
+ORA-06550: line 20, column 50:
+PL/SQL: ORA-00904: "V_DEPTNO": invalid identifier
+ORA-06550: line 20, column 3:
+PL/SQL: SQL Statement ignored
+
+
+SQL> @ D:\OraclePrg\261090700052\week8\lab8a1.sql;
+Enter value for empno: 108
+old   2:     v_empno  emp.empno%TYPE := &empno;
+new   2:     v_empno  emp.empno%TYPE := 108;
+Enter value for deptno: D4
+old   3:     v_deptno emp.deptno%TYPE := &deptno;
+new   3:     v_deptno emp.deptno%TYPE := D4;
+    v_deptno emp.deptno%TYPE := D4;
+                                *
+ERROR at line 3:
+ORA-06550: line 3, column 33:
+PLS-00201: identifier 'D4' must be declared
+ORA-06550: line 3, column 14:
+PL/SQL: Item ignored
+ORA-06550: line 27, column 58:
+PLS-00320: the declaration of the type of this expression is incomplete or malformed
+ORA-06550: line 27, column 58:
+PL/SQL: ORA-00904: "V_DEPTNO": invalid identifier
+ORA-06550: line 27, column 9:
+PL/SQL: SQL Statement ignored
+
+
+SQL> @ D:\OraclePrg\261090700052\week8\lab8a1.sql;
+Enter value for empno: 108
+old   2:     v_empno  emp.empno%TYPE := &empno;
+new   2:     v_empno  emp.empno%TYPE := 108;
+Enter value for deptno: 10
+old   3:     v_deptno emp.deptno%TYPE := &deptno;
+new   3:     v_deptno emp.deptno%TYPE := 10;
+DECLARE
+*
+ERROR at line 1:
+ORA-06502: PL/SQL: numeric or value error: character to number conversion error
+ORA-06512: at line 9
+
+
+SQL> @ D:\OraclePrg\261090700052\week8\lab8a1.sql;
+Enter value for empno: 108
+old   2:     v_empno  emp.empno%TYPE := &empno;
+new   2:     v_empno  emp.empno%TYPE := 108;
+Enter value for deptno: 'D4'
+old   3:     v_deptno emp.deptno%TYPE := &deptno;
+new   3:     v_deptno emp.deptno%TYPE := 'D4';
+DECLARE
+*
+ERROR at line 1:
+ORA-06502: PL/SQL: numeric or value error: character to number conversion error
+ORA-06512: at line 9
+
+
+SQL> @ D:\OraclePrg\261090700052\week8\lab8a2.sql;
+Enter value for principal: 1000
+Enter value for interest_rate: 2
+Enter value for years: 5
+old   2:  p NUMBER:=&principal; r NUMBER:=&interest_rate; y NUMBER:=&years;
+new   2:  p NUMBER:=1000; r NUMBER:=2; y NUMBER:=5;
+Error: Principal must be greater than 1000.
+
+PL/SQL procedure successfully completed.
+
+SQL> @ D:\OraclePrg\261090700052\week8\lab8a2.sql;
+Enter value for principal: 10000
+Enter value for interest_rate: 5
+Enter value for years: 2
+old   2:  p NUMBER:=&principal; r NUMBER:=&interest_rate; y NUMBER:=&years;
+new   2:  p NUMBER:=10000; r NUMBER:=5; y NUMBER:=2;
+Interest to be paid: 1000
+
+PL/SQL procedure successfully completed.
+
+SQL> @ D:\OraclePrg\261090700052\week8\lab8a3.sql;
+Enter value for empno: 108
+old   2:  e EMP.EMPNO%TYPE:=&empno; n EMP.ENAME%TYPE; s EMP.SAL%TYPE;
+new   2:  e EMP.EMPNO%TYPE:=108; n EMP.ENAME%TYPE; s EMP.SAL%TYPE;
+Empno: 108 Name: Suraj Salary: 70000
+Salary is greater than 25000/-.
+
+PL/SQL procedure successfully completed.
+
+SQL> @ D:\OraclePrg\261090700052\week8\lab8a4.sql;
+
+Table created.
+
+
+Trigger created.

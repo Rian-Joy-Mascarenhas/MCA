@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Magazine - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .topnav {
+            background: #444;
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+        .topnav li {
+            padding: 14px 20px;
+        }
+        .topnav li a {
+            color: white;
+            text-decoration: none;
+        }
+        .container {
+            display: flex;
+            min-height: 400px;
+        }
+        .side-nav {
+            width: 200px;
+            background: #ddd;
+            padding: 15px;
+        }
+        .side-nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        .side-nav li {
+            margin-bottom: 10px;
+        }
+        .side-nav a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+            background: white;
+        }
+        .contact {
+            width: 220px;
+            background: #eee;
+            padding: 15px;
+        }
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Home Page</h1>
+    </header>
+    <ul class="topnav">
+        <li><a href="photomag.html">Home</a></li>
+        <li><a href="gallery.html">Photo Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="container">
+        <aside class="side-nav">
+            <h3>Categories</h3>
+            <ul>
+                <li><a href="gallery.html">Nature</a></li>
+                <li><a href="gallery.html">Travel</a></li>
+                <li><a href="gallery.html">People</a></li>
+                <li><a href="gallery.html">Animals</a></li>
+            </ul>
+        </aside>
+        <main>
+            <h2>Welcome to My Photo Magazine</h2>
+            <p>Explore beautiful photographs in our photo gallery.</p>
+            <a href="gallery.html">View Photo Gallery</a>
+        </main>
+        <aside id="contact" class="contact">
+            <h3>Contact</h3>
+            <p>Email: rian@gmail.com</p>
+            <p>Phone: 6363090909</p>
+        </aside>
+    </div>
+    <footer>
+        <p>&copy; 2026 My Photo Magazine</p>
+    </footer>
+
+</body>
+</html>

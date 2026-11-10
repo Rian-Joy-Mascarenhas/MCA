@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browser Window</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 30px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: orange;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      @media (max-width: 500px) {
+        .buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+        button {
+          width: 180px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>JavaScript Browser Window</h2>
+    <script>
+      function windoww() {
+        var w = window.open("", "_blank", "width=600,height=400");
+        if (w) {
+          w.document.write(
+            "<html><body><h2>Welcome</h2><p>This is a new browser window.</p></body></html>",
+          );
+          w.document.close();
+        }
+      }
+      function cwindow() {
+        var neww = window.open("", "_blank", "width=600,height=600");
+        if (neww) {
+          neww.document.write(
+            "<html><body><p>This is a new browser window with custom text.</p></body></html>",
+          );
+          neww.document.close();
+        }
+      }
+    </script>
+    <div class="buttons">
+      <button onclick="windoww()">Open Window</button>
+      <button onclick="cwindow()">Custom Text</button>
+    </div>
+  </body>
+</html>

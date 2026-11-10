@@ -1,0 +1,1448 @@
+SQL> SELECT COUNT(EMPNO) FROM EMPLOYEES;
+SELECT COUNT(EMPNO) FROM EMPLOYEES
+                         *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT COUNT(*) FROM EMP;
+
+  COUNT(*)
+----------
+        13                                                                                     
+
+SQL> SELECT COUNT(EMPNO) AS 'TOTAL EMPLOYEES' FROM EMP;
+SELECT COUNT(EMPNO) AS 'TOTAL EMPLOYEES' FROM EMP
+                       *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT COUNT(EMPNO) AS 'TOTAL_EMPLOYEES' FROM EMP;
+SELECT COUNT(EMPNO) AS 'TOTAL_EMPLOYEES' FROM EMP
+                       *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT COUNT(EMPNO) AS "TOTAL_EMPLOYEES" FROM EMP;
+
+TOTAL_EMPLOYEES                                                                                     
+---------------                                                                                     
+             13                                                                                     
+
+SQL> SELECT MIN(SAL) AS "min_sal", MAX(SAL) AS "max_sal", AVG(SAL) AS "avg_sal", SUM(SAL) AS "total_salary" from EMP;
+
+   min_sal    max_sal    avg_sal total_salary                                                       
+---------- ---------- ---------- ------------                                                       
+     21000      60000 37316.6667       223900                                                       
+
+SQL> SELECT P.PRJ_NAME FROM PROJ P JOIN DEPT D ON P.DNO=D.DNO WHERE DNAME='Marketing';
+
+PRJ_NAME                                                                                            
+--------------------                                                                                
+PAYROLL AUTOMATION                                                                                  
+ERP REVAMP                                                                                          
+
+SQL> SELECT UPPER(ENAME),LOWER(ENAME),INITCAP(ENAME),CHAR_LENGTH(ENAME),SUBSTR(ENAME,2,3);
+SELECT UPPER(ENAME),LOWER(ENAME),INITCAP(ENAME),CHAR_LENGTH(ENAME),SUBSTR(ENAME,2,3)
+                                                                                   *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT UPPER(ENAME),LOWER(ENAME),INITCAP(ENAME),CHAR_LENGTH(ENAME),SUBSTR(ENAME,2,3) FROM EMP;
+SELECT UPPER(ENAME),LOWER(ENAME),INITCAP(ENAME),CHAR_LENGTH(ENAME),SUBSTR(ENAME,2,3) FROM EMP
+                                                *
+ERROR at line 1:
+ORA-00904: "CHAR_LENGTH": invalid identifier 
+
+
+SQL> SELECT UPPER(ENAME),LOWER(ENAME),INITCAP(ENAME),LENGTH(ENAME),SUBSTR(ENAME,2,3) FROM EMP;
+
+UPPER(ENAME)    LOWER(ENAME)    INITCAP(ENAME)  LENGTH(ENAME) SUBSTR(ENAME                          
+--------------- --------------- --------------- ------------- ------------                          
+RAVI            ravi            Ravi                        4 avi                                   
+RAVIRAJ         raviraj         Raviraj                     7 avi                                   
+RAGHU           raghu           Raghu                       5 agh                                   
+RAKESH          rakesh          Rakesh                      6 ake                                   
+RAMA            rama            Rama                        4 ama                                   
+RAMU            ramu            Ramu                        4 amu                                   
+MANU            manu            Manu                        4 anu                                   
+MANISH          manish          Manish                      6 ani                                   
+NARESH          naresh          Naresh                      6 are                                   
+MAHESH          mahesh          Mahesh                      6 ahe                                   
+MARK            mark            Mark                        4 ark                                   
+
+UPPER(ENAME)    LOWER(ENAME)    INITCAP(ENAME)  LENGTH(ENAME) SUBSTR(ENAME                          
+--------------- --------------- --------------- ------------- ------------                          
+KARAN           karan           Karan                       5 ara                                   
+VARUN           varun           Varun                       5 aru                                   
+
+13 rows selected.
+
+SQL> set pagesize 20;
+SQL> SELECT UPPER(ENAME),LOWER(ENAME),INITCAP(ENAME),LENGTH(ENAME),SUBSTR(ENAME,2,3) FROM EMP;
+
+UPPER(ENAME)    LOWER(ENAME)    INITCAP(ENAME)  LENGTH(ENAME) SUBSTR(ENAME                          
+--------------- --------------- --------------- ------------- ------------                          
+RAVI            ravi            Ravi                        4 avi                                   
+RAVIRAJ         raviraj         Raviraj                     7 avi                                   
+RAGHU           raghu           Raghu                       5 agh                                   
+RAKESH          rakesh          Rakesh                      6 ake                                   
+RAMA            rama            Rama                        4 ama                                   
+RAMU            ramu            Ramu                        4 amu                                   
+MANU            manu            Manu                        4 anu                                   
+MANISH          manish          Manish                      6 ani                                   
+NARESH          naresh          Naresh                      6 are                                   
+MAHESH          mahesh          Mahesh                      6 ahe                                   
+MARK            mark            Mark                        4 ark                                   
+KARAN           karan           Karan                       5 ara                                   
+VARUN           varun           Varun                       5 aru                                   
+
+13 rows selected.
+
+SQL> SELECT E.ENAME FROM EMP E JOIN EMP M ON E.MGRID=M.EMPNO WHERE ENAME="Raghu";
+SELECT E.ENAME FROM EMP E JOIN EMP M ON E.MGRID=M.EMPNO WHERE ENAME="Raghu"
+                                                                    *
+ERROR at line 1:
+ORA-00904: "Raghu": invalid identifier 
+
+
+SQL> SELECT E.ENAME FROM EMP E JOIN EMP M ON E.MGRID=M.EMPNO WHERE ENAME='Raghu';
+SELECT E.ENAME FROM EMP E JOIN EMP M ON E.MGRID=M.EMPNO WHERE ENAME='Raghu'
+                                                              *
+ERROR at line 1:
+ORA-00918: column ambiguously defined 
+
+
+SQL> SELECT E.ENAME FROM EMP E JOIN EMP M ON E.MGRID=M.EMPNO WHERE M.ENAME='Raghu';
+
+ENAME                                                                                               
+---------------                                                                                     
+Rama                                                                                                
+Ravi                                                                                                
+Karan                                                                                               
+Ramu                                                                                                
+Naresh                                                                                              
+Mahesh                                                                                              
+
+6 rows selected.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN 
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- 
+PRO                                                                                                 
+---                                                                                                 
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06 
+P1                                                                                                  
+                                                                                                    
+       102 Raviraj         ENG                    106 10-JAN-85      26400       1000 D1  12-NOV-10 
+P3                                                                                                  
+                                                                                                    
+       111 Raghu           ENG                    150 10-DEC-84      49500      15000     03-FEB-05 
+                                                                                                    
+                                                                                                    
+       150 Rakesh          CEO                        10-DEC-90      60000      30000     03-DEC-08 
+                                                                                                    
+                                                                                                    
+       103 Rama            DEV                    111 10-DEC-80                  1000 D1  22-SEP-01 
+P1                                                                                                  
+                                                                                                    
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN 
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- 
+PRO                                                                                                 
+---                                                                                                 
+       105 Ramu            CLK                    111 02-AUG-80                  1000 D1  12-OCT-02 
+P3                                                                                                  
+                                                                                                    
+       125 Manu            DEV                    150 10-DEC-80                  1000 D4  02-OCT-02 
+P3                                                                                                  
+                                                                                                    
+       104 Manish          CLK                    125 02-OCT-80                  1000 D2  26-NOV-05 
+P1                                                                                                  
+                                                                                                    
+       106 Naresh          A.MGR                  111 02-OCT-86                  1000 D2  24-NOV-00 
+                                                                                                    
+                                                                                                    
+       123 Mahesh          MGR                    111 10-DEC-84      35000      10000 D3  23-DEC-08 
+P2                                                                                                  
+                                                                                                    
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN 
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- 
+PRO                                                                                                 
+---                                                                                                 
+       108 Mark            DEV                    106 10-NOV-80                  1000 D5  02-OCT-05 
+                                                                                                    
+                                                                                                    
+       107 Karan           DEV                    111 10-JUL-80                  1000 D1  21-JUN-01 
+P3                                                                                                  
+                                                                                                    
+       109 Varun           CLK                    106 10-JAN-85      21000       1000 D5  10-DEC-07 
+                                                                                                    
+                                                                                                    
+
+13 rows selected.
+
+SQL> SET LINESIZE 150;
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN PRO                                               
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- ---                                               
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06 P1                                                
+       102 Raviraj         ENG                    106 10-JAN-85      26400       1000 D1  12-NOV-10 P3                                                
+       111 Raghu           ENG                    150 10-DEC-84      49500      15000     03-FEB-05                                                   
+       150 Rakesh          CEO                        10-DEC-90      60000      30000     03-DEC-08                                                   
+       103 Rama            DEV                    111 10-DEC-80                  1000 D1  22-SEP-01 P1                                                
+       105 Ramu            CLK                    111 02-AUG-80                  1000 D1  12-OCT-02 P3                                                
+       125 Manu            DEV                    150 10-DEC-80                  1000 D4  02-OCT-02 P3                                                
+       104 Manish          CLK                    125 02-OCT-80                  1000 D2  26-NOV-05 P1                                                
+       106 Naresh          A.MGR                  111 02-OCT-86                  1000 D2  24-NOV-00                                                   
+       123 Mahesh          MGR                    111 10-DEC-84      35000      10000 D3  23-DEC-08 P2                                                
+       108 Mark            DEV                    106 10-NOV-80                  1000 D5  02-OCT-05                                                   
+       107 Karan           DEV                    111 10-JUL-80                  1000 D1  21-JUN-01 P3                                                
+       109 Varun           CLK                    106 10-JAN-85      21000       1000 D5  10-DEC-07                                                   
+
+13 rows selected.
+
+SQL> SELECT ENAME FROM EMP WHERE MGRID=(SELECT * FROM EMP WHERE ENAME='Raghu');
+SELECT ENAME FROM EMP WHERE MGRID=(SELECT * FROM EMP WHERE ENAME='Raghu')
+                                   *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> SELECT ENAME FROM EMP WHERE MGRID=(SELECT EMPNO FROM EMP WHERE ENAME='Raghu');
+
+ENAME                                                                                                                                                 
+---------------                                                                                                                                       
+Ravi                                                                                                                                                  
+Rama                                                                                                                                                  
+Ramu                                                                                                                                                  
+Naresh                                                                                                                                                
+Mahesh                                                                                                                                                
+Karan                                                                                                                                                 
+
+6 rows selected.
+
+SQL> SELECT * FROM DEPT;
+
+DNO DNAME           LOC DEPT_BUDGET                                                                                                                   
+--- --------------- --- -----------                                                                                                                   
+    Corporate       HYD      700000                                                                                                                   
+D1  Marketing       CHN      500000                                                                                                                   
+D2  Research        MNG      300000                                                                                                                   
+D3  IT              BNG      400000                                                                                                                   
+D4  HR              BNG      200000                                                                                                                   
+D5  Accounts        BNG      500000                                                                                                                   
+
+6 rows selected.
+
+SQL> SELECT D.DNAME,MAX(E.SAL),MIN(E.SAL) FROM DEPT D JOIN EMP E ON D.DNO=E.DEPTNO GROUP BY E.DEPTNO;
+SELECT D.DNAME,MAX(E.SAL),MIN(E.SAL) FROM DEPT D JOIN EMP E ON D.DNO=E.DEPTNO GROUP BY E.DEPTNO
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> SELECT D.DNAME,MAX(E.SAL),MIN(E.SAL) FROM DEPT D JOIN EMP E ON D.DNO=E.DEPTNO;
+SELECT D.DNAME,MAX(E.SAL),MIN(E.SAL) FROM DEPT D JOIN EMP E ON D.DNO=E.DEPTNO
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SQL> SELECT D.DNAME,MAX(E.SAL),MIN(E.SAL) FROM DEPT D JOIN EMP E ON D.DNO=E.DEPTNO GROUP BY D.DNAME;
+
+DNAME           MAX(E.SAL) MIN(E.SAL)                                                                                                                 
+--------------- ---------- ----------                                                                                                                 
+Accounts             21000      21000                                                                                                                 
+Marketing            32000      26400                                                                                                                 
+HR                                                                                                                                                    
+Research                                                                                                                                              
+IT                   35000      35000                                                                                                                 
+
+SQL> SELECT COUNT(E.EMPNO),D.DNAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO GROUP BY D.DNAME;
+
+COUNT(E.EMPNO) DNAME                                                                                                                                  
+-------------- ---------------                                                                                                                        
+             2 Accounts                                                                                                                               
+             5 Marketing                                                                                                                              
+             1 HR                                                                                                                                     
+             2 Research                                                                                                                               
+             1 IT                                                                                                                                     
+
+SQL> SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE DATE_JOIN<SYSDATE-INTERVAL '5' YEARS;
+SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE DATE_JOIN<SYSDATE-INTERVAL '5' YEARS
+                                                                           *
+ERROR at line 1:
+ORA-30089: missing or invalid <datetime field> 
+
+
+SQL> SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE DATE_JOIN<SYSDATE-INTERVAL'5'YEARS;
+SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE DATE_JOIN<SYSDATE-INTERVAL'5'YEARS
+                                                                         *
+ERROR at line 1:
+ORA-30089: missing or invalid <datetime field> 
+
+
+SQL> SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE DATE_JOIN<SYSDATE-INTERVAL'5'YEAR;
+
+     EMPNO ENAME           DATE_JOIN                                                                                                                  
+---------- --------------- ---------                                                                                                                  
+       101 Ravi            02-OCT-06                                                                                                                  
+       102 Raviraj         12-NOV-10                                                                                                                  
+       111 Raghu           03-FEB-05                                                                                                                  
+       150 Rakesh          03-DEC-08                                                                                                                  
+       103 Rama            22-SEP-01                                                                                                                  
+       105 Ramu            12-OCT-02                                                                                                                  
+       125 Manu            02-OCT-02                                                                                                                  
+       104 Manish          26-NOV-05                                                                                                                  
+       106 Naresh          24-NOV-00                                                                                                                  
+       123 Mahesh          23-DEC-08                                                                                                                  
+       108 Mark            02-OCT-05                                                                                                                  
+       107 Karan           21-JUN-01                                                                                                                  
+       109 Varun           10-DEC-07                                                                                                                  
+
+13 rows selected.
+
+SQL> SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE DATE_JOIN<SYSDATE-INTERVAL'20'YEAR;
+
+     EMPNO ENAME           DATE_JOIN                                                                                                                  
+---------- --------------- ---------                                                                                                                  
+       111 Raghu           03-FEB-05                                                                                                                  
+       103 Rama            22-SEP-01                                                                                                                  
+       105 Ramu            12-OCT-02                                                                                                                  
+       125 Manu            02-OCT-02                                                                                                                  
+       104 Manish          26-NOV-05                                                                                                                  
+       106 Naresh          24-NOV-00                                                                                                                  
+       108 Mark            02-OCT-05                                                                                                                  
+       107 Karan           21-JUN-01                                                                                                                  
+
+8 rows selected.
+
+SQL> SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE YEAR_BETWEEN(DATE_JOIN,SYSDATE)>5;
+SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE YEAR_BETWEEN(DATE_JOIN,SYSDATE)>5
+                                            *
+ERROR at line 1:
+ORA-00904: "YEAR_BETWEEN": invalid identifier 
+
+
+SQL> SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE MONTH_BETWEEN(DATE_JOIN,SYSDATE)>60;
+SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE MONTH_BETWEEN(DATE_JOIN,SYSDATE)>60
+                                            *
+ERROR at line 1:
+ORA-00904: "MONTH_BETWEEN": invalid identifier 
+
+
+SQL> SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE month_between(DATE_JOIN,SYSDATE)>60;
+SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE month_between(DATE_JOIN,SYSDATE)>60
+                                            *
+ERROR at line 1:
+ORA-00904: "MONTH_BETWEEN": invalid identifier 
+
+
+SQL> SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE EXTRACT(YEAR_BETWEEN(DATE_JOIN,SYSDATE))>5;
+SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE EXTRACT(YEAR_BETWEEN(DATE_JOIN,SYSDATE))>5
+                                                    *
+ERROR at line 1:
+ORA-00904: "YEAR_BETWEEN": invalid identifier 
+
+
+SQL> SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE EXTRACT(YEAR FROM(SYSDATE-DATE_JOIN))>5;
+SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE EXTRACT(YEAR FROM(SYSDATE-DATE_JOIN))>5
+                                                                     *
+ERROR at line 1:
+ORA-30076: invalid extract field for extract source 
+
+
+SQL> SELECT EMPNO,ENAME,DATE_BIRTH FROM EMP WHERE EXTRACT(MONTH FROM DATE_BIRTH)='DECEMBER' AND EXTRACT(YEAR FROM DATE_BIRTH)='1984';
+SELECT EMPNO,ENAME,DATE_BIRTH FROM EMP WHERE EXTRACT(MONTH FROM DATE_BIRTH)='DECEMBER' AND EXTRACT(YEAR FROM DATE_BIRTH)='1984'
+                                                                            *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> SELECT EMPNO,ENAME,DATE_BIRTH FROM EMP WHERE EXTRACT(MONTH FROM DATE_BIRTH)=12 AND EXTRACT(YEAR FROM DATE_BIRTH)=1984;
+
+     EMPNO ENAME           DATE_BIRT                                                                                                                  
+---------- --------------- ---------                                                                                                                  
+       111 Raghu           10-DEC-84                                                                                                                  
+       123 Mahesh          10-DEC-84                                                                                                                  
+
+SQL> SELECT ENAME SELECT ENAME WHERE DATE_BIRTH BETWEEN TO_DATE('01-12-1984', 'DD-MM-YYYY') AND TO_DATE('31-12-1984', 'DD-MM-YYYY');
+SELECT ENAME SELECT ENAME WHERE DATE_BIRTH BETWEEN TO_DATE('01-12-1984', 'DD-MM-YYYY') AND TO_DATE('31-12-1984', 'DD-MM-YYYY')
+             *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT ENAME FROM EMP WHERE DATE_BIRTH BETWEEN TO_DATE('01-12-1984', 'DD-MM-YYYY') AND TO_DATE('31-12-1984', 'DD-MM-YYYY');
+
+ENAME                                                                                                                                                 
+---------------                                                                                                                                       
+Raghu                                                                                                                                                 
+Mahesh                                                                                                                                                
+
+SQL> SELECT JOB,COUNT(EMPNO) FROM EMP GROUP BY JOB;
+
+JOB             COUNT(EMPNO)                                                                                                                          
+--------------- ------------                                                                                                                          
+CEO                        1                                                                                                                          
+A.MGR                      1                                                                                                                          
+CLK                        3                                                                                                                          
+ENG                        2                                                                                                                          
+DEV                        4                                                                                                                          
+MGR                        2                                                                                                                          
+
+6 rows selected.
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN PRO                                               
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- ---                                               
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06 P1                                                
+       102 Raviraj         ENG                    106 10-JAN-85      26400       1000 D1  12-NOV-10 P3                                                
+       111 Raghu           ENG                    150 10-DEC-84      49500      15000     03-FEB-05                                                   
+       150 Rakesh          CEO                        10-DEC-90      60000      30000     03-DEC-08                                                   
+       103 Rama            DEV                    111 10-DEC-80                  1000 D1  22-SEP-01 P1                                                
+       105 Ramu            CLK                    111 02-AUG-80                  1000 D1  12-OCT-02 P3                                                
+       125 Manu            DEV                    150 10-DEC-80                  1000 D4  02-OCT-02 P3                                                
+       104 Manish          CLK                    125 02-OCT-80                  1000 D2  26-NOV-05 P1                                                
+       106 Naresh          A.MGR                  111 02-OCT-86                  1000 D2  24-NOV-00                                                   
+       123 Mahesh          MGR                    111 10-DEC-84      35000      10000 D3  23-DEC-08 P2                                                
+       108 Mark            DEV                    106 10-NOV-80                  1000 D5  02-OCT-05                                                   
+       107 Karan           DEV                    111 10-JUL-80                  1000 D1  21-JUN-01 P3                                                
+       109 Varun           CLK                    106 10-JAN-85      21000       1000 D5  10-DEC-07                                                   
+
+13 rows selected.
+
+SQL> SELECT D.DNAME FROM DEPT D JOIN EMP E ON D.DNO=E.DEPTNO WHERE COUNT(EMPNO)>3 GROUP BY D.DNAME;
+SELECT D.DNAME FROM DEPT D JOIN EMP E ON D.DNO=E.DEPTNO WHERE COUNT(EMPNO)>3 GROUP BY D.DNAME
+                                                              *
+ERROR at line 1:
+ORA-00934: group function is not allowed here 
+
+
+SQL> SELECT D.DNAME FROM DEPT D JOIN EMP E ON D.DNO=E.DEPTNO WHERE GROUP BY D.DNAME HAVING COUNT(EMPNO)>3;
+SELECT D.DNAME FROM DEPT D JOIN EMP E ON D.DNO=E.DEPTNO WHERE GROUP BY D.DNAME HAVING COUNT(EMPNO)>3
+                                                              *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> SELECT D.DNAME FROM DEPT D JOIN EMP E ON D.DNO=E.DEPTNO GROUP BY D.DNAME HAVING COUNT(EMPNO)>3;
+
+DNAME                                                                                                                                                 
+---------------                                                                                                                                       
+Marketing                                                                                                                                             
+
+SQL> DESC EMP;
+ Name                                                                                Null?    Type
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ EMPNO                                                                               NOT NULL NUMBER(3)
+ ENAME                                                                               NOT NULL VARCHAR2(15)
+ JOB                                                                                          VARCHAR2(15)
+ MGRID                                                                                        NUMBER
+ DATE_BIRTH                                                                                   DATE
+ SAL                                                                                          NUMBER(10,2)
+ COMM                                                                                         NUMBER(10,2)
+ DEPTNO                                                                                       CHAR(3)
+ DATE_JOIN                                                                                    DATE
+ PROJ_ID                                                                                      CHAR(3)
+
+SQL> SELECT E.EMPNO,E.ENAME FROM EMP E JOIN PROJ P ON E.PROJ_ID=P.PRJ_NO WHERE P.PRJ_NAME='PAYROLL AUTOMATION';
+
+     EMPNO ENAME                                                                                                                                      
+---------- ---------------                                                                                                                            
+       101 Ravi                                                                                                                                       
+       103 Rama                                                                                                                                       
+       104 Manish                                                                                                                                     
+
+SQL> SELECT CEIL(2.83) AS CEILING,FLOOR(2.83) AS FLOOR,TRUNC(2.83) AS TRUNCATE,ROUND(2.83) AS ROUND FROM DUAL;
+
+   CEILING      FLOOR   TRUNCATE      ROUND                                                                                                           
+---------- ---------- ---------- ----------                                                                                                           
+         3          2          2          3                                                                                                           
+
+SQL> DESC PROJ;
+ Name                                                                                Null?    Type
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ DNO                                                                                 NOT NULL CHAR(3)
+ PRJ_NO                                                                              NOT NULL CHAR(3)
+ PRJ_NAME                                                                            NOT NULL VARCHAR2(20)
+ PRJ_CREDIT                                                                                   NUMBER(2)
+ STRT_DATE                                                                           NOT NULL DATE
+ END_DATE                                                                                     DATE
+ PRJ_FUND                                                                                     NUMBER(7)
+
+SQL> SELECT * FROM PROJ;
+
+DNO PRJ PRJ_NAME             PRJ_CREDIT STRT_DATE END_DATE    PRJ_FUND                                                                                
+--- --- -------------------- ---------- --------- --------- ----------                                                                                
+D1  P1  PAYROLL AUTOMATION            4 01-JAN-22 30-JUN-22     500000                                                                                
+D2  P1  AI RESEARCH PLATFORM          7 15-FEB-22 14-FEB-23     900000                                                                                
+D3  P2  DATA WAREHOUSE MIGR.          8 01-MAR-22 31-AUG-22     650000                                                                                
+D4  P3  CRM REVAMP                    5 10-APR-22 09-OCT-22     400000                                                                                
+D1  P3  ERP REVAMP                    9 11-JAN-20 12-DEC-21     500000                                                                                
+D5  P4  WAREHOUSE AUTOMATION         10 05-MAY-22 04-NOV-22     700000                                                                                
+
+6 rows selected.
+
+SQL> SELECT E.EMPNO,E.ENAME FROM EMP E JOIN PROJ P ON E.PROJ_ID=P.PRJ_NO AND E.DEPTNO=P.DNO WHERE P.PRJ_NAME='PAYROLL AUTOMATION';
+
+     EMPNO ENAME                                                                                                                                      
+---------- ---------------                                                                                                                            
+       101 Ravi                                                                                                                                       
+       103 Rama                                                                                                                                       
+
+SQL> SELECT * FROM DUAL;
+
+D                                                                                                                                                     
+-                                                                                                                                                     
+X                                                                                                                                                     
+
+SQL> SELECT PRJ_NO,PRJ_NAME FROM PROJ WHERE STRT_DATE-END_DATE>INTERVAL'1'YEAR;
+SELECT PRJ_NO,PRJ_NAME FROM PROJ WHERE STRT_DATE-END_DATE>INTERVAL'1'YEAR
+                                                         *
+ERROR at line 1:
+ORA-00932: inconsistent datatypes: expected NUMBER got INTERVAL YEAR TO MONTH 
+
+
+SQL> SELECT PRJ_NO,PRJ_NAME FROM PROJ WHERE STRT_DATE>END_DATE-INTERVAL'1'YEAR;
+
+PRJ PRJ_NAME                                                                                                                                          
+--- --------------------                                                                                                                              
+P1  PAYROLL AUTOMATION                                                                                                                                
+P1  AI RESEARCH PLATFORM                                                                                                                              
+P2  DATA WAREHOUSE MIGR.                                                                                                                              
+P3  CRM REVAMP                                                                                                                                        
+P4  WAREHOUSE AUTOMATION                                                                                                                              
+
+SQL> SELECT PRJ_NO,PRJ_NAME FROM PROJ WHERE STRT_DATE<END_DATE-INTERVAL'1'YEAR;
+
+PRJ PRJ_NAME                                                                                                                                          
+--- --------------------                                                                                                                              
+P3  ERP REVAMP                                                                                                                                        
+
+SQL> SELECT * FROM TASK;
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE    STATUS                                                                          
+--- --- ---------- ------------------------------ --------- --------- ------------                                                                    
+P1  D1           1 REQUIREMENT ANALYSIS           01-JAN-22 15-JAN-22 COMPLETED                                                                       
+P1  D2           2 MODULE DESIGN                  16-JAN-22 10-FEB-22 COMPLETED                                                                       
+P2  D3           3 CODING and TESTING             11-FEB-22           IN-PROGRESS                                                                     
+P3  D4           1 DATASET COLLECTION             15-FEB-22 28-FEB-22 COMPLETED                                                                       
+P3  D1           2 MODEL TRAINING                 01-MAR-22           IN-PROGRESS                                                                     
+P3  D1           1 SCHEMA MAPPING                 01-MAR-22 20-MAR-22 COMPLETED                                                                       
+P4  D5           1 REQUIREMENT GATHERING          10-APR-22           PENDING                                                                         
+P4  D5           2 SITE SURVEY                    05-MAY-22 20-MAY-22 COMPLETED                                                                       
+
+8 rows selected.
+
+SQL> SELECT E.EMPNO,E.EMPNAME,T.TASK_NAME FROM EMP E JOIN TASK T ON E.PROJ_ID=T.PRJ_ID AND E.DEPTNO=T.DNO;
+SELECT E.EMPNO,E.EMPNAME,T.TASK_NAME FROM EMP E JOIN TASK T ON E.PROJ_ID=T.PRJ_ID AND E.DEPTNO=T.DNO
+               *
+ERROR at line 1:
+ORA-00904: "E"."EMPNAME": invalid identifier 
+
+
+SQL> SELECT E.EMPNO,E.ENAME,T.TASK_NAME FROM EMP E JOIN TASK T ON E.PROJ_ID=T.PRJ_ID AND E.DEPTNO=T.DNO;
+
+     EMPNO ENAME           TASK_NAME                                                                                                                  
+---------- --------------- ------------------------------                                                                                             
+       101 Ravi            REQUIREMENT ANALYSIS                                                                                                       
+       103 Rama            REQUIREMENT ANALYSIS                                                                                                       
+       104 Manish          MODULE DESIGN                                                                                                              
+       123 Mahesh          CODING and TESTING                                                                                                         
+       125 Manu            DATASET COLLECTION                                                                                                         
+       102 Raviraj         MODEL TRAINING                                                                                                             
+       105 Ramu            MODEL TRAINING                                                                                                             
+       107 Karan           MODEL TRAINING                                                                                                             
+       102 Raviraj         SCHEMA MAPPING                                                                                                             
+       105 Ramu            SCHEMA MAPPING                                                                                                             
+       107 Karan           SCHEMA MAPPING                                                                                                             
+
+11 rows selected.
+
+SQL> SELECT D.DNAME,P.PRJ_FUND FROM DEPT D JOIN PROJ P ON D.DNO=P.DNO;
+
+DNAME             PRJ_FUND                                                                                                                            
+--------------- ----------                                                                                                                            
+Marketing           500000                                                                                                                            
+Research            900000                                                                                                                            
+IT                  650000                                                                                                                            
+HR                  400000                                                                                                                            
+Marketing           500000                                                                                                                            
+Accounts            700000                                                                                                                            
+
+6 rows selected.
+
+SQL> SELECT D.DNAME,SUM(P.PRJ_FUND) FROM DEPT D JOIN PROJ P ON D.DNO=P.DNO GROUP BY D.DNO;
+SELECT D.DNAME,SUM(P.PRJ_FUND) FROM DEPT D JOIN PROJ P ON D.DNO=P.DNO GROUP BY D.DNO
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> SELECT D.DNAME,SUM(P.PRJ_FUND) FROM DEPT D JOIN PROJ P ON D.DNO=P.DNO GROUP BY D.DNAME;
+
+DNAME           SUM(P.PRJ_FUND)                                                                                                                       
+--------------- ---------------                                                                                                                       
+Accounts                 700000                                                                                                                       
+Marketing               1000000                                                                                                                       
+HR                       400000                                                                                                                       
+Research                 900000                                                                                                                       
+IT                       650000                                                                                                                       
+
+SQL> SELECT STATUS,COUNT(TASK_NAME) FROM TASK GROUP BY TASK_NAME;
+SELECT STATUS,COUNT(TASK_NAME) FROM TASK GROUP BY TASK_NAME
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> SELECT STATUS,COUNT(TASK_NAME) FROM TASK GROUP BY STATUS;
+
+STATUS       COUNT(TASK_NAME)                                                                                                                         
+------------ ----------------                                                                                                                         
+PENDING                     1                                                                                                                         
+COMPLETED                   5                                                                                                                         
+IN-PROGRESS                 2                                                                                                                         
+
+SQL> SELECT UPPER(ENAME) AS NAME, DATE_JOIN FROM EMP;
+
+NAME            DATE_JOIN                                                                                                                             
+--------------- ---------                                                                                                                             
+RAVI            02-OCT-06                                                                                                                             
+RAVIRAJ         12-NOV-10                                                                                                                             
+RAGHU           03-FEB-05                                                                                                                             
+RAKESH          03-DEC-08                                                                                                                             
+RAMA            22-SEP-01                                                                                                                             
+RAMU            12-OCT-02                                                                                                                             
+MANU            02-OCT-02                                                                                                                             
+MANISH          26-NOV-05                                                                                                                             
+NARESH          24-NOV-00                                                                                                                             
+MAHESH          23-DEC-08                                                                                                                             
+MARK            02-OCT-05                                                                                                                             
+KARAN           21-JUN-01                                                                                                                             
+VARUN           10-DEC-07                                                                                                                             
+
+13 rows selected.
+
+SQL> SELECT MONTH_BETWEEN(DATE_JOIN,SYSDATE) AS MONTHS, ENAME FROM EMP;
+SELECT MONTH_BETWEEN(DATE_JOIN,SYSDATE) AS MONTHS, ENAME FROM EMP
+       *
+ERROR at line 1:
+ORA-00904: "MONTH_BETWEEN": invalid identifier 
+
+
+SQL> SELECT MONTHS_BETWEEN(DATE_JOIN,SYSDATE) AS MONTHS, ENAME FROM EMP;
+
+    MONTHS ENAME                                                                                                                                      
+---------- ---------------                                                                                                                            
+-239.33786 Ravi                                                                                                                                       
+      -190 Raviraj                                                                                                                                    
+-259.30561 Raghu                                                                                                                                      
+-213.30561 Rakesh                                                                                                                                     
+ -299.6927 Rama                                                                                                                                       
+      -287 Ramu                                                                                                                                       
+-287.33786 Manu                                                                                                                                       
+-249.56367 Manish                                                                                                                                     
+-309.62819 Naresh                                                                                                                                     
+-212.66045 Mahesh                                                                                                                                     
+-251.33786 Mark                                                                                                                                       
+-302.72496 Karan                                                                                                                                      
+ -225.0798 Varun                                                                                                                                      
+
+13 rows selected.
+
+SQL> SELECT MONTHS_BETWEEN(SYSDATE,DATE_JOIN) AS MONTHS, ENAME FROM EMP;
+
+    MONTHS ENAME                                                                                                                                      
+---------- ---------------                                                                                                                            
+239.337872 Ravi                                                                                                                                       
+       190 Raviraj                                                                                                                                    
+259.305614 Raghu                                                                                                                                      
+213.305614 Rakesh                                                                                                                                     
+299.692711 Rama                                                                                                                                       
+       287 Ramu                                                                                                                                       
+287.337872 Manu                                                                                                                                       
+249.563679 Manish                                                                                                                                     
+309.628195 Naresh                                                                                                                                     
+212.660453 Mahesh                                                                                                                                     
+251.337872 Mark                                                                                                                                       
+302.724969 Karan                                                                                                                                      
+225.079808 Varun                                                                                                                                      
+
+13 rows selected.
+
+SQL> SELECT ROUND(MONTHS_BETWEEN(SYSDATE,DATE_JOIN)) AS MONTHS, ENAME FROM EMP;
+
+    MONTHS ENAME                                                                                                                                      
+---------- ---------------                                                                                                                            
+       239 Ravi                                                                                                                                       
+       190 Raviraj                                                                                                                                    
+       259 Raghu                                                                                                                                      
+       213 Rakesh                                                                                                                                     
+       300 Rama                                                                                                                                       
+       287 Ramu                                                                                                                                       
+       287 Manu                                                                                                                                       
+       250 Manish                                                                                                                                     
+       310 Naresh                                                                                                                                     
+       213 Mahesh                                                                                                                                     
+       251 Mark                                                                                                                                       
+       303 Karan                                                                                                                                      
+       225 Varun                                                                                                                                      
+
+13 rows selected.
+
+SQL> SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE YEARS_BETWEEN(SYSDATE,DATE_JOIN)>5;
+SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE YEARS_BETWEEN(SYSDATE,DATE_JOIN)>5
+                                            *
+ERROR at line 1:
+ORA-00904: "YEARS_BETWEEN": invalid identifier 
+
+
+SQL> SELECT EMPNO,ENAME,DATE_JOIN FROM EMP WHERE MONTHS_BETWEEN(SYSDATE,DATE_JOIN)>60;
+
+     EMPNO ENAME           DATE_JOIN                                                                                                                  
+---------- --------------- ---------                                                                                                                  
+       101 Ravi            02-OCT-06                                                                                                                  
+       102 Raviraj         12-NOV-10                                                                                                                  
+       111 Raghu           03-FEB-05                                                                                                                  
+       150 Rakesh          03-DEC-08                                                                                                                  
+       103 Rama            22-SEP-01                                                                                                                  
+       105 Ramu            12-OCT-02                                                                                                                  
+       125 Manu            02-OCT-02                                                                                                                  
+       104 Manish          26-NOV-05                                                                                                                  
+       106 Naresh          24-NOV-00                                                                                                                  
+       123 Mahesh          23-DEC-08                                                                                                                  
+       108 Mark            02-OCT-05                                                                                                                  
+       107 Karan           21-JUN-01                                                                                                                  
+       109 Varun           10-DEC-07                                                                                                                  
+
+13 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;
+
+SQL> SELECT E.ENAME,MAX(E.SAL),D.DNAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO GROUP BY D.DNAME;
+SELECT E.ENAME,MAX(E.SAL),D.DNAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO GROUP BY D.DNAME
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> SELECT E.ENAME,MAX(E.SAL),D.DNAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO GROUP BY E.DEPTNO;
+SELECT E.ENAME,MAX(E.SAL),D.DNAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO GROUP BY E.DEPTNO
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> SELECT E.ENAME,E.SAL,D.DNAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO WHERE(E.DEPTNO,E.SAL) IN (SELECT E.DEPTNO,MAX(E.SAL) FROM EMP GROUP BY E.DEPTNO);
+
+ENAME                  SAL DNAME                                                                                                                      
+--------------- ---------- ---------------                                                                                                            
+Ravi                 32000 Marketing                                                                                                                  
+Raviraj              26400 Marketing                                                                                                                  
+Mahesh               35000 IT                                                                                                                         
+Varun                21000 Accounts                                                                                                                   
+
+SQL> SELECT MAX(E.SAL),D.DNAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO GROUP BY D.DNAME;
+
+MAX(E.SAL) DNAME                                                                                                                                      
+---------- ---------------                                                                                                                            
+     32000 Marketing                                                                                                                                  
+           HR                                                                                                                                         
+           Research                                                                                                                                   
+     35000 IT                                                                                                                                         
+     21000 Accounts                                                                                                                                   
+
+SQL> SELECT E.ENAME,MAX(E.SAL),D.DNAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO WHERE(E.DEPTNO,E.SAL) IN (SELECT E.DEPTNO,MAX(E.SAL) FROM EMP GROUP BY E.DEPTNO);
+SELECT E.ENAME,MAX(E.SAL),D.DNAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO WHERE(E.DEPTNO,E.SAL) IN (SELECT E.DEPTNO,MAX(E.SAL) FROM EMP GROUP BY E.DEPTNO)
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SQL> SELECT E.ENAME,E.SAL,D.DNAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO WHERE(E.DEPTNO,E.SAL) IN (SELECT E.DEPTNO,MAX(E.SAL) FROM EMP GROUP BY D.DNO);
+
+ENAME                  SAL DNAME                                                                                                                      
+--------------- ---------- ---------------                                                                                                            
+Ravi                 32000 Marketing                                                                                                                  
+Raviraj              26400 Marketing                                                                                                                  
+Mahesh               35000 IT                                                                                                                         
+Varun                21000 Accounts                                                                                                                   
+
+SQL> SELECT E.ENAME,E.SAL,D.DNAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO WHERE(E.DEPTNO,E.SAL) IN (SELECT E.DEPTNO,MAX(E.SAL) FROM EMP GROUP BY D.DNAME);
+
+ENAME                  SAL DNAME                                                                                                                      
+--------------- ---------- ---------------                                                                                                            
+Ravi                 32000 Marketing                                                                                                                  
+Raviraj              26400 Marketing                                                                                                                  
+Mahesh               35000 IT                                                                                                                         
+Varun                21000 Accounts                                                                                                                   
+
+SQL> SELECT E.ENAME,E.SAL,D.DNAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO WHERE (E.ENAME,E.SAL) IN (SELECT D.DNAME FROM DEPT GROUP BY D.DNAME);
+SELECT E.ENAME,E.SAL,D.DNAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO WHERE (E.ENAME,E.SAL) IN (SELECT D.DNAME FROM DEPT GROUP BY D.DNAME)
+                                                                                                *
+ERROR at line 1:
+ORA-00947: not enough values 
+
+
+SQL> SELECT * FROM DEPT;
+
+DNO DNAME           LOC DEPT_BUDGET                                                                                                                   
+--- --------------- --- -----------                                                                                                                   
+D1  Marketing       CHN      500000                                                                                                                   
+D2  Research        MNG      300000                                                                                                                   
+D3  IT              BNG      400000                                                                                                                   
+D4  HR              BNG      200000                                                                                                                   
+D5  Accounts        BNG      500000                                                                                                                   
+    Corporate       HYD      700000                                                                                                                   
+
+6 rows selected.
+
+SQL> SELECT d.dname, e.ename, e.sal FROM emp e JOIN dept d ON e.dep = d.dno WHERE (e.dep, e.sal) IN (SELECT dep, MAX(sal) FROM emp GROUP BY dep);
+SELECT d.dname, e.ename, e.sal FROM emp e JOIN dept d ON e.dep = d.dno WHERE (e.dep, e.sal) IN (SELECT dep, MAX(sal) FROM emp GROUP BY dep)
+                                                         *
+ERROR at line 1:
+ORA-00904: "E"."DEP": invalid identifier 
+
+
+SQL> SELECT D.DNAME, E.ENAME, E.SAL FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO WHERE (E.DEPTNO,E.SAL) IN (SELECT DEPTNO, MAX(SAL) FROM EMP GROUP BY DEPTNO);
+
+DNAME           ENAME                  SAL                                                                                                            
+--------------- --------------- ----------                                                                                                            
+Marketing       Ravi                 32000                                                                                                            
+IT              Mahesh               35000                                                                                                            
+Accounts        Varun                21000                                                                                                            
+
+SQL> SELECT D.DNAME, E.ENAME, E.SAL FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO WHERE (E.DEPTNO) IN (SELECT DEPTNO, MAX(SAL) FROM EMP GROUP BY DEPTNO);
+SELECT D.DNAME, E.ENAME, E.SAL FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO WHERE (E.DEPTNO) IN (SELECT DEPTNO, MAX(SAL) FROM EMP GROUP BY DEPTNO)
+                                                                                             *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> SELECT JOB,SUM(SAL) FROM EMP GROUP BY JOB;
+
+JOB               SUM(SAL)                                                                                                                            
+--------------- ----------                                                                                                                            
+MGR                  67000                                                                                                                            
+ENG                  75900                                                                                                                            
+CEO                  60000                                                                                                                            
+DEV                                                                                                                                                   
+CLK                  21000                                                                                                                            
+A.MGR                                                                                                                                                 
+
+6 rows selected.
+
+SQL> SELECT DNAME FROM DEPT WHERE DNO IN(SELECT DEPTNO FROM EMP WHERE PROJ_ID='P1' GROUP BY DEPTNO HAVING COUNT(*)=(SELECT MAX(COUNT(*) FROM EMP WHERE PROJ_ID='P1' GROUP BY DEPTNO));
+SELECT DNAME FROM DEPT WHERE DNO IN(SELECT DEPTNO FROM EMP WHERE PROJ_ID='P1' GROUP BY DEPTNO HAVING COUNT(*)=(SELECT MAX(COUNT(*) FROM EMP WHERE PROJ_ID='P1' GROUP BY DEPTNO))
+                                                                                                                                   *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> SELECT DNAME FROM DEPT WHERE DNO IN(SELECT DEPTNO FROM EMP WHERE PROJ_ID='P1' GROUP BY DEPTNO HAVING COUNT(*)=(SELECT MAX(COUNT(*)) FROM EMP WHERE PROJ_ID='P1' GROUP BY DEPTNO));
+
+DNAME                                                                                                                                                 
+---------------                                                                                                                                       
+Marketing                                                                                                                                             
+
+SQL> SELECT ENAME,JOB FROM EMP WHERE DEPTNO EXISTS(SELECT DNO FROM DEPT WHERE DNAME='Marketing' OR DNAME='Research');
+SELECT ENAME,JOB FROM EMP WHERE DEPTNO EXISTS(SELECT DNO FROM DEPT WHERE DNAME='Marketing' OR DNAME='Research')
+                                       *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> SELECT ENAME,JOB FROM EMP WHERE DEPTNO IN(SELECT DNO FROM DEPT WHERE DNAME='Marketing' OR DNAME='Research');
+
+ENAME           JOB                                                                                                                                   
+--------------- ---------------                                                                                                                       
+Ravi            MGR                                                                                                                                   
+Raviraj         ENG                                                                                                                                   
+Rama            DEV                                                                                                                                   
+Ramu            CLK                                                                                                                                   
+Manish          CLK                                                                                                                                   
+Naresh          A.MGR                                                                                                                                 
+Karan           DEV                                                                                                                                   
+
+7 rows selected.
+
+SQL> SELECT ENAME,SAL FROM EMP WHERE SAL>(SELECT MIN(SAL) FROM EMP);
+
+ENAME                  SAL                                                                                                                            
+--------------- ----------                                                                                                                            
+Ravi                 32000                                                                                                                            
+Raviraj              26400                                                                                                                            
+Raghu                49500                                                                                                                            
+Rakesh               60000                                                                                                                            
+Mahesh               35000                                                                                                                            
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN PRO                                               
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- ---                                               
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06 P1                                                
+       102 Raviraj         ENG                    106 10-JAN-85      26400       1000 D1  12-NOV-10 P3                                                
+       111 Raghu           ENG                    150 10-DEC-84      49500      15000     03-FEB-05                                                   
+       150 Rakesh          CEO                        10-DEC-90      60000      30000     03-DEC-08                                                   
+       103 Rama            DEV                    111 10-DEC-80                  1000 D1  22-SEP-01 P1                                                
+       105 Ramu            CLK                    111 02-AUG-80                  1000 D1  12-OCT-02 P3                                                
+       125 Manu            DEV                    150 10-DEC-80                  1000 D4  02-OCT-02 P3                                                
+       104 Manish          CLK                    125 02-OCT-80                  1000 D2  26-NOV-05 P1                                                
+       106 Naresh          A.MGR                  111 02-OCT-86                  1000 D2  24-NOV-00                                                   
+       123 Mahesh          MGR                    111 10-DEC-84      35000      10000 D3  23-DEC-08 P2                                                
+       108 Mark            DEV                    106 10-NOV-80                  1000 D5  02-OCT-05                                                   
+       107 Karan           DEV                    111 10-JUL-80                  1000 D1  21-JUN-01 P3                                                
+       109 Varun           CLK                    106 10-JAN-85      21000       1000 D5  10-DEC-07                                                   
+
+13 rows selected.
+
+SQL> SELECT * FROM PROJ;
+
+DNO PRJ PRJ_NAME             PRJ_CREDIT STRT_DATE END_DATE    PRJ_FUND                                                                                
+--- --- -------------------- ---------- --------- --------- ----------                                                                                
+D1  P1  PAYROLL AUTOMATION            4 01-JAN-22 30-JUN-22     500000                                                                                
+D2  P1  AI RESEARCH PLATFORM          7 15-FEB-22 14-FEB-23     900000                                                                                
+D3  P2  DATA WAREHOUSE MIGR.          8 01-MAR-22 31-AUG-22     650000                                                                                
+D4  P3  CRM REVAMP                    5 10-APR-22 09-OCT-22     400000                                                                                
+D1  P3  ERP REVAMP                    9 11-JAN-20 12-DEC-21     500000                                                                                
+D5  P4  WAREHOUSE AUTOMATION         10 05-MAY-22 04-NOV-22     700000                                                                                
+
+6 rows selected.
+
+SQL> SELECT EMPNO,ENAME,PROJ_ID FROM EMP WHERE PROJ_ID=(SELECT MAX(COUNT(PRJ_ID) FROM PORJ);
+SELECT EMPNO,ENAME,PROJ_ID FROM EMP WHERE PROJ_ID=(SELECT MAX(COUNT(PRJ_ID) FROM PORJ)
+                                                   *
+ERROR at line 1:
+ORA-00921: unexpected end of SQL command 
+
+
+SQL> SELECT EMPNO,ENAME,PROJ_ID FROM EMP WHERE PROJ_ID=(SELECT MAX(COUNT(PRJ_ID) FROM PROJ);
+SELECT EMPNO,ENAME,PROJ_ID FROM EMP WHERE PROJ_ID=(SELECT MAX(COUNT(PRJ_ID) FROM PROJ)
+                                                   *
+ERROR at line 1:
+ORA-00921: unexpected end of SQL command 
+
+
+SQL> DESC EMP;
+ Name                                                                                Null?    Type
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ EMPNO                                                                               NOT NULL NUMBER(3)
+ ENAME                                                                               NOT NULL VARCHAR2(15)
+ JOB                                                                                          VARCHAR2(15)
+ MGRID                                                                                        NUMBER
+ DATE_BIRTH                                                                                   DATE
+ SAL                                                                                          NUMBER(10,2)
+ COMM                                                                                         NUMBER(10,2)
+ DEPTNO                                                                                       CHAR(3)
+ DATE_JOIN                                                                                    DATE
+ PROJ_ID                                                                                      CHAR(3)
+
+SQL> DESC PROJ;
+ Name                                                                                Null?    Type
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ DNO                                                                                 NOT NULL CHAR(3)
+ PRJ_NO                                                                              NOT NULL CHAR(3)
+ PRJ_NAME                                                                            NOT NULL VARCHAR2(20)
+ PRJ_CREDIT                                                                                   NUMBER(2)
+ STRT_DATE                                                                           NOT NULL DATE
+ END_DATE                                                                                     DATE
+ PRJ_FUND                                                                                     NUMBER(7)
+
+SQL> SELECT empno, ename, COUNT(proj_id) AS project_count
+  2  FROM emp
+  3  WHERE proj_id IS NOT NULL
+  4  GROUP BY empno, ename
+  5  HAVING COUNT(proj_id) = (
+  6      SELECT MAX(COUNT(proj_id))
+  7      FROM emp
+  8      WHERE proj_id IS NOT NULL
+  9      GROUP BY empno
+ 10  );
+
+     EMPNO ENAME           PROJECT_COUNT                                                                                                              
+---------- --------------- -------------                                                                                                              
+       101 Ravi                        1                                                                                                              
+       102 Raviraj                     1                                                                                                              
+       103 Rama                        1                                                                                                              
+       105 Ramu                        1                                                                                                              
+       125 Manu                        1                                                                                                              
+       104 Manish                      1                                                                                                              
+       123 Mahesh                      1                                                                                                              
+       107 Karan                       1                                                                                                              
+
+8 rows selected.
+
+SQL> SELECT EMPNO,ENAME,PROJ_ID FROM EMP WHERE COUNT(PROJ_ID)=(SELECT MAX(COUNT(PRJ_ID) FROM PROJ);
+SELECT EMPNO,ENAME,PROJ_ID FROM EMP WHERE COUNT(PROJ_ID)=(SELECT MAX(COUNT(PRJ_ID) FROM PROJ)
+                                          *
+ERROR at line 1:
+ORA-00934: group function is not allowed here 
+
+
+SQL> SELECT EMPNO,ENAME,PROJ_ID FROM EMP HAVING COUNT(PROJ_ID)=(SELECT MAX(COUNT(PRJ_ID) FROM PROJ);
+SELECT EMPNO,ENAME,PROJ_ID FROM EMP HAVING COUNT(PROJ_ID)=(SELECT MAX(COUNT(PRJ_ID) FROM PROJ)
+                                                           *
+ERROR at line 1:
+ORA-00921: unexpected end of SQL command 
+
+
+SQL> SELECT EMPNO,ENAME,PROJ_ID FROM EMP HAVING COUNT(PROJ_ID)=(SELECT MAX(COUNT(PRJ_NO) FROM PROJ);
+SELECT EMPNO,ENAME,PROJ_ID FROM EMP HAVING COUNT(PROJ_ID)=(SELECT MAX(COUNT(PRJ_NO) FROM PROJ)
+                                                           *
+ERROR at line 1:
+ORA-00921: unexpected end of SQL command 
+
+
+SQL> SELECT EMPNO,ENAME,PROJ_ID FROM EMP HAVING COUNT(PROJ_ID)=(SELECT MAX(COUNT(PRJ_NO) FROM PROJ GROUP BY PRJ_NAME);
+SELECT EMPNO,ENAME,PROJ_ID FROM EMP HAVING COUNT(PROJ_ID)=(SELECT MAX(COUNT(PRJ_NO) FROM PROJ GROUP BY PRJ_NAME)
+                                                           *
+ERROR at line 1:
+ORA-00921: unexpected end of SQL command 
+
+
+SQL> SELECT EMPNO,ENAME,PROJ_ID FROM EMP GROUP BY EMPNO HAVING COUNT(PROJ_ID)=(SELECT MAX(COUNT(PRJ_NO) FROM PROJ GROUP BY PRJ_NAME);
+SELECT EMPNO,ENAME,PROJ_ID FROM EMP GROUP BY EMPNO HAVING COUNT(PROJ_ID)=(SELECT MAX(COUNT(PRJ_NO) FROM PROJ GROUP BY PRJ_NAME)
+                                                                          *
+ERROR at line 1:
+ORA-00921: unexpected end of SQL command 
+
+
+SQL> SELECT EMPNO,ENAME,PROJ_ID FROM EMP WHERE PROJ_ID=(SELECT PRJ_NO FROM PROJ GROUP BY PRJ_NAME HAVING MAX(COUNT(PRJ_NO)));
+SELECT EMPNO,ENAME,PROJ_ID FROM EMP WHERE PROJ_ID=(SELECT PRJ_NO FROM PROJ GROUP BY PRJ_NAME HAVING MAX(COUNT(PRJ_NO)))
+                                                                                                        *
+ERROR at line 1:
+ORA-00935: group function is nested too deeply 
+
+
+SQL> SELECT EMPNO,ENAME,PROJ_ID FROM EMP WHERE PROJ_ID=(SELECT PRJ_NO FROM PROJ GROUP BY PRJ_NAME HAVING MAX(COUNT(PRJ_NO));
+SELECT EMPNO,ENAME,PROJ_ID FROM EMP WHERE PROJ_ID=(SELECT PRJ_NO FROM PROJ GROUP BY PRJ_NAME HAVING MAX(COUNT(PRJ_NO))
+                                                   *
+ERROR at line 1:
+ORA-00921: unexpected end of SQL command 
+
+
+SQL> SELECT EMPNO,ENAME,PROJ_ID FROM EMP WHERE PROJ_ID=(SELECT PRJ_NO FROM PROJ HAVING MAX(COUNT(PRJ_NO)));
+SELECT EMPNO,ENAME,PROJ_ID FROM EMP WHERE PROJ_ID=(SELECT PRJ_NO FROM PROJ HAVING MAX(COUNT(PRJ_NO)))
+                                                                                      *
+ERROR at line 1:
+ORA-00935: group function is nested too deeply 
+
+
+SQL> SELECT DEPTNO FROM EMP GROUP BY DEPTNO HAVING AVG(SAL)=(SELECT MAX(AVG(SAL)) FROM EMP GROUP BY DEPTNO);
+
+DEP                                                                                                                                                   
+---                                                                                                                                                   
+                                                                                                                                                      
+
+SQL> SELECT DEPTNO FROM EMP WHERE DEPTNO IS NOT NULL GROUP BY DEPTNO HAVING AVG(SAL)=(SELECT MAX(AVG(SAL)) FROM EMP WHERE DEPTNO IS NOT NULL GROUP BY DEPTNO);
+
+DEP                                                                                                                                                   
+---                                                                                                                                                   
+D3                                                                                                                                                    
+
+SQL> SELECT DNAME FROM DEPT WHERE DNO IN(SELECT DNO FROM PROJ GROUP BY PRJ_NAME HAVING COUNT(PRJ_NO)>1);
+SELECT DNAME FROM DEPT WHERE DNO IN(SELECT DNO FROM PROJ GROUP BY PRJ_NAME HAVING COUNT(PRJ_NO)>1)
+                                           *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> SELECT DNAME FROM DEPT WHERE DNO IN(SELECT DNO FROM PROJ GROUP BY DNO HAVING COUNT(PRJ_NO)>1);
+
+DNAME                                                                                                                                                 
+---------------                                                                                                                                       
+Marketing                                                                                                                                             
+
+SQL> SELECT COUNT(EMPNO) FROM EMP WHERE EXTRACT(DAY FROM DATE_JOIN)>15;
+
+COUNT(EMPNO)                                                                                                                                          
+------------                                                                                                                                          
+           5                                                                                                                                          
+
+SQL> SELECT EMPNO,ENAME,JOB FROM EMP WHERE JOB=(SELECT JOB FROM EMP WHERE ENAME='Mahesh');
+
+     EMPNO ENAME           JOB                                                                                                                        
+---------- --------------- ---------------                                                                                                            
+       101 Ravi            MGR                                                                                                                        
+       123 Mahesh          MGR                                                                                                                        
+
+SQL> CREATE VIEW EMP_PRJ_VW AS SELECT E.*,P.PRJ_NAM
+  2  
+SQL> CREATE VIEW EMP_PRJ_VW AS SELECT E.*,P.PRJ_NAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO LEFT JOIN PROJ P ON E.DEPTNO=P.DNO WHERE D.DNAME='Marketing';
+
+View created.
+
+SQL> SELECT * FROM EMP_PRJ_VW;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN PRO PRJ_NAME                                      
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- --- --------------------                          
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06 P1  PAYROLL AUTOMATION                            
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06 P1  ERP REVAMP                                    
+       102 Raviraj         ENG                    106 10-JAN-85      26400       1000 D1  12-NOV-10 P3  PAYROLL AUTOMATION                            
+       102 Raviraj         ENG                    106 10-JAN-85      26400       1000 D1  12-NOV-10 P3  ERP REVAMP                                    
+       103 Rama            DEV                    111 10-DEC-80                  1000 D1  22-SEP-01 P1  PAYROLL AUTOMATION                            
+       103 Rama            DEV                    111 10-DEC-80                  1000 D1  22-SEP-01 P1  ERP REVAMP                                    
+       105 Ramu            CLK                    111 02-AUG-80                  1000 D1  12-OCT-02 P3  PAYROLL AUTOMATION                            
+       105 Ramu            CLK                    111 02-AUG-80                  1000 D1  12-OCT-02 P3  ERP REVAMP                                    
+       107 Karan           DEV                    111 10-JUL-80                  1000 D1  21-JUN-01 P3  PAYROLL AUTOMATION                            
+       107 Karan           DEV                    111 10-JUL-80                  1000 D1  21-JUN-01 P3  ERP REVAMP                                    
+
+10 rows selected.
+
+SQL> DROP EMP_PRJ_VW;
+DROP EMP_PRJ_VW
+     *
+ERROR at line 1:
+ORA-00950: invalid DROP option 
+
+
+SQL> DROP VIEW EMP_PRJ_VW;
+
+View dropped.
+
+SQL> CREATE VIEW EMP_PRJ_VW AS SELECT DISTINCT E.*, DISTINCT P.PRJ_NAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO LEFT JOIN PROJ P ON E.DEPTNO=P.DNO WHERE D.DNAME='Marketing';
+CREATE VIEW EMP_PRJ_VW AS SELECT DISTINCT E.*, DISTINCT P.PRJ_NAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO LEFT JOIN PROJ P ON E.DEPTNO=P.DNO WHERE D.DNAME='Marketing'
+                                               *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> CREATE VIEW EMP_PRJ_VW AS SELECT DISTINCT E.*, P.PRJ_NAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DNO LEFT JOIN PROJ P ON E.DEPTNO=P.DNO WHERE D.DNAME='Marketing';
+
+View created.
+
+SQL> SELECT * FROM EMP_PRJ_VW;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN PRO PRJ_NAME                                      
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- --- --------------------                          
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06 P1  PAYROLL AUTOMATION                            
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06 P1  ERP REVAMP                                    
+       102 Raviraj         ENG                    106 10-JAN-85      26400       1000 D1  12-NOV-10 P3  PAYROLL AUTOMATION                            
+       102 Raviraj         ENG                    106 10-JAN-85      26400       1000 D1  12-NOV-10 P3  ERP REVAMP                                    
+       103 Rama            DEV                    111 10-DEC-80                  1000 D1  22-SEP-01 P1  PAYROLL AUTOMATION                            
+       103 Rama            DEV                    111 10-DEC-80                  1000 D1  22-SEP-01 P1  ERP REVAMP                                    
+       105 Ramu            CLK                    111 02-AUG-80                  1000 D1  12-OCT-02 P3  PAYROLL AUTOMATION                            
+       105 Ramu            CLK                    111 02-AUG-80                  1000 D1  12-OCT-02 P3  ERP REVAMP                                    
+       107 Karan           DEV                    111 10-JUL-80                  1000 D1  21-JUN-01 P3  PAYROLL AUTOMATION                            
+       107 Karan           DEV                    111 10-JUL-80                  1000 D1  21-JUN-01 P3  ERP REVAMP                                    
+
+10 rows selected.
+
+SQL> SELECT * FROM TASK;
+
+PRJ DNO    TASK_ID TASK_NAME                      S_DATE    E_DATE    STATUS                                                                          
+--- --- ---------- ------------------------------ --------- --------- ------------                                                                    
+P1  D1           1 REQUIREMENT ANALYSIS           01-JAN-22 15-JAN-22 COMPLETED                                                                       
+P1  D2           2 MODULE DESIGN                  16-JAN-22 10-FEB-22 COMPLETED                                                                       
+P2  D3           3 CODING and TESTING             11-FEB-22           IN-PROGRESS                                                                     
+P3  D4           1 DATASET COLLECTION             15-FEB-22 28-FEB-22 COMPLETED                                                                       
+P3  D1           2 MODEL TRAINING                 01-MAR-22           IN-PROGRESS                                                                     
+P3  D1           1 SCHEMA MAPPING                 01-MAR-22 20-MAR-22 COMPLETED                                                                       
+P4  D5           1 REQUIREMENT GATHERING          10-APR-22           PENDING                                                                         
+P4  D5           2 SITE SURVEY                    05-MAY-22 20-MAY-22 COMPLETED                                                                       
+
+8 rows selected.
+
+SQL> DESC TASK;
+ Name                                                                                Null?    Type
+ ----------------------------------------------------------------------------------- -------- --------------------------------------------------------
+ PRJ_ID                                                                              NOT NULL CHAR(3)
+ DNO                                                                                 NOT NULL CHAR(3)
+ TASK_ID                                                                             NOT NULL NUMBER(3)
+ TASK_NAME                                                                           NOT NULL VARCHAR2(30)
+ S_DATE                                                                              NOT NULL DATE
+ E_DATE                                                                                       DATE
+ STATUS                                                                                       VARCHAR2(12)
+
+SQL> SELECT P.PRJ_NO,P.PRJ_NAME,T.DNO,SUM(T.E_DATE-T.S_DATE) AS TOTAL_DAYS,AVG(T.E_DATE-T.S_DATE) AS AVG_DAYS FROM PROJ P JOIN TASK T WHERE E_DATE IS NOT NULL GROUP BY T.DNO;
+SELECT P.PRJ_NO,P.PRJ_NAME,T.DNO,SUM(T.E_DATE-T.S_DATE) AS TOTAL_DAYS,AVG(T.E_DATE-T.S_DATE) AS AVG_DAYS FROM PROJ P JOIN TASK T WHERE E_DATE IS NOT NULL GROUP BY T.DNO
+                                                                                                                                 *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> SELECT P.PRJ_NO,P.PRJ_NAME,T.DNO,SUM(T.E_DATE-T.S_DATE) AS TOTAL_DAYS,AVG(T.E_DATE-T.S_DATE) AS AVG_DAYS FROM PROJ P JOIN TASK T ON P.DNO=T.DNO WHERE E_DATE IS NOT NULL GROUP BY T.DNO;
+SELECT P.PRJ_NO,P.PRJ_NAME,T.DNO,SUM(T.E_DATE-T.S_DATE) AS TOTAL_DAYS,AVG(T.E_DATE-T.S_DATE) AS AVG_DAYS FROM PROJ P JOIN TASK T ON P.DNO=T.DNO WHERE E_DATE IS NOT NULL GROUP BY T.DNO
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> SELECT P.PRJ_NO,P.PRJ_NAME,T.DNO,SUM(T.E_DATE-T.S_DATE) AS TOTAL_DAYS,AVG(T.E_DATE-T.S_DATE) AS AVG_DAYS FROM PROJ P JOIN TASK T ON P.DNO=T.DNO WHERE T.E_DATE IS NOT NULL GROUP BY T.DNO;
+SELECT P.PRJ_NO,P.PRJ_NAME,T.DNO,SUM(T.E_DATE-T.S_DATE) AS TOTAL_DAYS,AVG(T.E_DATE-T.S_DATE) AS AVG_DAYS FROM PROJ P JOIN TASK T ON P.DNO=T.DNO WHERE T.E_DATE IS NOT NULL GROUP BY T.DNO
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> SELECT P.PRJ_NO,P.PRJ_NAME,T.DNO,SUM(T.E_DATE-T.S_DATE) AS TOTAL_DAYS,AVG(T.E_DATE-T.S_DATE) AS AVG_DAYS FROM PROJ P JOIN TASK T ON P.DNO=T.DNO WHERE T.STATUS='COMPLETED' GROUP BY T.DNO;
+SELECT P.PRJ_NO,P.PRJ_NAME,T.DNO,SUM(T.E_DATE-T.S_DATE) AS TOTAL_DAYS,AVG(T.E_DATE-T.S_DATE) AS AVG_DAYS FROM PROJ P JOIN TASK T ON P.DNO=T.DNO WHERE T.STATUS='COMPLETED' GROUP BY T.DNO
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> SELECT P.PRJ_NO,P.PRJ_NAME,T.DNO,SUM(T.E_DATE-T.S_DATE) AS TOTAL_DAYS,AVG(T.E_DATE-T.S_DATE) AS AVG_DAYS FROM PROJ P JOIN TASK T ON P.DNO=T.DNO WHERE T.STATUS='COMPLETED' GROUP BY P.PRJ_NO,P.PRJ_NAME,T.DNO;
+
+PRJ PRJ_NAME             DNO TOTAL_DAYS   AVG_DAYS                                                                                                    
+--- -------------------- --- ---------- ----------                                                                                                    
+P1  PAYROLL AUTOMATION   D1          33       16.5                                                                                                    
+P3  ERP REVAMP           D1          33       16.5                                                                                                    
+P1  AI RESEARCH PLATFORM D2          25         25                                                                                                    
+P3  CRM REVAMP           D4          13         13                                                                                                    
+P4  WAREHOUSE AUTOMATION D5          15         15                                                                                                    
+
+SQL> SELECT
+  2      p.prj_no,
+  3      p.prj_name,
+  4      t.dno,
+  5      SUM(t.e_date - t.s_date) AS total_days,
+  6      ROUND(AVG(t.e_date - t.s_date), 2) AS avg_days
+  7  FROM proj p
+  8  JOIN task t
+  9    ON p.prj_no = t.prj_id
+ 10  WHERE t.status = 'COMPLETED'
+ 11  GROUP BY p.prj_no, p.prj_name, t.dno;
+
+PRJ PRJ_NAME             DNO TOTAL_DAYS   AVG_DAYS                                                                                                    
+--- -------------------- --- ---------- ----------                                                                                                    
+P1  PAYROLL AUTOMATION   D1          14         14                                                                                                    
+P1  AI RESEARCH PLATFORM D1          14         14                                                                                                    
+P1  PAYROLL AUTOMATION   D2          25         25                                                                                                    
+P1  AI RESEARCH PLATFORM D2          25         25                                                                                                    
+P3  CRM REVAMP           D4          13         13                                                                                                    
+P3  ERP REVAMP           D4          13         13                                                                                                    
+P3  CRM REVAMP           D1          19         19                                                                                                    
+P3  ERP REVAMP           D1          19         19                                                                                                    
+P4  WAREHOUSE AUTOMATION D5          15         15                                                                                                    
+
+9 rows selected.
+
+SQL> SELECT P.PRJ_NO,P.PRJ_NAME,SUM(T.E_DATE-T.S_DATE) AS TOTAL_DAYS,AVG(T.E_DATE-T.S_DATE) AS AVG_DAYS FROM PROJ P JOIN TASK T ON P.DNO=T.DNO WHERE T.STATUS='COMPLETED' GROUP BY P.PRJ_NO,P.PRJ_NAME;
+
+PRJ PRJ_NAME             TOTAL_DAYS   AVG_DAYS                                                                                                        
+--- -------------------- ---------- ----------                                                                                                        
+P1  PAYROLL AUTOMATION           33       16.5                                                                                                        
+P3  ERP REVAMP                   33       16.5                                                                                                        
+P1  AI RESEARCH PLATFORM         25         25                                                                                                        
+P3  CRM REVAMP                   13         13                                                                                                        
+P4  WAREHOUSE AUTOMATION         15         15                                                                                                        
+
+SQL> SELECT P.PRJ_NAME,SUM(T.E_DATE-T.S_DATE) AS TOTAL_DAYS,AVG(T.E_DATE-T.S_DATE) AS AVG_DAYS FROM PROJ P JOIN TASK T ON P.DNO=T.DNO WHERE T.STATUS='COMPLETED' GROUP BY P.PRJ_NAME;
+
+PRJ_NAME             TOTAL_DAYS   AVG_DAYS                                                                                                            
+-------------------- ---------- ----------                                                                                                            
+PAYROLL AUTOMATION           33       16.5                                                                                                            
+ERP REVAMP                   33       16.5                                                                                                            
+AI RESEARCH PLATFORM         25         25                                                                                                            
+CRM REVAMP                   13         13                                                                                                            
+WAREHOUSE AUTOMATION         15         15                                                                                                            
+
+SQL> SELECT TO_CHAR(DATE_JOIN,'MONTH') AS JOIN_MONTH, COUNT(EMPNO) AS EMPLOYEES FROM EMP WHERE DATE_JOIN IS NOT NULL ORDER BY EMPLOYEES ASC;
+SELECT TO_CHAR(DATE_JOIN,'MONTH') AS JOIN_MONTH, COUNT(EMPNO) AS EMPLOYEES FROM EMP WHERE DATE_JOIN IS NOT NULL ORDER BY EMPLOYEES ASC
+               *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SQL> SELECT TO_CHAR(DATE_JOIN,'MONTH') AS JOIN_MONTH, COUNT(EMPNO) AS EMPLOYEES FROM EMP WHERE DATE_JOIN IS NOT NULL GROUP_BY TO_CHAR(DATE_JOIN,'MONTH') ORDER BY EMPLOYEES ASC;
+SELECT TO_CHAR(DATE_JOIN,'MONTH') AS JOIN_MONTH, COUNT(EMPNO) AS EMPLOYEES FROM EMP WHERE DATE_JOIN IS NOT NULL GROUP_BY TO_CHAR(DATE_JOIN,'MONTH') ORDER BY EMPLOYEES ASC
+                                                                                                                *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT TO_CHAR(DATE_JOIN,'MONTH') AS JOIN_MONTH, COUNT(EMPNO) AS EMPLOYEES FROM EMP WHERE DATE_JOIN IS NOT NULL GROUP_BY TO_CHAR(DATE_JOIN,'MONTH') ORDER BY COUNT(EMPNO) ASC;
+SELECT TO_CHAR(DATE_JOIN,'MONTH') AS JOIN_MONTH, COUNT(EMPNO) AS EMPLOYEES FROM EMP WHERE DATE_JOIN IS NOT NULL GROUP_BY TO_CHAR(DATE_JOIN,'MONTH') ORDER BY COUNT(EMPNO) ASC
+                                                                                                                *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT TO_CHAR(DATE_JOIN,'MONTH') AS JOIN_MONTH, COUNT(EMPNO) AS EMPLOYEES FROM EMP WHERE DATE_JOIN IS NOT NULL GROUP BY TO_CHAR(DATE_JOIN,'MONTH') ORDER BY COUNT(EMPNO) ASC;
+
+JOIN_MONTH                            EMPLOYEES                                                                                                       
+------------------------------------ ----------                                                                                                       
+FEBRUARY                                      1                                                                                                       
+SEPTEMBER                                     1                                                                                                       
+JUNE                                          1                                                                                                       
+DECEMBER                                      3                                                                                                       
+NOVEMBER                                      3                                                                                                       
+OCTOBER                                       4                                                                                                       
+
+6 rows selected.
+
+SQL> CREATE INDEX IDX ON EMP(ENAME,JOB);
+
+Index created.
+
+SQL> SELECT * FROM IDX;
+SELECT * FROM IDX
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME           JOB                  MGRID DATE_BIRT        SAL       COMM DEP DATE_JOIN PRO                                               
+---------- --------------- --------------- ---------- --------- ---------- ---------- --- --------- ---                                               
+       101 Ravi            MGR                    111 10-OCT-95      32000      10000 D1  02-OCT-06 P1                                                
+       102 Raviraj         ENG                    106 10-JAN-85      26400       1000 D1  12-NOV-10 P3                                                
+       111 Raghu           ENG                    150 10-DEC-84      49500      15000     03-FEB-05                                                   
+       150 Rakesh          CEO                        10-DEC-90      60000      30000     03-DEC-08                                                   
+       103 Rama            DEV                    111 10-DEC-80                  1000 D1  22-SEP-01 P1                                                
+       105 Ramu            CLK                    111 02-AUG-80                  1000 D1  12-OCT-02 P3                                                
+       125 Manu            DEV                    150 10-DEC-80                  1000 D4  02-OCT-02 P3                                                
+       104 Manish          CLK                    125 02-OCT-80                  1000 D2  26-NOV-05 P1                                                
+       106 Naresh          A.MGR                  111 02-OCT-86                  1000 D2  24-NOV-00                                                   
+       123 Mahesh          MGR                    111 10-DEC-84      35000      10000 D3  23-DEC-08 P2                                                
+       108 Mark            DEV                    106 10-NOV-80                  1000 D5  02-OCT-05                                                   
+       107 Karan           DEV                    111 10-JUL-80                  1000 D1  21-JUN-01 P3                                                
+       109 Varun           CLK                    106 10-JAN-85      21000       1000 D5  10-DEC-07                                                   
+
+13 rows selected.
+
+SQL> SELECT EMPNO,ENAME FROM EMP WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='Ravi') AND ENAME<>'Ravi';
+
+     EMPNO ENAME                                                                                                                                      
+---------- ---------------                                                                                                                            
+       102 Raviraj                                                                                                                                    
+       103 Rama                                                                                                                                       
+       105 Ramu                                                                                                                                       
+       107 Karan                                                                                                                                      
+
+SQL> SELECT * FROM DEPT;
+
+DNO DNAME           LOC DEPT_BUDGET                                                                                                                   
+--- --------------- --- -----------                                                                                                                   
+D1  Marketing       CHN      500000                                                                                                                   
+D2  Research        MNG      300000                                                                                                                   
+D3  IT              BNG      400000                                                                                                                   
+D4  HR              BNG      200000                                                                                                                   
+D5  Accounts        BNG      500000                                                                                                                   
+    Corporate       HYD      700000                                                                                                                   
+
+6 rows selected.
+
+SQL> SELECT * FROM PROJ;
+
+DNO PRJ PRJ_NAME             PRJ_CREDIT STRT_DATE END_DATE    PRJ_FUND                                                                                
+--- --- -------------------- ---------- --------- --------- ----------                                                                                
+D1  P1  PAYROLL AUTOMATION            4 01-JAN-22 30-JUN-22     500000                                                                                
+D2  P1  AI RESEARCH PLATFORM          7 15-FEB-22 14-FEB-23     900000                                                                                
+D3  P2  DATA WAREHOUSE MIGR.          8 01-MAR-22 31-AUG-22     650000                                                                                
+D4  P3  CRM REVAMP                    5 10-APR-22 09-OCT-22     400000                                                                                
+D1  P3  ERP REVAMP                    9 11-JAN-20 12-DEC-21     500000                                                                                
+D5  P4  WAREHOUSE AUTOMATION         10 05-MAY-22 04-NOV-22     700000                                                                                
+
+6 rows selected.
+
+SQL> SELECT DNAME FROM DEPT WHERE DNO=(SELECT DNO FROM PROJ WHERE PRJ_FUND>400000);
+SELECT DNAME FROM DEPT WHERE DNO=(SELECT DNO FROM PROJ WHERE PRJ_FUND>400000)
+                                  *
+ERROR at line 1:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> SELECT DNAME FROM DEPT WHERE DNO=(SELECT DISTINCT DNO FROM PROJ WHERE PRJ_FUND>400000);
+SELECT DNAME FROM DEPT WHERE DNO=(SELECT DISTINCT DNO FROM PROJ WHERE PRJ_FUND>400000)
+                                  *
+ERROR at line 1:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> SELECT D.DNAME FROM DEPT D WHERE EXISTS(SELECT 1 FROM PROJ P WHERE D.DNO=P.DNO AND PRJ_FUND>400000);
+
+DNAME                                                                                                                                                 
+---------------                                                                                                                                       
+Marketing                                                                                                                                             
+Research                                                                                                                                              
+IT                                                                                                                                                    
+Accounts                                                                                                                                              
+
+SQL> SELECT E.ENAME FROM EMP E WHERE E.SAL>(SELECT AVG(SAL) FROM EMP M WHERE E.EMPNO=M.EMPNO GROUP BY M.DEPTNO);
+
+no rows selected
+
+SQL> SELECT E.ENAME FROM EMP E WHERE E.SAL>(SELECT AVG(M.SAL) FROM EMP M WHERE E.EMPNO=M.EMPNO GROUP BY M.DEPTNO);
+
+no rows selected
+
+SQL> SELECT E.ENAME FROM EMP E WHERE E.SAL>(SELECT AVG(M.SAL) FROM EMP M WHERE E.DEPTNO=M.DEPTNO GROUP BY M.DEPTNO);
+
+ENAME                                                                                                                                                 
+---------------                                                                                                                                       
+Ravi                                                                                                                                                  
+
+SQL> SELECT * FROM DEPENDENT;
+
+     DEPID      EMPNO DEPENDENT_NAME       G DOFBIRTH  RELATIONSHIPS      NOM_PCT MED                                                                 
+---------- ---------- -------------------- - --------- --------------- ---------- ---                                                                 
+         1        101 LATHA KUMAR          F 10-MAY-82 SPOUSE                  50 YES                                                                 
+         2        101 ARUN KUMAR           M 19-JUN-00 CHILD                   25 YES                                                                 
+         3        102 SEEMA RAVI           F 01-JAN-80 SPOUSE                  60 YES                                                                 
+         4        103 MOHAN RAO            M 12-DEC-50 PARENT                  30 NO                                                                  
+         5        106 NEHA RAHUL           F 22-JUL-90 SPOUSE                  70 YES                                                                 
+         6        108 ROHAN MEERA          M 03-MAR-15 CHILD                  100 YES                                                                 
+
+6 rows selected.
+
+SQL> SELECT E.ENAME FROM EMP E WHERE NOT EXISTS(SELECT D.EMPNO FROM DEPENDENT D WHERE E.EMPNO=D.EMPNO);
+
+ENAME                                                                                                                                                 
+---------------                                                                                                                                       
+Karan                                                                                                                                                 
+Manu                                                                                                                                                  
+Varun                                                                                                                                                 
+Ramu                                                                                                                                                  
+Manish                                                                                                                                                
+Raghu                                                                                                                                                 
+Rakesh                                                                                                                                                
+Mahesh                                                                                                                                                
+
+8 rows selected.
+
+SQL> SELECT E.ENAME,E.EMPNO FROM EMP E WHERE NOT EXISTS(SELECT D.EMPNO FROM DEPENDENT D WHERE E.EMPNO=D.EMPNO);
+
+ENAME                EMPNO                                                                                                                            
+--------------- ----------                                                                                                                            
+Karan                  107                                                                                                                            
+Manu                   125                                                                                                                            
+Varun                  109                                                                                                                            
+Ramu                   105                                                                                                                            
+Manish                 104                                                                                                                            
+Raghu                  111                                                                                                                            
+Rakesh                 150                                                                                                                            
+Mahesh                 123                                                                                                                            
+
+8 rows selected.
+
+SQL> SELECT ENAME FROM EMP WHERE JOB='DEV' UNION(SELECT ENAME FROM EMP WHERE JOB='ENG');
+
+ENAME                                                                                                                                                 
+---------------                                                                                                                                       
+Karan                                                                                                                                                 
+Manu                                                                                                                                                  
+Mark                                                                                                                                                  
+Rama                                                                                                                                                  
+Raghu                                                                                                                                                 
+Raviraj                                                                                                                                               
+
+6 rows selected.
+
+SQL> SPOOL OFF;

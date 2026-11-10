@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background: #444;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        h2.gallery-title {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .gallery {
+            display: grid;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .photo {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .photo img {
+            width: 100%;
+            height: auto;
+            border-radius: 3px;
+        }
+        @media screen and (max-width: 767px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media screen and (min-width: 992px) {
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Photo Gallery</h1>
+</header>
+
+<nav>
+    <a href="photomag.html">Home</a>
+    <a href="gallery.html">Gallery</a>
+</nav>
+
+<h2 class="gallery-title">Photos</h2>
+
+<div class="gallery">
+    <div class="photo">
+        <img src="nature.jpg" alt="Nature">
+        <p>Nature</p>
+    </div>
+    <div class="photo">
+        <img src="travel.jpg" alt="Travel">
+        <p>Travel</p>
+    </div>
+    <div class="photo">
+        <img src="mountain.jpg" alt="Mountain">
+        <p>Mountain</p>
+    </div>
+    <div class="photo">
+        <img src="city.jpg" alt="City">
+        <p>City</p>
+    </div>
+    <div class="photo">
+        <img src="animal.jpg" alt="Animal">
+        <p>Animal</p>
+    </div>
+    <div class="photo">
+        <img src="beach.jpg" alt="Beach">
+        <p>Beach</p>
+    </div>
+	<div class="photo">
+        <img src="https://picsum.photos/400/300?random=4" alt="City">
+        <p>Scenary</p>
+    </div>
+	<div class="photo">
+        <img src="https://picsum.photos/400/300?random=5" alt="City">
+        <p>Scenary</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Photo Magazine</p>
+</footer>
+
+</body>
+</html>

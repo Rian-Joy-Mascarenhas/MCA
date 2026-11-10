@@ -1,0 +1,183 @@
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week9\lab9a1proc.sql;
+ 12
+ 13  /
+
+Procedure created.
+
+SQL> @C:\Users\riyan\OneDrive\Documents\dbms\week9\lab9a1proc.sql;
+ 12  /
+
+Procedure created.
+
+SQL> @C:\Users\riyan\OneDrive\Documents\dbms\week9\lab9a1plsql.sql;
+EMPNO  NAME      AGE   EXPERIENCE
+----------------------------------------
+101    Ravi      31    20
+102    Raviraj   41    15
+103    Suresh    45    25
+104    Rakesh    46    20
+106    Sartaj    40    36
+108    Suraj     45    21
+109    Ramesh    46    24
+110    Saroj     46    25
+111    Raghu     41    21
+112    Arnav     41    18
+113    Aman      46    25
+123    Ashok     41    17
+125    Manu      45    24
+139    Ronald    36    25
+140    Bhuvan    42    23
+150    CEO       35    17
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week9\lab9a2proc.sql;
+
+Procedure created.
+
+SQL> exec get_dept_proj_emp_details('Marketing');
+====================================================
+Department: MARKETING (DNO: D1 )
+====================================================
+
+Project: P1  - PAYROLL AUTOMATION
+Employees Working on this Project:
+------------------------------------
+- 103 | Suresh |
+DEV
+- 101 | Ravi |
+MGR
+- 140 | Bhuvan |
+CLK
+
+Project: P3  - ERP REVAMP
+Employees Working on this Project:
+------------------------------------
+- 108 | Suraj |
+DEV
+- 109 | Ramesh |
+CLK
+- 110 | Saroj |
+DEV
+- 102 | Raviraj |
+ENG
+- 113 | Aman |
+DEV
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week9\lab9a3func.sql;
+
+Function created.
+
+SQL> Select dno, prj_no,prj_name,get_project_status(dno,prj_no) as status from proj;
+
+DNO PRJ PRJ_NAME
+--- --- --------------------
+STATUS
+--------------------------------------------------------------------------------
+D1  P1  PAYROLL AUTOMATION
+COMPLETED
+
+D2  P1  AI RESEARCH PLATFORM
+COMPLETED
+
+D3  P2  DATA WAREHOUSE MIGR.
+IN-PROGRESS
+
+
+DNO PRJ PRJ_NAME
+--- --- --------------------
+STATUS
+--------------------------------------------------------------------------------
+D4  P3  CRM REVAMP
+COMPLETED
+
+D1  P3  ERP REVAMP
+IN-PROGRESS
+
+D5  P4  WAREHOUSE AUTOMATION
+IN-PROGRESS
+
+
+DNO PRJ PRJ_NAME
+--- --- --------------------
+STATUS
+--------------------------------------------------------------------------------
+D6  P4  ERP REVAMP
+NO TASKS
+
+D7  P2  CRM REVAMP
+NO TASKS
+
+
+8 rows selected.
+
+SQL> set pagesize 200
+SQL> sel linesize 200
+SP2-0734: unknown command beginning "sel linesi..." - rest of line ignored.
+SQL> sel linespace 200
+SP2-0734: unknown command beginning "sel linesp..." - rest of line ignored.
+SQL> Select dno, prj_no,prj_name,get_project_status(dno,prj_no) as status from proj;
+
+DNO PRJ PRJ_NAME
+--- --- --------------------
+STATUS
+--------------------------------------------------------------------------------
+D1  P1  PAYROLL AUTOMATION
+COMPLETED
+
+D2  P1  AI RESEARCH PLATFORM
+COMPLETED
+
+D3  P2  DATA WAREHOUSE MIGR.
+IN-PROGRESS
+
+D4  P3  CRM REVAMP
+COMPLETED
+
+D1  P3  ERP REVAMP
+IN-PROGRESS
+
+D5  P4  WAREHOUSE AUTOMATION
+IN-PROGRESS
+
+D6  P4  ERP REVAMP
+NO TASKS
+
+D7  P2  CRM REVAMP
+NO TASKS
+
+
+8 rows selected.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week9\lab9a4func.sql;
+
+Function created.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week9\lab9a4plsql.sql;
+Marketing department has received Rs. 1000000/-
+Research department has received Rs. 900000/-
+IT department has received Rs. 650000/-
+HR department has received Rs. 400000/-
+Accounts department has received Rs. 700000/-
+Sales department has received Rs. 750000/-
+CS department has received Rs. 0/-
+Finance department has received Rs. 350000/-
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\riyan\OneDrive\Documents\dbms\week9\lab9a5proc.sql;
+
+Procedure created.
+
+SQL> exec display_dept_total_salary;
+Marketing Department Total Salary: Rs. 357000
+HR Department Total Salary: Rs. 95000
+Research Department Total Salary: Rs. 108000
+IT Department Total Salary: Rs. 25000
+Accounts Department Total Salary: Rs. 50000
+
+PL/SQL procedure successfully completed.
+
+SQL>

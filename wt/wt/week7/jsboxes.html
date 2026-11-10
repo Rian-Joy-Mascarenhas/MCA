@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Boxes</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+      }
+      .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-top: 30px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: lightblue;
+      }
+      @media (max-width: 500px) {
+        .buttons {
+          flex-direction: column;
+        }
+        button {
+          width: 150px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>JavaScript Dialog Boxes</h2>
+    <script>
+      function promptt() {
+        prompt("Enter Something");
+      }
+      function confirmm() {
+        var r = confirm("Press OK or Cancel");
+        if (r == true)
+          document.getElementById("result").innerHTML = "You Pressed OK!!";
+        else
+          document.getElementById("result").innerHTML = "You Pressed Cancel!!";
+      }
+      function alertt() {
+        alert("Hello");
+      }
+    </script>
+    <div class="buttons">
+      <button onclick="promptt()">Prompt</button>
+      <button onclick="confirmm()">Confirm</button>
+      <button onclick="alertt()">Alert</button>
+    </div>
+    <p id="result"></p>
+  </body>
+</html>
