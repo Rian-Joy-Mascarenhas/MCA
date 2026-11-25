@@ -1,9 +1,9 @@
 <div align="center">
 
-# 🎓 Master of Computer Applications (MCA) Coursework Repository
+#  Master of Computer Applications (MCA) Coursework Repository
 
-### 🏛️ Manipal Institute of Technology (MIT), MAHE • School of Computer Engineering
-### 📚 Academic Curriculum • Laboratory Practicals • Course Projects • Research Methodology
+###  Manipal Institute of Technology (MIT), MAHE • School of Computer Engineering
+###  Academic Curriculum • Laboratory Practicals • Course Projects • Research Methodology
 
 <p>
   <img src="https://img.shields.io/badge/Degree-MCA%20(2026--2027)-6C63FF?style=for-the-badge&logo=academia&logoColor=white" alt="MCA">
@@ -23,28 +23,28 @@
 
 ---
 
-## 📑 Table of Contents
+##  Table of Contents
 
 - [Curriculum & Course Overview](#-curriculum--course-overview)
 - [Module Index](#-module-index)
-- [💻 Module 1: Object-Oriented Programming with C++ (`MCA 4142`)](#-module-1-object-oriented-programming-with-c-mca-4142)
-- [🗄️ Module 2: Database Management Systems (`MCA 4141`)](#️-module-2-database-management-systems-mca-4141)
+- [ Module 1: Object-Oriented Programming with C++ (`MCA 4142`)](#-module-1-object-oriented-programming-with-c-mca-4142)
+- [ Module 2: Database Management Systems (`MCA 4141`)](#️-module-2-database-management-systems-mca-4141)
   - [Weekly Laboratory Practicals](#-dbms-weekly-laboratory-curriculum)
   - [Academic Mini-Project: Mobile Manufacturing System](#-academic-mini-project-mobile-manufacturing-system-group-4)
-- [🌐 Module 3: Web Technology (`MCA 4143`)](#-module-3-web-technology-mca-4143)
+- [ Module 3: Web Technology (`MCA 4143`)](#-module-3-web-technology-mca-4143)
   - [Weekly Laboratory Practicals](#-web-technology-weekly-laboratory-curriculum)
   - [Academic Course Project: Campus Event & Volunteer Management System](#-academic-course-project-campus-event--volunteer-management-system)
 - [🔬 Module 4: Research Methodology & Technical Communication (RMTC)](#-module-4-research-methodology--technical-communication-rmtc)
   - [Research Project: 3D–2D Medical Image Registration Using Deep Learning](#-research-project-3d2d-medical-image-registration-using-deep-learning)
   - [RMTC Lecture & Curriculum Modules](#-rmtc-lecture--curriculum-modules)
-- [🛠️ Technologies & Tools Ecosystem](#️-technologies--tools-ecosystem)
-- [📁 Repository Structure](#-repository-structure)
-- [🚀 Execution & Setup Guidelines](#-execution--setup-guidelines)
-- [📜 Academic Integrity & Attribution](#-academic-integrity--attribution)
+- [ Technologies & Tools Ecosystem](#️-technologies--tools-ecosystem)
+- [ Repository Structure](#-repository-structure)
+- [ Execution & Setup Guidelines](#-execution--setup-guidelines)
+- [ Academic Integrity & Attribution](#-academic-integrity--attribution)
 
 ---
 
-## 🌟 Curriculum & Course Overview
+##  Curriculum & Course Overview
 
 This repository archives coursework, laboratory practicals, course projects, and research papers completed during the **Master of Computer Applications (MCA)** program at the **School of Computer Engineering, Manipal Institute of Technology (MIT), Manipal Academy of Higher Education (MAHE)**.
 
@@ -56,7 +56,7 @@ The coursework spans four core academic pillars:
 
 ---
 
-## 🗂️ Module Index
+##  Module Index
 
 | Folder | Subject / Course Code | Focus Areas | Key Materials & Deliverables |
 |:---|:---|:---|:---|
@@ -67,7 +67,7 @@ The coursework spans four core academic pillars:
 
 ---
 
-## 💻 Module 1: Object-Oriented Programming with C++ (`MCA 4142`)
+##  Module 1: Object-Oriented Programming with C++ (`MCA 4142`)
 
 **Course Title:** OOP Lab-I &nbsp;|&nbsp; **Course Code:** `MCA 4142`  
 **Reference Textbooks & Manuals Included:**
@@ -75,7 +75,7 @@ The coursework spans four core academic pillars:
 - *Object-Oriented Programming in C++* (4th Edition) — Robert Lafore
 - *OOP Lab-I [MCA 4142] Manual (July 2026)*
 
-### 📅 Weekly Laboratory Curriculum
+###  Weekly Laboratory Curriculum
 
 | Week | Focus Topic | Files | Description & Problem Statements |
 |:---:|:---|:---|:---|
@@ -93,14 +93,14 @@ The coursework spans four core academic pillars:
 
 ---
 
-## 🗄️ Module 2: Database Management Systems (`MCA 4141`)
+##  Module 2: Database Management Systems (`MCA 4141`)
 
 **Course Title:** Database Management Systems Lab &nbsp;|&nbsp; **Course Code:** `MCA 4141`  
 **Environment:** Oracle Database & SQL*Plus  
 **Core Reference Manual:** `IMCA_DBMS_Lab_Manual_2026_student_final_V1.1pdf.pdf`  
 **Reference Guides:** Entity-Relationship Modeling (`Unit4_ERmodel_final.pdf`), SQL Reference Notes (`update_delete_commands.txt`)
 
-### 📅 DBMS Weekly Laboratory Curriculum
+###  DBMS Weekly Laboratory Curriculum
 
 | Week | Focus Topic | Files | Concepts & Coverage |
 |:---:|:---|:---|:---|
@@ -113,7 +113,7 @@ The coursework spans four core academic pillars:
 | **Week 8** | **PL/SQL Triggers & Exception Handling** | [`lab8a1.sql`](file:///c:/MCA/dbms/week8/lab8a1.sql) to [`lab8a8.sql`](file:///c:/MCA/dbms/week8/lab8a8.sql), [`w8a5.sql`](file:///c:/MCA/dbms/week8/w8a5.sql), [`w8spool.txt`](file:///c:/MCA/dbms/week8/w8spool.txt) | Row-level and statement-level triggers: `AFTER UPDATE` audit logging (`SAL_MOD`), `BEFORE INSERT` data validation, business rule triggers (preventing salary decrements, project fund eligibility checks), dependent logging (`DEPENDENT_LOG`), and custom user exceptions. |
 | **Week 9** | **PL/SQL Stored Procedures & Functions** | [`lab9a1plsql.sql`](file:///c:/MCA/dbms/week9/lab9a1plsql.sql) to [`lab9a5proc.sql`](file:///c:/MCA/dbms/week9/lab9a5proc.sql), [`w9spool.txt`](file:///c:/MCA/dbms/week9/w9spool.txt) | Modular database programming: standalone stored procedures (`CALC_YEARS`), stored functions (`get_project_status`, `get_total_dept_prj`), parameter modes (`IN`, `OUT`, `IN OUT`), and cursor integration within stored blocks. |
 
-### 📱 Academic Mini-Project: Mobile Manufacturing System (Group 4)
+###  Academic Mini-Project: Mobile Manufacturing System (Group 4)
 - **Project Title:** Mobile Manufacturing Management System
 - **Comprehensive Project Report:** [`dbms/miniproject/Group4_Final_Report.pdf`](file:///c:/MCA/dbms/miniproject/Group4_Final_Report.pdf)
 - **Scope & Relational Architecture:**
@@ -122,14 +122,14 @@ The coursework spans four core academic pillars:
 
 ---
 
-## 🌐 Module 3: Web Technology (`MCA 4143`)
+##  Module 3: Web Technology (`MCA 4143`)
 
 **Course Title:** Web Technologies Lab &nbsp;|&nbsp; **Course Code:** `MCA 4143`  
 **Theory Outline:** Theory Course (4 Credits) — [`WT - MCA Theory 2026- 4 Credits.pdf`](file:///c:/MCA/wt/WT%20-%20MCA%20Theory%202026-%204%20Credits.pdf)  
 **Laboratory Plan:** [`WT-Course Plan - MCA Lab 2026.pdf`](file:///c:/MCA/wt/WT-Course%20Plan%20-%20MCA%20Lab%202026.pdf)  
 **Student Submission Record:** [`261090700052.pdf`](file:///c:/MCA/wt/wt/261090700052.pdf)
 
-### 📅 Web Technology Weekly Laboratory Curriculum
+###  Web Technology Weekly Laboratory Curriculum
 
 | Week | Focus Area | Key Files | Implementation & Features |
 |:---:|:---|:---|:---|
@@ -145,7 +145,7 @@ The coursework spans four core academic pillars:
 | **Week 10** | **PHP Server-Side Scripts & AJAX / JSON** | [`cookiee.php`](file:///c:/MCA/wt/wt/week10/cookiee.php), [`session_counter.php`](file:///c:/MCA/wt/wt/week10/session_counter.php), [`upload.php`](file:///c:/MCA/wt/wt/week10/upload.php), `19/`, `20/` | HTTP cookie creation in PHP, session-based persistent visitor hit counter, server-side file upload with validation, PHP JSON parsing (`19/`), and real-time asynchronous AJAX employee search without page reload (`20/`). |
 | **Week 11** | **Full-Stack PHP & MySQL Database Connectivity** | [`index.php`](file:///c:/MCA/wt/wt/week11/index.php) | Complete database-driven CRUD Library Management System connecting PHP to MySQL (`books` table: Create, Read, Update, and Delete operations). |
 
-### 🎪 Academic Course Project: Campus Event & Volunteer Management System
+###  Academic Course Project: Campus Event & Volunteer Management System
 - **Project Title:** Campus Event and Volunteer Management System
 - **Comprehensive Project Report:** [`wt/wtproject/Campus_Event_Final.pdf`](file:///c:/MCA/wt/wtproject/Campus_Event_Final.pdf)
 - **Features & Architecture:**
@@ -157,12 +157,12 @@ The coursework spans four core academic pillars:
 
 ---
 
-## 🔬 Module 4: Research Methodology & Technical Communication (RMTC)
+##  Module 4: Research Methodology & Technical Communication (RMTC)
 
 **Folder:** [`rmtc/`](file:///c:/MCA/rmtc)  
 **Research Focus:** Deep Learning Model for 3D–2D Multimodal Medical Image Registration
 
-### 📄 Research Project: 3D–2D Medical Image Registration Using Deep Learning
+###  Research Project: 3D–2D Medical Image Registration Using Deep Learning
 1. **Final Peer-Reviewed Style Research Report:**  
    [`rmtc/Research_Final_ver.pdf`](file:///c:/MCA/rmtc/Research_Final_ver.pdf)  
    - Comprehensive academic paper detailing rigid spatial registration aligning preoperative volumetric 3D MRI scans with intraoperative 2D fluoroscopy/X-ray projections.
@@ -175,7 +175,7 @@ The coursework spans four core academic pillars:
    [`rmtc/qims-11-12-4895.pdf`](file:///c:/MCA/rmtc/qims-11-12-4895.pdf)  
    - Published journal research paper from *Quantitative Imaging in Medicine and Surgery* (QIMS, PubMed-indexed) evaluating deep learning methodologies for 3D/2D image alignment in surgical guidance.
 
-### 📚 RMTC Lecture & Curriculum Modules
+###  RMTC Lecture & Curriculum Modules
 Complete course reference documentation across all 11 scientific research methodology stages:
 - **Module 1:** [`1. Introduction pdf.pdf`](file:///c:/MCA/rmtc/1.%20Introduction%20pdf.pdf) — Foundations of scientific inquiry and academic research.
 - **Module 2:** [`2. Types of research pdf.pdf`](file:///c:/MCA/rmtc/2.%20Types%20of%20research%20pdf.pdf) — Quantitative, qualitative, empirical, and conceptual models.
@@ -211,11 +211,11 @@ Complete course reference documentation across all 11 scientific research method
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```text
 MCA/
-├── 💻 c++/                                            # Object-Oriented Programming (MCA 4142)
+├──  c++/                                            # Object-Oriented Programming (MCA 4142)
 │   ├── C_Plus_Plus_The_Complete_Reference_4th_Edition_Herbert_Schildt.pdf
 │   ├── Object-Oriented_Programming_in_C++_-4th_Edition-_by_Robert_Lafore.pdf
 │   ├── OOP Lab-I [MCA 4142 ]_Manual_Jul_2026.pdf
@@ -231,7 +231,7 @@ MCA/
 │   ├── week10/                                       # Text File I/O, Case Converters, Stream Word Counters
 │   └── week11/                                       # Binary File I/O, Object Serialization, Employee CRUD (dat)
 │
-├── 🗄️ dbms/                                           # Database Management Systems (MCA 4141)
+├──  dbms/                                           # Database Management Systems (MCA 4141)
 │   ├── files/                                        # Lab Manual, ER Model Guides, Reference Materials
 │   │   ├── IMCA_DBMS_Lab_Manual_2026_student_final_V1.1pdf.pdf
 │   │   ├── Unit4_ERmodel_final.pdf
@@ -248,7 +248,7 @@ MCA/
 │   ├── week8/                                        # PL/SQL Triggers (Audit Log, Fund Eligibility, Salary Rules)
 │   └── week9/                                        # PL/SQL Stored Procedures & Stored Functions (CALC_YEARS)
 │
-├── 🌐 wt/                                             # Web Technology (MCA 4143)
+├──  wt/                                             # Web Technology (MCA 4143)
 │   ├── WT - MCA Theory 2026- 4 Credits.pdf           # Theory Course Syllabus
 │   ├── WT-Course Plan - MCA Lab 2026.pdf             # Laboratory Experiment Plan
 │   ├── wt/                                           # Weekly Laboratory Practicals
@@ -267,7 +267,7 @@ MCA/
 │   └── wtproject/                                    # Web Technology Course Project
 │       └── Campus_Event_Final.pdf                    # Final Report: Campus Event & Volunteer Management System
 │
-├── 🔬 rmtc/                                           # Research Methodology & Technical Communication
+├──  rmtc/                                           # Research Methodology & Technical Communication
 │   ├── Research_Final_ver.pdf                        # Final Research Paper: 3D–2D Medical Image Registration
 │   ├── Deep_Learning_3D2D_Medical_Image_Registration_Methodology-3.docx
 │   ├── qims-11-12-4895.pdf                           # Reference Literature (QIMS Journal Paper)
@@ -283,12 +283,12 @@ MCA/
 │   ├── 10. Sampling design.pdf                       # Module 10: Sampling & Stratification
 │   └── 11. Hypothesis Testing & Report writing.pdf   # Module 11: Statistical Inference & Writing
 │
-└── 📄 README.md                                      # Central Repository Documentation
-```
+└──  README.md                                      # Central Repository Documentation
 
+```
 ---
 
-## 🚀 Execution & Setup Guidelines
+##  Execution & Setup Guidelines
 
 ### 1. Compiling and Running C++ Programs
 Ensure GCC/MinGW (`g++`) is installed and available in your environment path:
